@@ -1,0 +1,21 @@
+// we import the font and make it color variables
+@font-face {
+  font-family: "Jost";
+  src: url(./assets/Jost-Regular.ttf);
+}
+
+$font-stack: "Jost", sans-serif;
+$font-color: #1a1510;
+
+// brand colors variables for buttons and footer
+$brand-color: #c91961;
+$brand-color-two: #98375f;
+
+// background color and text color on buttons using brand-color as background
+$primary-color: #f0f0f0;
+
+// grey variations used on buttons, some components backgrounds, etc etc
+$secondary-color: #404040;
+$secondary-color-two: #b7b7b7;
+$secondary-color-three: #c6c6c6;
+$secondary-color-four: #e7e7e7;
