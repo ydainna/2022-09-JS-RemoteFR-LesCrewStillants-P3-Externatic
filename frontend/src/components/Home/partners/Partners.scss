@@ -13,4 +13,22 @@
       width: 175px;
     }
   }
+
+  .sliderSpots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+      width: $font-size;
+      height: $font-size;
+      background-color: $secondary-color-three;
+      border-radius: 60px;
+    }
+
+    .spanChecked {
+      background-color: $secondary-color;
+    }
+  }
 }
