@@ -1,0 +1,51 @@
+@import "../../../assets/variables";
+
+#slider {
+  text-align: center;
+  overflow-x: none;
+
+  .slides {
+    background: center/cover no-repeat;
+    border-radius: $border-radius;
+    border: 4px solid #000000;
+    max-width: 33%;
+    padding: $basic-space;
+    margin: $basic-space;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .backgroundSlide {
+      background-color: $brand-color-two-80percent;
+      border-radius: $border-radius;
+      width: 80%;
+      padding: $half-space $basic-space;
+      backdrop-filter: blur(2px);
+
+      h1,
+      p {
+        color: $primary-color;
+        margin: $basic-space;
+      }
+
+      h1 {
+        font-size: $title-size;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: $font-size;
+      }
+    }
+
+    button {
+      font-size: $font-size;
+      color: $brand-color;
+      background-color: $secondary-color-four;
+      border: none;
+      padding: $half-space;
+    }
+  }
+}
