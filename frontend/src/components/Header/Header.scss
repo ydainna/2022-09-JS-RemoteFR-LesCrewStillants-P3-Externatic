@@ -32,6 +32,9 @@ header {
         font-size: $font-size;
         font-weight: 500;
       }
+      :hover {
+        cursor: pointer;
+      }
     }
   }
 
