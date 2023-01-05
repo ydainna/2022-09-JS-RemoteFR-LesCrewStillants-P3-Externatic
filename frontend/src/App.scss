@@ -1,0 +1,10 @@
+@import "./assets/variables";
+
+* {
+  margin: 0;
+}
+
+body,
+button {
+  font-family: $font-stack;
+}
