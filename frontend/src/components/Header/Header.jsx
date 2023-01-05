@@ -25,13 +25,21 @@ function Header() {
       </div>
       <nav>
         <ul className={`${showLinks ? "show-nav " : "hide-nav"}`}>
-          <li className="list">OFFRES D'EMPLOI</li>
-          <li className="list">CANDIDATS</li>
-          <li className="list">ENTREPRISES</li>
-          <li className="list">QUI SOMMES-NOUS ?</li>
-          <li className="list">OUTILS</li>
-          <li className="list">BLOG</li>
-          <li className="list">CONTACT</li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            OFFRES D'EMPLOI
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            CANDIDATS
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            ENTREPRISES
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            QUI SOMMES-NOUS ?
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>OUTILS</li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>BLOG</li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>CONTACT</li>
         </ul>
       </nav>
     </header>
