@@ -51,32 +51,72 @@ header {
 
 @media (max-width: 768px) {
   header {
-    .burger {
-      :hover {
-        cursor: pointer;
+    .header {
+      .logo {
+        width: 7rem;
       }
+      .burger {
+        :hover {
+          cursor: pointer;
+        }
 
-      .burger-bar,
-      .burger-bar::before,
-      .burger-bar::after {
-        display: block;
-        width: 30px;
-        height: 3px;
-        position: relative;
-        border-radius: 3px;
-        background-color: $secondary-color-three;
+        .burger-bar,
+        .burger-bar::before,
+        .burger-bar::after {
+          display: block;
+          width: 30px;
+          height: 3px;
+          position: relative;
+          border-radius: 3px;
+          background-color: $secondary-color-three;
+          transition: all 0.5s ease-in-out;
+        }
+        .burger-bar::before,
+        .burger-bar::after {
+          content: "";
+          position: absolute;
+          left: 0;
+        }
+        .burger-bar::before {
+          transform: translateY(-12px);
+        }
+
+        .burger-bar::after {
+          transform: translateY(12px);
+        }
+        .burger-bar-checked,
+        .burger-bar-checked::before,
+        .burger-bar-checked::after {
+          display: block;
+          width: 30px;
+          height: 3px;
+          position: relative;
+          border-radius: 3px;
+          background-color: $secondary-color-three;
+          transition: all 0.5s ease-in-out;
+        }
+        .burger-bar-checked::before,
+        .burger-bar-checked::after {
+          content: "";
+          position: absolute;
+          left: 0;
+        }
+        .burger-bar-checked {
+          width: 0;
+          background-color: transparent;
+        }
+        .burger-bar-checked::before {
+          transform: rotate(45deg);
+        }
+        .burger-bar-checked::after {
+          transform: rotate(-45deg);
+        }
       }
-      .burger-bar::before,
-      .burger-bar::after {
-        content: "";
-        position: absolute;
-        left: 0;
-      }
-      .burger-bar::before {
-        transform: translateY(-12px);
-      }
-      .burger-bar::after {
-        transform: translateY(12px);
+      .button {
+        width: 8rem;
+        h1 {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -86,29 +126,31 @@ header {
         justify-content: center;
         align-items: center;
         position: fixed;
-        left: 0;
+        left: -100vw;
         top: 2;
         height: 22rem;
+        width: 0;
         padding: 2rem 0;
         visibility: hidden;
         background-color: $secondary-color-three;
-        transition: all 0.8s ease-out;
+        transition: all 0.8s ease-in-out;
 
-        li {
+        .list {
           display: block;
-          padding: 1rem;
           font-size: $font-size;
+          margin: 0;
         }
-        li::after {
+
+        .list::after {
           content: "";
           display: block;
-          margin: 0 auto;
+          margin: 0.9rem auto;
           width: 7vw;
           height: 2px;
           background: $secondary-color;
-          // padding-top: 1rem;
         }
-        li:last-child:after {
+
+        .list:last-child:after {
           display: none;
         }
       }
@@ -116,9 +158,6 @@ header {
         width: 100%;
         left: 0;
         visibility: visible;
-        .burger-bar::before {
-          transform: rotate(45deg);
-        }
       }
     }
   }
