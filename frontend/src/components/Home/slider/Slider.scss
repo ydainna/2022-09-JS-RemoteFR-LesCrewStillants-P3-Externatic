@@ -66,13 +66,13 @@
     border: none;
     background-color: transparent;
 
-    @media screen and (min-width: 720px) {
+    @media screen and (min-width: 1350px) {
       top: 525px;
     }
 
     img {
       width: 50%;
-      @media screen and (min-width: 720px) {
+      @media screen and (min-width: 1350px) {
         width: 100%;
       }
     }
