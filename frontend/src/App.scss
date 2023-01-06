@@ -8,3 +8,7 @@ body,
 button {
   font-family: $font-stack;
 }
+
+body {
+  overflow-x: hidden;
+}
