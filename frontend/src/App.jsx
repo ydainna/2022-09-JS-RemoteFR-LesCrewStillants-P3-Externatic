@@ -1,14 +1,13 @@
 import Footer from "@components/Footer";
-import Home from "./pages/Home";
+import ComposantLogin from "@components/ComposantLogin";
 import Header from "./components/Header/Header";
-
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Home />
+      <ComposantLogin />
       <Footer />
     </div>
   );

@@ -1,0 +1,59 @@
+@import "../assets/_variables.scss";
+
+.connexion {
+  width: 100%;
+  height: auto;
+  font-size: $title-bigger-size;
+  font-style: $font-stack;
+  color: $font-color;
+}
+
+.rectangle {
+  margin: 5rem 0rem 5rem 40rem;
+  height: 35rem;
+  width: 45rem;
+  background-color: $secondary-color-four;
+}
+
+.texte {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.input-mail {
+  font-size: title-size;
+}
+
+.input-mdp {
+  font-size: title-size;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+input {
+  height: 50px;
+  width: 450px;
+}
+
+a {
+  text-align: left;
+  font-size: $font-size;
+}
+
+button {
+  background-color: $brand-color;
+  color: $secondary-color-four;
+  height: 50px;
+  width: 200px;
+  font-size: $font-size;
+  display: block;
+  margin-top: 2rem;
+  border: none;
+}
