@@ -1,0 +1,47 @@
+@import "../assets/_variables.scss";
+
+.footer {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  background-color: $brand-color;
+  font-family: $font-stack;
+  font-size: $title-bigger-size;
+  display: flex;
+  justify-content: space-around;
+  color: $secondary-color-three;
+}
+
+.reseaux {
+  margin-top: 2rem;
+}
+
+.text {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    background-color: $brand-color;
+    font-family: $font-stack;
+    font-size: $font-size;
+    color: $secondary-color-three;
+    flex-direction: column;
+  }
+
+  .reseaux {
+    flex-direction: row;
+  }
+
+  .mention {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .text {
+    margin-top: 0px;
+  }
+}
