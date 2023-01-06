@@ -10,6 +10,18 @@ export default function Slider() {
     "slides slideRight",
   ]);
 
+  const handleLeftArrowSlider = () => {
+    const arraySliderReorder = slideClasses.slice(0, 2);
+    arraySliderReorder.unshift(slideClasses[2]);
+    setSlideClasses(arraySliderReorder);
+  };
+
+  const handleRightArrowSlider = () => {
+    const arraySliderReorder = slideClasses.slice(1);
+    arraySliderReorder.push(slideClasses[0]);
+    setSlideClasses(arraySliderReorder);
+  };
+
   return (
     <section id="slider">
       {featuredData.map((slide) => (
@@ -27,18 +39,14 @@ export default function Slider() {
       <button
         type="button"
         className="sliderNavigationLeft"
-        onClick={() =>
-          setSlideClasses(["slides", "slides slideRight", "slides slideLeft"])
-        }
+        onClick={() => handleLeftArrowSlider()}
       >
         gauche
       </button>
       <button
         type="button"
         className="sliderNavigationRight"
-        onClick={() =>
-          setSlideClasses(["slides slideRight", "slides slideLeft", "slides"])
-        }
+        onClick={() => handleRightArrowSlider()}
       >
         droite
       </button>

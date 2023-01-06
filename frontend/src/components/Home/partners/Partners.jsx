@@ -5,27 +5,9 @@ import "./Partners.scss";
 export default function Partners() {
   const [partnerSlide, setPartnerSlide] = useState(0);
   return (
-    // <section id="partners">
-    //   {partnersData.map((partners) => (
-    //     <div className="partnersSlide">
-    //       {partners.map((partner) =>
-    //         partner.url ? (
-    //           <a
-    //             href={partner.url}
-    //             alt={`${partner.name} link`}
-    //             target="__blank"
-    //           >
-    //             <img src={partner.img} alt={partner.name} />
-    //           </a>
-    //         ) : (
-    //           <img src={partner.img} alt={partner.name} />
-    //         )
-    //       )}
-    //     </div>
-    //   ))}
-    // </section>
-
     <section id="partners">
+      <h1>Nos partenaires</h1>
+      <p>Les plus grandes entreprises nous font confiance</p>
       <div className="partnersSlide">
         {partnersData[partnerSlide].map((partner) =>
           partner.url ? (

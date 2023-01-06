@@ -8,6 +8,10 @@
   gap: $half-space;
   margin-bottom: 2rem;
 
+  h1:first-of-type {
+    color: $brand-color-two;
+  }
+
   .partnersSlide {
     display: flex;
     justify-content: center;
