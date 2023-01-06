@@ -1,77 +1,77 @@
 @import "../assets/variables";
 
 .totalBanner {
-    width: 100%;
-    height: fit-content;
-    background-image: url(../assets/home/homeBanner.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    padding: 1.8rem;
+  width: 100%;
+  height: fit-content;
+  background-image: url(../assets/home/homeBanner.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 1.8rem;
 }
 
 .textBanner {
-    background-color: $brand-color-two;
-    opacity: 0.80;
-    border-radius: $border-radius;
-    padding: 0.4rem;
-    margin: $basic-space * 2 $basic-space * 24;
+  background-color: $brand-color-two;
+  opacity: 0.8;
+  border-radius: $border-radius;
+  padding: 0.4rem;
+  margin: $basic-space * 2 $basic-space * 24;
 }
 
 .textBanner h2 {
-   color: $primary-color;
-   font-size: $title-bigger-size;
-   font-family: $font-stack;
+  color: $primary-color;
+  font-size: $title-bigger-size;
+  font-family: $font-stack;
 }
 
 .textBanner p {
-    color: $primary-color;
-    font-size: $font-size;
-    font-family: $font-stack;
+  color: $primary-color;
+  font-size: $font-size;
+  font-family: $font-stack;
 }
 
 .buttonsBanner {
-    margin: $basic-space * 2 $basic-space * 24;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  margin: $basic-space * 2 $basic-space * 24;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .buttonsBanner button {
-    background-color: $brand-color;
-    border: none;
-    border-radius: $border-radius;
-    padding: $basic-space $basic-space * 2;
-    font-family: $font-stack;
-    font-size: $font-size; 
-    color: $primary-color;
+  background-color: $brand-color;
+  border: none;
+  border-radius: $border-radius;
+  padding: $basic-space $basic-space * 2;
+  font-family: $font-stack;
+  font-size: $font-size;
+  color: $primary-color;
 }
 
 @media screen and (max-width: 480px) {
-.totalBanner {
+  .totalBanner {
     background-size: 200%;
     background-position: center;
     padding: $basic-space 0;
-}
+  }
 
-    .textBanner {
-        margin: $basic-space / 2 4rem;
-        padding: 0.2rem;
-    }
+  .textBanner {
+    margin: calc($basic-space / 2) 4rem;
+    padding: 0.2rem;
+  }
 
-    .textBanner h2 {
-        font-size: $title-bigger-size / 2;
-    }
+  .textBanner h2 {
+    font-size: calc($title-bigger-size / 2);
+  }
 
-    .textBanner p {
-        font-size: $font-size / 2;
-    }
+  .textBanner p {
+    font-size: calc($font-size / 2);
+  }
 
-    .buttonsBanner {
-        margin: 0;
-    }
+  .buttonsBanner {
+    margin: 0;
+  }
 
-    .buttonsBanner button {
-        padding: $basic-space / 2 $basic-space;
-        font-size: $font-size / 2;
-    }
+  .buttonsBanner button {
+    padding: calc($basic-space / 2) $basic-space;
+    font-size: calc($font-size / 2);
+  }
 }
