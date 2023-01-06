@@ -62,12 +62,12 @@
   .sliderNavigationLeft,
   .sliderNavigationRight {
     position: absolute;
-    top: 20%;
+    top: 350px;
     border: none;
     background-color: transparent;
 
     @media screen and (min-width: 720px) {
-      top: 15%;
+      top: 525px;
     }
 
     img {
