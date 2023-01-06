@@ -1,6 +1,9 @@
 import { useState } from "react";
 import featuredData from "@services/featuredData";
 
+import arrow1 from "@assets/icons/Arrow1.svg";
+import arrow2 from "@assets/icons/Arrow2.svg";
+
 import "./Slider.scss";
 
 export default function Slider() {
@@ -41,14 +44,14 @@ export default function Slider() {
         className="sliderNavigationLeft"
         onClick={() => handleLeftArrowSlider()}
       >
-        gauche
+        <img src={arrow1} alt="Left Arrow Button" />
       </button>
       <button
         type="button"
         className="sliderNavigationRight"
         onClick={() => handleRightArrowSlider()}
       >
-        droite
+        <img src={arrow2} alt="Right Arrow Button" />
       </button>
     </section>
   );

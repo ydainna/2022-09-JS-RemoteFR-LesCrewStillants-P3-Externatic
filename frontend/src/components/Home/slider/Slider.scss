@@ -63,25 +63,34 @@
   .sliderNavigationRight {
     position: absolute;
     top: 20%;
+    border: none;
+    background-color: transparent;
 
     @media screen and (min-width: 720px) {
       top: 15%;
     }
+
+    img {
+      width: 50%;
+      @media screen and (min-width: 720px) {
+        width: 100%;
+      }
+    }
   }
 
   .sliderNavigationLeft {
-    left: 10px;
+    left: -20px;
 
     @media screen and (min-width: 720px) {
-      left: 24%;
+      left: 22%;
     }
   }
 
   .sliderNavigationRight {
-    right: 13px;
+    right: -20px;
 
     @media screen and (min-width: 720px) {
-      right: 24%;
+      right: 22%;
     }
   }
 
