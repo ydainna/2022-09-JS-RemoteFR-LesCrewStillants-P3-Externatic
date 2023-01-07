@@ -7,6 +7,7 @@ import Login from "@pages/Auth/Login";
 
 import OfferList from "@pages/Offers/OfferList";
 import Offer from "@pages/Offers/Offer";
+import OfferRegister from "@pages/Offers/OfferRegister";
 
 import Company from "@pages/Companies/Company";
 
@@ -19,7 +20,8 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/offers" element={<OfferList />} />
         <Route path="/offers/:id" element={<Offer />} />
-        <Route path="/companies:id" element={<Company />} />
+        <Route path="/offerRegister" element={<OfferRegister />} />
+        <Route path="/companies/:id" element={<Company />} />
       </Routes>
     </BrowserRouter>
   );
