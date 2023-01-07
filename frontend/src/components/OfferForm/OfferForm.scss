@@ -1,3 +1,97 @@
-.focused {
-  color: blue;
+@import "../../assets/_variables.scss";
+
+.container {
+  background-image: url(../../assets/offers/bannerOffer.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: fit-content;
+}
+
+.banner_job {
+  display: flex;
+  justify-content: space-between;
+  margin: $basic-space * 0 $basic-space * 6;
+  padding-top: 2rem;
+  .title_job {
+    background-color: $secondary-color-four;
+    width: 20rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: $title-size;
+      font-family: $font-stack;
+      padding-bottom: 0.5rem;
+    }
+    h3 {
+      font-size: $font-size;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      padding-bottom: 0.5rem;
+      font-family: $font-stack;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    margin-right: 4rem;
+
+    .button {
+      background-color: $brand-color;
+      border-radius: 3px;
+      box-shadow: 0 10px 6px -6px #777;
+      border: none;
+      color: $primary-color;
+      width: 15rem;
+      height: 3rem;
+      font-size: $title-size;
+    }
+
+    .heart {
+      background-color: transparent;
+      border: none;
+      padding-top: 2rem;
+    }
+    .heart:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.description_job {
+  background-color: $secondary-color-four;
+  margin: $basic-space * 2 $basic-space * 6;
+  padding: 1.5rem;
+
+  h2 {
+    font-size: $font-size;
+    font-family: $font-stack;
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    padding-bottom: 2rem;
+    font-family: $font-stack;
+  }
+  .button_valid {
+    font-size: $title-size;
+    background-color: $brand-color;
+    border-radius: 3px;
+    box-shadow: 0 10px 6px -6px #777;
+    border: none;
+    color: $primary-color;
+    width: 15rem;
+    height: 3rem;
+    margin-left: 40%;
+    margin-right: 40%;
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translateY(2px);
 }

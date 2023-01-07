@@ -23,8 +23,8 @@
       padding-bottom: 0.5rem;
     }
     h3 {
-        font-size: $font-size;
-        padding-bottom: 0.5rem;
+      font-size: $font-size;
+      padding-bottom: 0.5rem;
     }
     p {
       padding-bottom: 0.5rem;
@@ -75,13 +75,14 @@
     font-family: $font-stack;
   }
   .button {
+    font-size: $title-size;
     background-color: $brand-color;
     border-radius: 3px;
     box-shadow: 0 10px 6px -6px #777;
     border: none;
     color: $primary-color;
-    width: 10rem;
-    height: 2rem;
+    width: 15rem;
+    height: 3rem;
     margin-left: 40%;
     margin-right: 40%;
   }
