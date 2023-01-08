@@ -3,6 +3,7 @@ import CurrentSituation from "@components/UserProfile/currentSituation/CurrentSi
 import Cv from "@components/UserProfile/cv/Cv";
 import Parameters from "@components/UserProfile/parameters/Parameters";
 import Presentation from "@components/UserProfile/presentation/Presentation";
+import SearchParameters from "@components/UserProfile/searchParameters/SearchParameters";
 
 export default function Profile() {
   return (
@@ -10,6 +11,7 @@ export default function Profile() {
       <Presentation />
       <Cv />
       <CurrentSituation />
+      <SearchParameters />
       <Parameters />
     </LoggedUsersLayout>
   );

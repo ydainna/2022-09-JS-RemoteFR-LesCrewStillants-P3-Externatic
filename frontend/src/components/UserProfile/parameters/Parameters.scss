@@ -6,16 +6,29 @@
   margin: $basic-space 0;
 
   @media screen and (min-width: 720px) {
-    margin: $basic-space $basic-space * 3.5;
+    margin: $basic-space $basic-space * 3.5 $basic-space * 5 $basic-space * 3.5;
     padding: $basic-space * 2;
   }
 
+  h1 {
+    margin-bottom: $basic-space * 1.5;
+    font-weight: 500;
+  }
+
   button {
-    width: 10rem;
-    height: 2.5rem;
+    display: block;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-width: 12rem;
+    min-height: 2.5rem;
+    padding: $half-space $basic-space;
     background-color: $brand-color;
     border: none;
     color: $primary-color;
     margin: 0.5rem;
+
+    &:last-of-type {
+      background-color: #c10f0f;
+      margin-top: $basic-space;
+    }
   }
 }
