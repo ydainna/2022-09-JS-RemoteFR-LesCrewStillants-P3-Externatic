@@ -5,21 +5,38 @@
   background-repeat: no-repeat;
   background-size: 100%;
   height: fit-content;
+
+  .titre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $secondary-color-four;
+    margin-top: 0.5rem;
+    h1 {
+      font-family: $font-stack;
+      font-size: $title-size;
+      color: $secondary-color;
+      padding: 0.5rem;
+    }
+  }
 }
 
 .banner_job {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
-  margin: $basic-space * 0 $basic-space * 6;
-  padding-top: 2rem;
+  margin: $basic-space * 1 $basic-space * 6;
+  background-color: $secondary-color-four;
+  width: 20rem;
+  padding: 1rem;
+
   .title_job {
-    background-color: $secondary-color-four;
-    width: 20rem;
-    padding: 1rem;
+    color: $secondary-color;
 
     h2 {
       font-size: $title-size;
       font-family: $font-stack;
+
       padding-bottom: 0.5rem;
     }
     h3 {
@@ -30,68 +47,75 @@
       padding-bottom: 0.5rem;
       font-family: $font-stack;
     }
+    input {
+      font-family: $font-stack;
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
   }
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-    margin-right: 4rem;
-
-    .button {
-      background-color: $brand-color;
-      border-radius: 3px;
-      box-shadow: 0 10px 6px -6px #777;
-      border: none;
-      color: $primary-color;
-      width: 15rem;
-      height: 3rem;
-      font-size: $title-size;
-    }
-
-    .heart {
-      background-color: transparent;
-      border: none;
-      padding-top: 2rem;
-    }
-    .heart:hover {
-      cursor: pointer;
-    }
+  .button {
+    background-color: transparent;
+    border: none;
+    margin-top: 10rem;
   }
 }
 
-.description_job {
+.banner_description {
   background-color: $secondary-color-four;
   margin: $basic-space * 2 $basic-space * 6;
-  padding: 1.5rem;
+  padding: 1rem;
+  width: auto;
+  .description_job {
+    color: $secondary-color;
 
-  h2 {
-    font-size: $font-size;
-    font-family: $font-stack;
-    padding-bottom: 0.5rem;
-  }
+    h2 {
+      font-size: $font-size;
+      font-family: $font-stack;
+      padding-bottom: 0.5rem;
+    }
 
-  p {
-    padding-bottom: 2rem;
-    font-family: $font-stack;
+    p {
+      padding-bottom: 2rem;
+      font-family: $font-stack;
+    }
+    textarea {
+      font-family: $font-stack;
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
   }
-  .button_valid {
-    font-size: $title-size;
-    background-color: $brand-color;
-    border-radius: 3px;
-    box-shadow: 0 10px 6px -6px #777;
+  .button {
+    background-color: transparent;
     border: none;
-    color: $primary-color;
-    width: 15rem;
-    height: 3rem;
-    margin-left: 40%;
-    margin-right: 40%;
   }
+}
+
+.align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button_valid {
+  font-size: $title-size;
+  background-color: $brand-color;
+  border-radius: 3px;
+  box-shadow: 0 10px 6px -6px #777;
+  border: none;
+  color: $primary-color;
+  width: 15rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.button_valid:active {
+  transform: translateY(2px);
+}
+
+.button_valid:hover {
+  cursor: pointer;
 }
 
 .button:hover {
   cursor: pointer;
-}
-
-.button:active {
-  transform: translateY(2px);
 }
