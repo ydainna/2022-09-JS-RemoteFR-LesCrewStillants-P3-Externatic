@@ -74,6 +74,11 @@
     padding-bottom: 2rem;
     font-family: $font-stack;
   }
+  .align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .button {
     font-size: $title-size;
     background-color: $brand-color;
@@ -83,8 +88,6 @@
     color: $primary-color;
     width: 15rem;
     height: 3rem;
-    margin-left: 40%;
-    margin-right: 40%;
   }
 }
 
@@ -139,7 +142,6 @@
       font-size: $font-size;
       height: 2.5rem;
       margin-bottom: 1.5rem;
-      margin-left: 25%;
     }
   }
 }

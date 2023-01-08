@@ -45,18 +45,22 @@ function OfferComponent() {
         <p>{offerData[0].descJob}</p>
         <h2>Description de l'entreprise</h2>
         <p>{offerData[0].descEntreprise}</p>
-        <button className="button" type="button">
-          Voir l'entreprise
-        </button>
+        <div className="align">
+          <button className="button" type="button">
+            Voir l'entreprise
+          </button>
+        </div>
         <h2>Votre mission</h2>
         <p>{offerData[0].mission}</p>
         <h2>Profil et expérience souhaités</h2>
         <p>{offerData[0].profil}</p>
         <h2>Avantages</h2>
         <p>{offerData[0].advantages}</p>
-        <button className="button" type="button">
-          Postuler
-        </button>
+        <div className="align">
+          <button className="button" type="button">
+            Postuler
+          </button>
+        </div>
       </section>
     </section>
   );
