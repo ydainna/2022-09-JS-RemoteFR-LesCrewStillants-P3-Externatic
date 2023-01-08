@@ -1,0 +1,30 @@
+@import "../../../assets/variables";
+
+#SubNavUsers {
+  margin-top: $basic-space * 1.5;
+  background-color: $secondary-color-four;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: $half-space 0;
+
+    @media screen and (min-width: 720px) {
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    li {
+      padding: $basic-space * 2 $basic-space * 4;
+      color: $font-color;
+      background-color: $primary-color;
+      display: flex;
+      gap: $half-space;
+      align-items: center;
+    }
+
+    #currentCandidatePage {
+      background-color: $secondary-color-three;
+    }
+  }
+}
