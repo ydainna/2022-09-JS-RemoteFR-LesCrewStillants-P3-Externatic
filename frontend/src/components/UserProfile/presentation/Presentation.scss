@@ -38,6 +38,15 @@
     padding: $basic-space;
     margin-bottom: $basic-space;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: $basic-space;
+
+    input {
+      background-color: $secondary-color-three;
+      border: none;
+      height: $title-bigger-size;
+    }
   }
 
   button {
