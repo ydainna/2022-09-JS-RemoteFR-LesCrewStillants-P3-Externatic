@@ -24,6 +24,7 @@ const customSettings = {
 */
 
 export default class Notify {
+  // Default settings for toast
   static defaultSettings = {
     position: "top-right",
     autoClose: 5000,
@@ -35,22 +36,22 @@ export default class Notify {
     theme: "colored",
   };
 
-  // Success toast
+  // Success toast (red)
   static error(content, settings) {
     toast.error(content, { ...this.defaultSettings, ...settings });
   }
 
-  // Success toast
+  // Success toast (green)
   static success(content, settings) {
     toast.success(content, { ...this.defaultSettings, ...settings });
   }
 
-  // Info toast
+  // Info toast (blue)
   static info(content, settings) {
     toast.info(content, { ...this.defaultSettings, ...settings });
   }
 
-  // Warning toast
+  // Warning toast (yellow)
   static warning(content, settings) {
     toast.warning(content, { ...this.defaultSettings, ...settings });
   }
