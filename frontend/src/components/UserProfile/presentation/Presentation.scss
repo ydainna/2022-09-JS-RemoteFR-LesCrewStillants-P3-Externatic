@@ -15,8 +15,20 @@
     font-weight: 500;
   }
 
-  img {
-    border-radius: 300px;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $basic-space;
+
+    @media screen and (min-width: 720px) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    img {
+      border-radius: 300px;
+    }
   }
 
   button {

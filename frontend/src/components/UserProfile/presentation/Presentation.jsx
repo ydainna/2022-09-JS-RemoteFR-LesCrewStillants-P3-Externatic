@@ -6,9 +6,11 @@ export default function Presentation() {
   return (
     <section id="presentation">
       <h1>Présentation</h1>
-      <img src={avatarTemoin} alt="Avatar Témoin" />
+      <div>
+        <img src={avatarTemoin} alt="Avatar Témoin" />
 
-      <button type="button">Mettre à jour la photo</button>
+        <button type="button">Mettre à jour la photo</button>
+      </div>
 
       <p>Civilité</p>
       <p>Prénom</p>
