@@ -4,15 +4,29 @@
   background-color: $secondary-color-three;
   padding: $basic-space;
   margin: $basic-space 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media screen and (min-width: 720px) {
     margin: $basic-space $basic-space * 3.5;
     padding: $basic-space * 2;
+    align-items: flex-start;
   }
 
   h1 {
+    align-self: flex-start;
     margin-bottom: $basic-space * 1.5;
     font-weight: 500;
+  }
+
+  p {
+    display: flex;
+    gap: $half-space;
+
+    input[type="checkbox"] {
+      background-color: $primary-color;
+    }
   }
 
   button {
@@ -23,6 +37,6 @@
     background-color: $brand-color;
     border: none;
     color: $primary-color;
-    margin: 0.5rem;
+    margin: 0.5rem 0;
   }
 }
