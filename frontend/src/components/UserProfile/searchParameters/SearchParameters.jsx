@@ -21,7 +21,7 @@ export default function SearchParameters() {
         Poste <input type="text" />
       </p>
       <p>
-        Technologie <input type="text" />
+        Technologies <input type="text" />
       </p>
 
       <button type="button">Enregistrer</button>

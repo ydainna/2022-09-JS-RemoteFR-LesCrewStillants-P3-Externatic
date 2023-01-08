@@ -4,10 +4,13 @@
   background-color: $secondary-color-three;
   padding: $basic-space;
   margin: $basic-space 0;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: 720px) {
     margin: $basic-space $basic-space * 3.5;
     padding: $basic-space * 2;
+    display: block;
   }
 
   h1 {
@@ -40,5 +43,6 @@
     border: none;
     color: $primary-color;
     margin: 0.5rem 0;
+    align-self: center;
   }
 }
