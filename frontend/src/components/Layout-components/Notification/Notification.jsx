@@ -36,7 +36,7 @@ export default class Notify {
     theme: "colored",
   };
 
-  // Success toast (red)
+  // Error toast (red)
   static error(content, settings) {
     toast.error(content, { ...this.defaultSettings, ...settings });
   }
