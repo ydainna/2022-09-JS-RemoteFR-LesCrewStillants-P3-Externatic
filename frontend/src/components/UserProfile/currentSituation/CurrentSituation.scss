@@ -1,0 +1,21 @@
+@import "../../../assets/variables";
+
+#currentSituation {
+  background-color: $secondary-color-three;
+  padding: $basic-space;
+  margin: $basic-space 0;
+
+  @media screen and (min-width: 720px) {
+    margin: $basic-space $basic-space * 3.5;
+    padding: $basic-space * 2;
+  }
+
+  button {
+    width: 10rem;
+    height: 2.5rem;
+    background-color: $brand-color;
+    border: none;
+    color: $primary-color;
+    margin: 0.5rem;
+  }
+}

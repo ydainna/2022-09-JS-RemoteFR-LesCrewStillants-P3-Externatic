@@ -1,10 +1,10 @@
-import SubNavUsers from "@components/UserProfile/SubNavUsers/SubNavUsers";
+import SubNavUsers from "@components/UserProfile/subNavUsers/SubNavUsers";
 
 export default function LoggedUsersLayout({ children }) {
   return (
-    <main>
+    <>
       <SubNavUsers />
-      {children}
-    </main>
+      <main>{children}</main>
+    </>
   );
 }
