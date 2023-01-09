@@ -1,5 +1,5 @@
 import Footer from "@components/Footer/Footer";
-import Offer from "./pages/Offers/Offer";
+import OfferRegister from "./pages/Offers/OfferRegister";
 import Header from "./components/Header/Header";
 
 import "./App.scss";
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Offer />
+      <OfferRegister />
       <Footer />
     </div>
   );

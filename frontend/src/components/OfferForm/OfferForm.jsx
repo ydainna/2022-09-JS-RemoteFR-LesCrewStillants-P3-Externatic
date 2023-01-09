@@ -6,6 +6,7 @@ import Check from "@assets/icons/Check.svg";
 import "./OfferForm.scss";
 
 function OfferForm() {
+  const [img, setImg] = useState(offerData[0].img);
   const [nameJob, setNameJob] = useState(offerData[0].nameJob);
   const [nameEntreprise, setNameEntreprise] = useState(
     offerData[0].nameEntreprise
@@ -26,8 +27,11 @@ function OfferForm() {
 
   const [isEditingForm1, setIsEditingForm1] = useState(false);
   const [isEditingForm2, setIsEditingForm2] = useState(false);
+  const [isEditingForm3, setIsEditingForm3] = useState(false);
 
   const [modif, setModif] = useState("Pencil");
+
+  const [showModal, setShowModal] = useState(false);
 
   const images = {
     Pencil,
@@ -52,6 +56,20 @@ function OfferForm() {
     }
   }
 
+  function handleEdit3() {
+    setIsEditingForm3(!isEditingForm3);
+    if (modif === "Pencil") {
+      setModif("Check");
+    } else {
+      setModif("Pencil");
+    }
+  }
+
+  function toggleModal() {
+    handleEdit3();
+    setShowModal(!showModal);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     setIsEditingForm1(false);
@@ -61,9 +79,28 @@ function OfferForm() {
   }
 
   return (
-    <section className="container">
+    <section
+      className="container"
+      style={{ backgroundImage: `url(${img})` }}
+      onChange={(event) => setImg(event.target.value)}
+    >
       <div className="titre">
         <h1>Enregistrer une nouvelle offre d'emploi</h1>
+      </div>
+      <div className="banner_top">
+        <button className="button" type="submit" onClick={() => toggleModal()}>
+          <img src={images[modif]} alt="Modif" />
+        </button>
+        {showModal && (
+          <form className="modal_form" onSubmit={handleSubmit}>
+            <p>Changer l'image :</p>
+            <input
+              type="text"
+              value={img}
+              onChange={(event) => setImg(event.target.value)}
+            />
+          </form>
+        )}
       </div>
       <section className="banner_job">
         {isEditingForm1 ? (

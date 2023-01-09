@@ -1,5 +1,8 @@
+import bannerOffer from "@assets/offers/bannerOffer.png";
+
 const offerData = [
   {
+    img: bannerOffer,
     nameJob: "Developpeur web FullStack",
     nameEntreprise: "Ubisoft",
     adressEntreprise: "Montreal",

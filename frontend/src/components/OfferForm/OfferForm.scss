@@ -1,10 +1,9 @@
 @import "../../assets/_variables.scss";
 
 .container {
-  background-image: url(../../assets/offers/bannerOffer.png);
   background-repeat: no-repeat;
   background-size: 100%;
-  height: fit-content;
+  // height: fit-content;
 
   .titre {
     display: flex;
@@ -17,6 +16,36 @@
       font-size: $title-size;
       color: $secondary-color;
       padding: 0.5rem;
+    }
+  }
+}
+
+.banner_top {
+  display: flex;
+  justify-content: flex-end;
+  .button {
+    background-color: transparent;
+    border: none;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+  .modal_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary-color-four;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    font-family: $font-stack;
+    border-radius: 3px;
+    box-shadow: 0 8px 10px -8px #777;
+    p {
+      width: 100%;
+    }
+    input {
+      width: 100%;
     }
   }
 }
