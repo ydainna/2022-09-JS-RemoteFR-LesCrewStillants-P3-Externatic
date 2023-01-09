@@ -11,11 +11,16 @@ export default function Partners() {
       <div className="partnersSlide">
         {partnersData[partnerSlide].map((partner) =>
           partner.url ? (
-            <a href={partner.url} alt={`${partner.name} link`} target="__blank">
+            <a
+              href={partner.url}
+              alt={`${partner.name} link`}
+              target="__blank"
+              key={partner.img}
+            >
               <img src={partner.img} alt={partner.name} />
             </a>
           ) : (
-            <img src={partner.img} alt={partner.name} />
+            <img src={partner.img} alt={partner.name} key={partner.img} />
           )
         )}
       </div>

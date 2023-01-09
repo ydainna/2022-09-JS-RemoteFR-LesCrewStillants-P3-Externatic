@@ -24,7 +24,7 @@
     display: flex;
     gap: $half-space;
 
-    input[type="checkbox"] {
+    input[type="radio"] {
       background-color: $primary-color;
     }
   }
@@ -38,5 +38,6 @@
     border: none;
     color: $primary-color;
     margin: 0.5rem 0;
+    cursor: pointer;
   }
 }

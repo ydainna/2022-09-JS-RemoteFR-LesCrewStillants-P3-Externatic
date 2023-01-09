@@ -13,7 +13,12 @@ export default function Presentation() {
       </div>
 
       <p>
-        Civilité <input type="select" />
+        Civilité{" "}
+        <select name="civility" id="civility-select">
+          <option value="">--Veuillez choisir une option--</option>
+          <option value="M">M</option>
+          <option value="Mme">Mme</option>
+        </select>
       </p>
       <p>
         Prénom <input type="text" />
@@ -22,7 +27,7 @@ export default function Presentation() {
         Nom <input type="text" />
       </p>
       <p>
-        Téléphone <input type="text" />
+        Téléphone <input type="tel" />
       </p>
       <p>
         Mail <input type="email" />

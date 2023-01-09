@@ -6,10 +6,17 @@ export default function SearchParameters() {
       <h1>Critères de recherche</h1>
 
       <p>
-        Contrat <input type="text" />
+        Contrat{" "}
+        <select name="contrat" id="contrat-select">
+          <option value="">--Veuillez choisir une option--</option>
+          <option value="Alternance">Alternance</option>
+          <option value="CDI">CDI</option>
+          <option value="CDD">CDD</option>
+          <option value="Stage">Stage</option>
+        </select>
       </p>
       <p>
-        Date de Début <input type="text" />
+        Date de Début <input type="date" />
       </p>
       <p>
         Localisation <input type="text" />
@@ -21,7 +28,15 @@ export default function SearchParameters() {
         Poste <input type="text" />
       </p>
       <p>
-        Technologies <input type="text" />
+        Technologie Principale{" "}
+        <select name="techonology" id="techonology-select">
+          <option value="">--Veuillez choisir une option--</option>
+          <option value="Java">Java</option>
+          <option value="Javascript">Javascript</option>
+          <option value="Php">Php</option>
+          <option value="Python">Python</option>
+          <option value="Ruby">Ruby</option>
+        </select>
       </p>
 
       <button type="button">Enregistrer</button>
