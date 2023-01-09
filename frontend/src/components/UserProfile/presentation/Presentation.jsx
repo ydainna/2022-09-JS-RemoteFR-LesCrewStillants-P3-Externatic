@@ -12,26 +12,26 @@ export default function Presentation() {
         <button type="button">Mettre à jour la photo</button>
       </div>
 
-      <p>
+      <label>
         Civilité{" "}
         <select name="civility" id="civility-select">
           <option value="">--Veuillez choisir une option--</option>
           <option value="M">M</option>
           <option value="Mme">Mme</option>
         </select>
-      </p>
-      <p>
+      </label>
+      <label>
         Prénom <input type="text" />
-      </p>
-      <p>
+      </label>
+      <label>
         Nom <input type="text" />
-      </p>
-      <p>
+      </label>
+      <label>
         Téléphone <input type="tel" />
-      </p>
-      <p>
+      </label>
+      <label>
         Mail <input type="email" />
-      </p>
+      </label>
 
       <button type="button">Enregistrer</button>
     </section>

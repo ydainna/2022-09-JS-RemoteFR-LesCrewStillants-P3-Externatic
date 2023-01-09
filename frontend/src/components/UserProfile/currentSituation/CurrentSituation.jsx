@@ -4,13 +4,13 @@ export default function CurrentSituation() {
   return (
     <section id="currentSituation">
       <h1>Situation Actuelle</h1>
-      <p>
+      <label>
         Recherche Active <input type="radio" />
-      </p>
+      </label>
 
-      <p>
-        Recherche Passive <input type="radio" />
-      </p>
+      <label>
+        Recherche Passive <input type="radio" checked />
+      </label>
 
       <button type="button">Enregistrer</button>
     </section>
