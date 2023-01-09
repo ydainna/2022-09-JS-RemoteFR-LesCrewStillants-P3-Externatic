@@ -1,5 +1,5 @@
 import Footer from "@components/Footer/Footer";
-import Home from "./pages/Home";
+import Register from "./pages/Auth/Register";
 import Header from "./components/Header/Header";
 
 import "./App.scss";
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Home />
+      <Register />
       <Footer />
     </div>
   );
