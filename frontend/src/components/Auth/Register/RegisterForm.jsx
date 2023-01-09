@@ -37,8 +37,12 @@ export default function RegisterForm() {
   return (
     <main>
       <section className="register">
-        <h1>Register</h1>
-        <form onSubmit={handleSubmit} className="register-form">
+        <h1>Inscription</h1>
+        <form
+          onSubmit={handleSubmit}
+          name="register-form"
+          className="register-form"
+        >
           <label htmlFor="email">Email</label>
           <input onChange={handleChange} type="email" name="email" id="email" />
           <label htmlFor="password">Mot de passe</label>
