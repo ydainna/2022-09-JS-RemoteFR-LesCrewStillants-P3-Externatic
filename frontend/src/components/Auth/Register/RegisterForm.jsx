@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Notify from "../../../utils/notification";
+import Notify from "@utils/notification";
 
 import "./RegisterForm.scss";
 

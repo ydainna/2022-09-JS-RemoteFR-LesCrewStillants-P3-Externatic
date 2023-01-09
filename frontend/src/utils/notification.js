@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 /*
 For use this class:
 --------------------
-import Notify from "./utils/notification";
+import Notify from "@utils/notification";
 Notify.success("Success message");
 Notify.error("Error message");
 Notify.info("Info message");
