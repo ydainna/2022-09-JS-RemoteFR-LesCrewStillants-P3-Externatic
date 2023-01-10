@@ -11,8 +11,9 @@
 
   @media screen and (min-width: 720px) {
     display: block;
-    margin: $basic-space $basic-space * 3.5 $basic-space * 5 $basic-space * 3.5;
+    margin: $basic-space auto $basic-space * 5 auto;
     padding: $basic-space * 2;
+    max-width: 50rem;
   }
 
   h1 {

@@ -9,9 +9,10 @@
   align-items: center;
 
   @media screen and (min-width: 720px) {
-    margin: $basic-space $basic-space * 3.5;
+    margin: $basic-space auto;
     padding: $basic-space * 2;
     display: block;
+    max-width: 50rem;
   }
 
   h1 {
