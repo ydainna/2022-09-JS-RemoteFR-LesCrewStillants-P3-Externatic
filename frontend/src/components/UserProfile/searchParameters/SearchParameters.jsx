@@ -23,7 +23,11 @@ export default function SearchParameters() {
           Localisation <input type="text" />
         </label>
         <label>
-          Télétravail <input type="text" />
+          Télétravail{" "}
+          <select name="teletravail" id="teletravail-select">
+            <option value="Oui">Oui</option>
+            <option value="Non">Non</option>
+          </select>
         </label>
         <label>
           Poste <input type="text" />
