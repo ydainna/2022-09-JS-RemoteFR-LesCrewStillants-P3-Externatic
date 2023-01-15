@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import heart from "@assets/icons/Heart.svg";
 
 import "./SubNavUsers.scss";
@@ -9,27 +10,23 @@ export default function SubNavUsers() {
   return (
     <section id="SubNavUsers">
       <ul>
-        <li
-          id={currentCandidatePage === 0 ? "currentCandidatePage" : ""}
-          onClick={() => setCurrentCandidatePage(0)}
-          aria-hidden="true"
-        >
-          Profil
-        </li>
-        <li
-          id={currentCandidatePage === 1 ? "currentCandidatePage" : ""}
-          onClick={() => setCurrentCandidatePage(1)}
-          aria-hidden="true"
-        >
-          Offres <img src={heart} alt="favorite icon" height="16px" />
-        </li>
-        <li
-          id={currentCandidatePage === 2 ? "currentCandidatePage" : ""}
-          onClick={() => setCurrentCandidatePage(2)}
-          aria-hidden="true"
-        >
-          Candidatures en cours
-        </li>
+        <Link to="/profile" onClick={() => setCurrentCandidatePage(0)}>
+          <li id={currentCandidatePage === 0 ? "currentCandidatePage" : ""}>
+            Profil
+          </li>
+        </Link>
+
+        <Link to="/favorite-offers" onClick={() => setCurrentCandidatePage(1)}>
+          <li id={currentCandidatePage === 1 ? "currentCandidatePage" : ""}>
+            Offres <img src={heart} alt="favorite icon" height="16px" />
+          </li>
+        </Link>
+
+        <Link to="/candidatures" onClick={() => setCurrentCandidatePage(2)}>
+          <li id={currentCandidatePage === 2 ? "currentCandidatePage" : ""}>
+            Candidatures en cours
+          </li>
+        </Link>
       </ul>
     </section>
   );
