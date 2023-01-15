@@ -2,16 +2,18 @@
 
 .footer {
   position: absolute;
-  bottom: 0;
   height: auto;
   width: 100%;
   background-color: $brand-color;
-  font-family: $font-stack;
   font-size: $title-bigger-size;
   display: flex;
   justify-content: space-around;
-  color: $secondary-color-three;
+  color: $secondary-color-four;
   padding: $basic-space 0;
+
+  h4 {
+    font-weight: 500;
+  }
 }
 
 .reseaux {
@@ -38,7 +40,6 @@
     height: auto;
     width: 100%;
     background-color: $brand-color;
-    font-family: $font-stack;
     font-size: $font-size;
     color: $secondary-color-three;
     flex-direction: column;
