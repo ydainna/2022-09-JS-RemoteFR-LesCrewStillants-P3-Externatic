@@ -1,24 +1,10 @@
 import React, { useState } from "react";
 import offerData from "@services/offerData";
 import Heart from "@assets/icons/Heart.svg";
-import HeartWhite from "@assets/icons/HeartWhite.svg";
 import "./OfferComponent.scss";
 
 function OfferComponent() {
-  const [favoris, setFavoris] = useState("HeartWhite");
-
-  const images = {
-    Heart,
-    HeartWhite,
-  };
-
-  function handleClick() {
-    if (favoris === "HeartWhite") {
-      setFavoris("Heart");
-    } else {
-      setFavoris("HeartWhite");
-    }
-  }
+  const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <section className="container-offer">
@@ -35,8 +21,16 @@ function OfferComponent() {
           <button className="button-offer" type="button">
             Postuler
           </button>
-          <button className="heart-offer" type="button" onClick={handleClick}>
-            <img src={images[favoris]} alt="Logo Heart" />
+          <button
+            className="heart-offer"
+            type="button"
+            onClick={() => setIsFavorite(!isFavorite)}
+          >
+            <img
+              src={Heart}
+              className={isFavorite ? "" : "greyHeart-offer"}
+              alt="Logo Heart"
+            />
           </button>
         </div>
       </section>
