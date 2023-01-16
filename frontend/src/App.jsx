@@ -1,15 +1,11 @@
-import Footer from "@components/Footer/Footer";
-import OfferRegister from "./pages/Offers/OfferRegister";
-import Header from "./components/Header/Header";
+import Router from "@components/Router/Router";
 
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <OfferRegister />
-      <Footer />
+      <Router />
     </div>
   );
 }

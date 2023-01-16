@@ -31,6 +31,7 @@ export default function Slider() {
         <div
           className={slideClasses[slide.class]}
           style={{ backgroundImage: `url(${slide.img})` }}
+          key={slide.img}
         >
           <div className="backgroundSlide">
             <h1>Secteur {slide.sector}</h1>

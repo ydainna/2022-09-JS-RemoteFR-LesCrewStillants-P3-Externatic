@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/Logo-Externatic.svg";
 
@@ -11,7 +12,9 @@ function Header() {
   return (
     <header>
       <div className="header">
-        <img className="logo" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="logo" src={logo} alt="Logo" />
+        </Link>
         <button type="button" className="burger" onClick={handleShowLinks}>
           <span
             className={`"burger-bar" ${
@@ -19,9 +22,11 @@ function Header() {
             }`}
           />
         </button>
-        <button type="button" className="button">
-          <h1>ESPACE CANDIDAT</h1>
-        </button>
+        <Link to="/login">
+          <button type="button" className="button">
+            <h1>ESPACE CANDIDAT</h1>
+          </button>
+        </Link>
       </div>
       <nav>
         <ul className={`${showLinks ? "show-nav " : "hide-nav"}`}>
