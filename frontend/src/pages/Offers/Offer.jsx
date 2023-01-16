@@ -1,3 +1,7 @@
-export default function Offer() {
-  return <p>Page d'une offre</p>;
+import OfferComponent from "@components/Offer/OfferComponent";
+
+function Offer() {
+  return <OfferComponent />;
 }
+
+export default Offer;
