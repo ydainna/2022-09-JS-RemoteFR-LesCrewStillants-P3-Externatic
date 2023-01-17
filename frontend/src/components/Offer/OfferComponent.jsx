@@ -1,29 +1,15 @@
 import React, { useState } from "react";
 import offerData from "@services/offerData";
 import Heart from "@assets/icons/Heart.svg";
-import HeartWhite from "@assets/icons/HeartWhite.svg";
 import "./OfferComponent.scss";
 
 function OfferComponent() {
-  const [favoris, setFavoris] = useState("HeartWhite");
-
-  const images = {
-    Heart,
-    HeartWhite,
-  };
-
-  function handleClick() {
-    if (favoris === "HeartWhite") {
-      setFavoris("Heart");
-    } else {
-      setFavoris("HeartWhite");
-    }
-  }
+  const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <section className="container">
-      <section className="banner_job">
-        <div className="title_job">
+    <section className="container-offer">
+      <section className="banner_job-offer">
+        <div className="title_job-offer">
           <h2>{offerData[0].nameJob}</h2>
           <h3>{offerData[0].nameEntreprise}</h3>
           <h3>{offerData[0].adressEntreprise}</h3>
@@ -31,22 +17,30 @@ function OfferComponent() {
           <p>{offerData[0].compensation}</p>
           <p>{offerData[0].schedule}</p>
         </div>
-        <div className="buttons">
-          <button className="button" type="button">
+        <div className="buttons-offer">
+          <button className="button-offer" type="button">
             Postuler
           </button>
-          <button className="heart" type="button" onClick={handleClick}>
-            <img src={images[favoris]} alt="Logo Heart" />
+          <button
+            className="heart-offer"
+            type="button"
+            onClick={() => setIsFavorite(!isFavorite)}
+          >
+            <img
+              src={Heart}
+              className={isFavorite ? "" : "greyHeart-offer"}
+              alt="Logo Heart"
+            />
           </button>
         </div>
       </section>
-      <section className="description_job">
+      <section className="description_job-offer">
         <h2>Description du poste</h2>
         <p>{offerData[0].descJob}</p>
         <h2>Description de l'entreprise</h2>
         <p>{offerData[0].descEntreprise}</p>
-        <div className="align">
-          <button className="button" type="button">
+        <div className="align-offer">
+          <button className="button-offer" type="button">
             Voir l'entreprise
           </button>
         </div>
@@ -56,8 +50,8 @@ function OfferComponent() {
         <p>{offerData[0].profil}</p>
         <h2>Avantages</h2>
         <p>{offerData[0].advantages}</p>
-        <div className="align">
-          <button className="button" type="button">
+        <div className="align-offer">
+          <button className="button-offer" type="button">
             Postuler
           </button>
         </div>
