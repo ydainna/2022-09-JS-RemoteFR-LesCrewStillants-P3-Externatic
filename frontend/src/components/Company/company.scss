@@ -11,12 +11,17 @@
   img {
     width: 30rem;
     height: 15rem;
-    margin-right: $basic-space;
+    margin-right: $basic-space/2;
     padding: $basic-space;
   }
   .name_entreprise {
     width: 30rem;
     padding: $basic-space;
+  }
+  h2,
+  p,
+  a {
+    padding-bottom: $basic-space;
   }
   h3 {
     padding: $basic-space;
