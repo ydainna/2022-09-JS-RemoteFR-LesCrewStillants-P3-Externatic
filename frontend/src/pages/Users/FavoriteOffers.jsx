@@ -5,20 +5,20 @@ import "@components/UserProfile/FavoritesOffers.scss";
 
 export default function FavoriteOffers() {
   const arrayFavorite = [
-    { name: "Développeur Web Front-End", city: "Paris" },
-    { name: "Développeur Web Front-End", city: "Lille" },
-    { name: "Développeur Web Front-End", city: "Marseille" },
-    { name: "Développeur Web Front-End", city: "Lyon" },
-    { name: "Développeur Web Front-End", city: "Londres" },
-    { name: "Développeur Web Front-End", city: "Bordeaux" },
-    { name: "Développeur Web Back-End Symfony", city: "Paris" },
-    { name: "Développeur Web Front-End", city: "Paris" },
+    { id: 1, name: "Développeur Web Front-End", city: "Paris" },
+    { id: 2, name: "Développeur Web Front-End", city: "Lille" },
+    { id: 3, name: "Développeur Web Front-End", city: "Marseille" },
+    { id: 4, name: "Développeur Web Front-End", city: "Lyon" },
+    { id: 5, name: "Développeur Web Front-End", city: "Londres" },
+    { id: 6, name: "Développeur Web Front-End", city: "Bordeaux" },
+    { id: 7, name: "Développeur Web Back-End Symfony", city: "Paris" },
+    { id: 8, name: "Développeur Web Front-End", city: "Paris" },
   ];
   return (
     <LoggedUsersLayout>
       <section className="favorite-offers">
         {arrayFavorite.map((favorite) => (
-          <p>
+          <p key={favorite.id}>
             <span>
               {favorite.name} - {favorite.city}
             </span>
