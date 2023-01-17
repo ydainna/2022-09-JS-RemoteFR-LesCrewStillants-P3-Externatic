@@ -17,18 +17,25 @@ export default function Company() {
   ];
   return (
     <>
-      <h1>Profil entreprise</h1>
       <section className="entreprise">
         <img src={bannerOffer} alt="Entreprise" />
-        <h2>Nom de l'entreprise</h2>
-        <h2>Secteur</h2>
-        <p>Description de l'entreprise</p>
-        <a href="https://www.externatic.fr/" target="_blank" rel="noreferrer">
-          Lien vers l'entreprise
-        </a>
+        <div className="presentation_entreprise">
+          <div className="name_entreprise">
+            <h2>Nom de l'entreprise</h2>
+            <p>Description de l'entreprise</p>
+            <a
+              href="https://www.externatic.fr/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lien vers l'entreprise
+            </a>
+          </div>
+        </div>
+        <h3>Secteur</h3>
       </section>
       <section className="offres_entreprise">
-        <h2>Les offres de l'entreprise</h2>
+        <h2 className="Liste_offres">Les offres de l'entreprise</h2>
         {arrayOffersCompany.map((offer) => (
           <p key={offer.id}>
             <span>

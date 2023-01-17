@@ -1,0 +1,50 @@
+@import "../../assets/_variables.scss";
+
+.entreprise {
+  display: flex;
+  justify-content: flex-start;
+  gap: $basic-space;
+  width: 80%;
+  margin: 1rem auto;
+  background-color: $secondary-color-four;
+
+  img {
+    width: 30rem;
+    height: 15rem;
+    margin-right: $basic-space;
+    padding: $basic-space;
+  }
+  .name_entreprise {
+    width: 30rem;
+    padding: $basic-space;
+  }
+  h3 {
+    padding: $basic-space;
+  }
+}
+
+.offres_entreprise {
+  margin: 1rem auto;
+  width: 80%;
+
+  .Liste_offres {
+    margin: auto;
+    width: 20rem;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $basic-space * 2 $basic-space * 5;
+    background-color: $secondary-color-three;
+
+    &:nth-child(2n) {
+      background-color: $secondary-color-four;
+    }
+
+    img {
+      height: $title-bigger-size;
+    }
+  }
+}
