@@ -10,6 +10,15 @@
     tr {
       background-color: $secondary-color-two;
 
+      @media screen and (max-width: 920px) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        margin: 1px;
+      }
+
       &:nth-child(1) {
         background-color: $secondary-color;
         color: $primary-color;
@@ -22,6 +31,10 @@
       th,
       td {
         padding: $basic-space * 2 $basic-space * 5;
+
+        @media screen and (max-width: 920px) {
+          padding: $basic-space;
+        }
       }
     }
   }
