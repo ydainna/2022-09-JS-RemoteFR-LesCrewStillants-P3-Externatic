@@ -6,59 +6,51 @@ export default function CompanyValidation() {
   const arrayCompanies = [
     {
       id: 1,
-      name: "Développeur Web Front-End",
-      city: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Maison du Monde",
+      link: "",
+      consultant: "Georges",
     },
     {
       id: 2,
-      name: "Développeur Web Front-End",
-      city: "Lille",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Elmer Entreprise",
+      link: "",
+      consultant: "Valentin",
     },
     {
       id: 3,
-      name: "Développeur Web Front-End",
-      city: "Marseille",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Induseo",
+      link: "",
+      consultant: "Damien",
     },
     {
       id: 4,
-      name: "Développeur Web Front-End",
-      city: "Lyon",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Underguard",
+      link: "",
+      consultant: "Laure",
     },
     {
       id: 5,
-      name: "Développeur Web Front-End",
-      city: "Londres",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Decathlon Tech",
+      link: "",
+      consultant: "Anaïs",
     },
     {
       id: 6,
-      name: "Développeur Web Front-End",
-      city: "Bordeaux",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Groupama",
+      link: "",
+      consultant: "Alicia",
     },
     {
       id: 7,
-      name: "Développeur Web Back-End Symfony",
-      city: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "U Iris",
+      link: "",
+      consultant: "Yohan",
     },
     {
       id: 8,
-      name: "Développeur Web Front-End",
-      city: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
+      name: "Lucca",
+      link: "",
+      consultant: "Christopher",
     },
   ];
   return (
@@ -69,17 +61,21 @@ export default function CompanyValidation() {
         <table width="100%">
           <tbody>
             <tr>
-              <th>Offre</th>
-              <th>Retour Entreprise</th>
-              <th>Entretien</th>
+              <th>Nom Entreprise</th>
+              <th>Lien Page</th>
+              <th>Valider la Page</th>
+              <th>Consultant</th>
             </tr>
             {arrayCompanies.map((company) => (
               <tr key={company.id}>
+                <td>{company.name}</td>
                 <td>
-                  {company.name} - {company.city}
+                  <a href={company.link}>Voir la page</a>
                 </td>
-                <td>{company.feedback}</td>
-                <td>{company.meeting}</td>
+                <td>
+                  <input type="checkbox" name="" id="" />
+                </td>
+                <td>{company.consultant}</td>
               </tr>
             ))}
           </tbody>
