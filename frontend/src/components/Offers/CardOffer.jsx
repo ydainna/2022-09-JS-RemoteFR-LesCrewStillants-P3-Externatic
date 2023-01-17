@@ -3,18 +3,18 @@ import React, { useState } from "react";
 import Heart from "@assets/icons/Heart.svg";
 import "./cardofferstyle.css";
 
-function CardOffer({ img, name, desc, contrat }) {
+function CardOffer({ offer }) {
   const [isFavorite, setIsFavorite] = useState(false);
   return (
     <div className="card">
       <div className="card-personalize">
         <div className="card-header">
-          <img src={img} alt="blabla" />
+          <img src={offer.img} alt="company offer description" />
         </div>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <p className="card-description">{desc}</p>
-          <p className="card-contract">{contrat}</p>
+          <h2 className="card-title">{offer.name}</h2>
+          <p className="card-description">{offer.desc}</p>
+          <p className="card-contract">{offer.contrat}</p>
         </div>
       </div>
       <div className="offerbuttons">

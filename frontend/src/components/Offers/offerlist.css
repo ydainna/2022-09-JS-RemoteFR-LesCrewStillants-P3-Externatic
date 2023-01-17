@@ -1,0 +1,45 @@
+* {
+  background-color: F0F0F0;
+}
+
+header {
+  margin: 0.5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem auto;
+}
+
+.filters {
+  background-color: #e7e7e7;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.search-input {
+  border: none;
+  width: 14rem;
+}
+
+.select-localisation {
+  width: 14rem;
+}
+
+.select-contract {
+  width: 6rem;
+  align-content: center;
+}
+
+.offers-cards {
+  width: 66%;
+}
+
+.card {
+  margin: 1rem auto;
+}
