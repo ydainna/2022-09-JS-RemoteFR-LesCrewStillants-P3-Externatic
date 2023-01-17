@@ -3,7 +3,7 @@ import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import "@components/ManagementsPages/Admin/CompanyValidation.scss";
 
 export default function CompanyValidation() {
-  const arrayCandidature = [
+  const arrayCompanies = [
     {
       id: 1,
       name: "Développeur Web Front-End",
@@ -63,7 +63,9 @@ export default function CompanyValidation() {
   ];
   return (
     <SpecialUsersLayout>
-      <section className="candidatures">
+      <section className="companies-validation">
+        <h1>Validation des Pages Entreprises</h1>
+        <button type="button">Valider la page entreprise</button>
         <table width="100%">
           <tbody>
             <tr>
@@ -71,13 +73,13 @@ export default function CompanyValidation() {
               <th>Retour Entreprise</th>
               <th>Entretien</th>
             </tr>
-            {arrayCandidature.map((favorite) => (
-              <tr key={favorite.id}>
+            {arrayCompanies.map((company) => (
+              <tr key={company.id}>
                 <td>
-                  {favorite.name} - {favorite.city}
+                  {company.name} - {company.city}
                 </td>
-                <td>{favorite.feedback}</td>
-                <td>{favorite.meeting}</td>
+                <td>{company.feedback}</td>
+                <td>{company.meeting}</td>
               </tr>
             ))}
           </tbody>
