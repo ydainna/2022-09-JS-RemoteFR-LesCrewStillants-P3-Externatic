@@ -1,0 +1,58 @@
+@import "../../../assets/variables";
+
+#partners {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $half-space;
+  margin-bottom: 2rem;
+
+  h1:first-of-type {
+    color: $brand-color-two;
+  }
+
+  .partnersSlide {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    img {
+      width: 125px;
+      height: 125px;
+      animation: partnersAnimation 2000ms ease;
+
+      @keyframes partnersAnimation {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (min-width: 480px) {
+        width: 175px;
+      }
+    }
+  }
+
+  .sliderSpots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+      width: $font-size;
+      height: $font-size;
+      background-color: $secondary-color-three;
+      border-radius: 60px;
+      cursor: pointer;
+    }
+
+    .spanChecked {
+      background-color: $secondary-color;
+    }
+  }
+}

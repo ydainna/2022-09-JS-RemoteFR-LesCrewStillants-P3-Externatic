@@ -1,0 +1,115 @@
+@import "../../../assets/variables";
+
+#slider {
+  text-align: center;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+
+  .slides {
+    background: center/cover no-repeat;
+    border-radius: $border-radius;
+    border: 4px solid #000000;
+    width: 50%;
+    padding: $basic-space;
+    margin: $basic-space;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    order: 1;
+
+    min-height: 200px;
+
+    @media screen and (min-width: 720px) {
+      width: 100%;
+      margin-bottom: 4rem;
+    }
+
+    .backgroundSlide {
+      background-color: $brand-color-two-80percent;
+      border-radius: $border-radius;
+      width: 80%;
+      padding: $half-space $basic-space;
+      backdrop-filter: blur(2px);
+
+      h1,
+      p {
+        color: $primary-color;
+        margin: $basic-space;
+      }
+
+      h1 {
+        font-size: $title-size;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: $font-size;
+      }
+    }
+
+    button {
+      font-size: $font-size;
+      color: $brand-color;
+      background-color: $secondary-color-four;
+      border: none;
+      padding: $half-space;
+    }
+  }
+
+  .sliderNavigationLeft,
+  .sliderNavigationRight {
+    position: absolute;
+    top: 350px;
+    border: none;
+    background-color: transparent;
+
+    @media screen and (min-width: 1350px) {
+      top: 525px;
+    }
+
+    img {
+      width: 50%;
+      @media screen and (min-width: 1350px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .sliderNavigationLeft {
+    left: -20px;
+
+    @media screen and (min-width: 720px) {
+      left: 22%;
+    }
+  }
+
+  .sliderNavigationRight {
+    right: -20px;
+
+    @media screen and (min-width: 720px) {
+      right: 22%;
+    }
+  }
+
+  .slideRight,
+  .slideLeft {
+    display: none;
+  }
+
+  @media screen and (min-width: 720px) {
+    .slideLeft {
+      order: 0;
+      transform: translateX(-50%);
+      display: flex;
+    }
+
+    .slideRight {
+      order: 2;
+      transform: translateX(50%);
+      display: flex;
+    }
+  }
+}
