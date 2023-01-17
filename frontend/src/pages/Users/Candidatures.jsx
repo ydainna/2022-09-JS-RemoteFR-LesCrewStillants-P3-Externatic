@@ -3,7 +3,7 @@ import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
 import "@components/UserProfile/Candidatures.scss";
 
 export default function Candidatures() {
-  const arrayFavorite = [
+  const arrayCandidature = [
     {
       id: 1,
       name: "Développeur Web Front-End",
@@ -63,22 +63,24 @@ export default function Candidatures() {
   ];
   return (
     <LoggedUsersLayout>
-      <section className="favorite-offers">
+      <section className="candidatures">
         <table width="100%">
-          <tr>
-            <th>Offre</th>
-            <th>Retour Entreprise</th>
-            <th>Entretien</th>
-          </tr>
-          {arrayFavorite.map((favorite) => (
-            <tr key={favorite.id}>
-              <td>
-                {favorite.name} - {favorite.city}
-              </td>
-              <td>{favorite.feedback}</td>
-              <td>{favorite.meeting}</td>
+          <tbody>
+            <tr>
+              <th>Offre</th>
+              <th>Retour Entreprise</th>
+              <th>Entretien</th>
             </tr>
-          ))}
+            {arrayCandidature.map((favorite) => (
+              <tr key={favorite.id}>
+                <td>
+                  {favorite.name} - {favorite.city}
+                </td>
+                <td>{favorite.feedback}</td>
+                <td>{favorite.meeting}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </section>
     </LoggedUsersLayout>
