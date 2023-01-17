@@ -108,14 +108,13 @@
     .banner_job-offer {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      padding-top: 4rem;
+      margin-bottom: $basic-space * 2;
+      margin-left: $basic-space;
+      margin-right: $basic-space;
 
       .title_job-offer {
-        width: 20rem;
-        padding: 1rem;
         box-shadow: 0 3px 10px 2px #777;
+        width: 92%;
       }
 
       .buttons-offer {
@@ -123,7 +122,7 @@
         flex-direction: row;
         justify-content: center;
         gap: 2rem;
-        margin-top: 1rem;
+        margin-top: $basic-space;
         margin-right: 0;
 
         .button-offer {
@@ -141,11 +140,11 @@
       }
     }
 
-    .description_job {
+    .description_job-offer {
       margin: $basic-space * 2 $basic-space;
       box-shadow: 0 3px 10px 2px #777;
 
-      .button {
+      .button-offer {
         font-size: $font-size;
         height: 2.5rem;
         margin-bottom: 1.5rem;
