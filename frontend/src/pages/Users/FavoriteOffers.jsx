@@ -1,5 +1,5 @@
 import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
-import heart from "@assets/icons/heart.svg";
+import heart from "@assets/icons/Heart.svg";
 
 import "@components/UserProfile/FavoritesOffers.scss";
 
