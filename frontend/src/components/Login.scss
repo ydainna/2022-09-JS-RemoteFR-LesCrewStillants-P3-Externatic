@@ -1,15 +1,17 @@
 @import "../assets/_variables.scss";
 
 .connexion {
-  width: 100%;
+  display: flex;
+  justify-content: center;
   height: auto;
   font-size: $title-bigger-size;
   font-style: $font-stack;
   color: $font-color;
+  margin: 6rem 6rem;
+ 
 }
 
 .rectangle {
-  margin: 5rem 0rem 5rem 40rem;
   height: 35rem;
   width: 45rem;
   background-color: $secondary-color-four;
@@ -57,3 +59,24 @@ button {
   margin-top: 2rem;
   border: none;
 }
+
+@media screen and (max-width: 480px) {
+
+
+  .rectangle {
+    height: 25em;
+    width: 20rem;
+    background-color: $secondary-color-four;
+  }
+  
+  input {
+    height: 1,5rem;
+    width: 15rem;
+  }
+  
+
+
+}
+  
+
+
