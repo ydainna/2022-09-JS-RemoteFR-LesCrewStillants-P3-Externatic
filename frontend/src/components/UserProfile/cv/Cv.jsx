@@ -1,4 +1,4 @@
-import cvImg from "@assets/icons/Cv.svg";
+import cvImg from "@assets/icons/CV.svg";
 
 import "./Cv.scss";
 
