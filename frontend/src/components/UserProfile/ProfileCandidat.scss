@@ -1,0 +1,142 @@
+@import "../../assets/variables";
+
+.container_profile {
+  h1 {
+    background-color: $secondary-color-four;
+    color: $secondary-color;
+    font-size: $title-size;
+    font-weight: 500;
+    margin: $half-space;
+    text-align: center;
+  }
+
+  .candidat_resume {
+    width: 80%;
+    margin: auto;
+    background-color: $secondary-color-two;
+    margin-bottom: $basic-space;
+
+    .candidat_presentation {
+      display: flex;
+      justify-content: center;
+      gap: $basic-space * 2;
+      padding-top: $basic-space * 2;
+      padding-bottom: $basic-space * 2;
+      width: 50%;
+      margin: auto;
+      .avatar {
+        border-radius: 300px;
+        box-shadow: 0 3px 10px 2px #777;
+      }
+      .description {
+        background-color: $primary-color;
+        width: 100%;
+        padding: $basic-space;
+        box-shadow: 0 3px 10px 2px #777;
+
+        p {
+          margin-bottom: $basic-space;
+        }
+      }
+      .description p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .candidat_titre {
+      background-color: $primary-color;
+      height: $basic-space * 2;
+      box-shadow: 0 3px 10px 2px #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $basic-space * 2;
+      font-size: $title-size;
+
+      font-weight: 700;
+      width: 50%;
+      margin: auto;
+    }
+
+    .button_cv {
+      min-height: 2.5rem;
+      min-width: 10rem;
+      padding: $half-space $basic-space;
+      background-color: $brand-color;
+      border: none;
+      border-radius: 3px;
+      box-shadow: 0 3px 10px 2px #777;
+      font-size: $title-size;
+      color: $primary-color;
+      margin-top: $basic-space;
+      margin-bottom: $basic-space;
+      margin-left: 43%;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: flex;
+      img {
+        width: 50%;
+        margin: auto;
+      }
+    }
+  }
+
+  .candidat_souhaits {
+    width: 80%;
+    margin: auto;
+    background-color: $secondary-color-two;
+
+    .boxes {
+      width: 50%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: $basic-space;
+      .box1 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: $basic-space;
+        padding: 1rem;
+      }
+      .box2 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        margin-top: $basic-space;
+        padding: 1rem;
+        background-color: $primary-color;
+      }
+      .box3 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-bottom: $basic-space;
+        padding: 1rem;
+      }
+      .box4 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        margin-bottom: $basic-space;
+        padding: 1rem;
+
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .contact_button {
+    min-width: 10rem;
+    min-height: 2.5rem;
+    padding: $half-space $basic-space;
+    background-color: $brand-color;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 3px 10px 2px #777;
+    font-size: $title-size;
+    color: $primary-color;
+    margin-top: $basic-space;
+    margin-bottom: $basic-space;
+    margin-left: 44%;
+    cursor: pointer;
+  }
+}

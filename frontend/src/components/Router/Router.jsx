@@ -8,6 +8,7 @@ import Register from "@pages/Auth/Register";
 import Login from "@pages/Auth/Login";
 
 import Profile from "@pages/Users/Profile";
+import ProfileCandidat from "@pages/Users/ProfileCandidat";
 import FavoriteOffers from "@pages/Users/FavoriteOffers";
 import Candidatures from "@pages/Users/Candidatures";
 
@@ -31,6 +32,7 @@ export default function Router() {
 
         <Route path="/offerlist" element={<OfferList />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<ProfileCandidat />} />
         <Route path="/favorite-offers" element={<FavoriteOffers />} />
         <Route path="/candidatures" element={<Candidatures />} />
 
