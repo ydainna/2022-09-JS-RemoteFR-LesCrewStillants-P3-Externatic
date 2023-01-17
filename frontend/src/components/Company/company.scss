@@ -48,3 +48,42 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .entreprise {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    box-shadow: 0 3px 10px 2px #777;
+    margin-bottom: $basic-space * 2;
+    padding-bottom: $basic-space;
+    img {
+      width: 20rem;
+      height: 10rem;
+    }
+    .name_entreprise {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 20rem;
+      padding-top: 0;
+    }
+    h3 {
+      align-self: center;
+      padding: 0;
+    }
+  }
+
+  .offres_entreprise {
+    width: 90%;
+    .Liste_offres {
+      margin: $basic-space auto;
+      width: 16rem;
+    }
+    p {
+      padding: $basic-space;
+      box-shadow: 0 3px 10px 2px #777;
+    }
+  }
+}
