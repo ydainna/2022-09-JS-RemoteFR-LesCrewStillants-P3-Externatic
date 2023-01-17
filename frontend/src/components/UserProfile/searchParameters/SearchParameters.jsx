@@ -3,7 +3,7 @@ import "./SearchParameters.scss";
 export default function SearchParameters() {
   return (
     <section id="searchParameters">
-      <form action="">
+      <form>
         <h1>Critères de recherche</h1>
 
         <label>

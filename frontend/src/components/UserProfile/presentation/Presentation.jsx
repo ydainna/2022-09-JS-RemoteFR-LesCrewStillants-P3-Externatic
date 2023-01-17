@@ -5,7 +5,7 @@ import "./Presentation.scss";
 export default function Presentation() {
   return (
     <section id="presentation">
-      <form action="">
+      <form>
         <h1>Présentation</h1>
         <div>
           <img src={avatarTemoin} alt="Avatar Témoin" />
