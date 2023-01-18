@@ -47,7 +47,6 @@ export default function Router() {
         <Route path="/companies/:id" element={<Company />} />
 
         <Route path="*" element={<Error />} />
-        
         <Route path="/users-management" element={<UsersManagement />} />
         <Route path="/companies-validation" element={<CompanyValidation />} />
       </Routes>
