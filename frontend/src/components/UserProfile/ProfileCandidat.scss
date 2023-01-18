@@ -140,3 +140,104 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 791px) {
+  .container_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      width: 95%;
+
+    }
+    .candidat_resume {
+      width: 95%;
+      box-shadow: 0 3px 10px 2px #777;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: $basic-space;
+      margin-bottom: $basic-space;
+      margin-top: $basic-space;
+
+      .candidat_presentation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .description {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .candidat_titre {
+        width: 88%;
+        height: 3rem;
+      }
+      .button_cv {
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .modal {
+        display: flex;
+        img {
+          width: 90%;
+          margin: auto;
+          padding-bottom: $basic-space;
+        }
+      }
+    }
+
+    .candidat_souhaits {
+      width: 95%;
+      box-shadow: 0 3px 10px 2px #777;
+      padding-bottom: $basic-space *2;
+
+      .boxes {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .box1 {
+          padding-top:0;
+          padding-bottom:0;
+        }
+        .box2 {
+          padding-top:0;
+          padding-bottom:0;
+          margin: auto;
+          height: $basic-space * 3;
+          width: 80%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .box3 {
+          padding-top:0;
+          padding-bottom:0;
+          margin-bottom: 0;
+        }
+        .box4 {
+          padding-top:0;
+          padding-bottom:0;
+          margin: auto;
+          height: $basic-space * 10;
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+      }
+    }
+    .contact_button{
+      margin-left: 0;
+
+    }
+  }
+}
