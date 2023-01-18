@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardOffer from "../../components/Offers/CardOffer";
 import OffersToAccept from "../../components/Offers/offerstoaccept";
-import "./offerlist.css";
+import "../../components/Offers/offerlist.css";
 
 function OfferList() {
   const [offers, setOffers] = useState(OffersToAccept);
