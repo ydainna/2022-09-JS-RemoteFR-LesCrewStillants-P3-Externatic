@@ -17,6 +17,8 @@ import OfferRegister from "@pages/Offers/OfferRegister";
 
 import Company from "@pages/Companies/Company";
 
+import Error from "@pages/Error/Error";
+
 import Footer from "@components/Footer/Footer";
 
 export default function Router() {
@@ -37,6 +39,8 @@ export default function Router() {
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/offerRegister" element={<OfferRegister />} />
         <Route path="/companies/:id" element={<Company />} />
+
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </BrowserRouter>
