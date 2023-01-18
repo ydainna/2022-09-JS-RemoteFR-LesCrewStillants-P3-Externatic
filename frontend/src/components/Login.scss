@@ -8,7 +8,6 @@
   font-style: $font-stack;
   color: $font-color;
   margin: 6rem 6rem;
- 
 }
 
 .rectangle {
@@ -61,22 +60,14 @@ button {
 }
 
 @media screen and (max-width: 480px) {
-
-
   .rectangle {
     height: 25em;
     width: 20rem;
     background-color: $secondary-color-four;
   }
-  
+
   input {
-    height: 1,5rem;
+    height: 1, 5rem;
     width: 15rem;
   }
-  
-
-
 }
-  
-
-
