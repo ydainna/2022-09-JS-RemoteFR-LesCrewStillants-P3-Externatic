@@ -1,8 +1,8 @@
-import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
+import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 
-import "@components/UserProfile/Candidatures.scss";
+import "@components/ManagementsPages/Admin/UsersManagement.scss";
 
-export default function Candidatures() {
+export default function UsersManagement() {
   const arrayCandidature = [
     {
       id: 1,
@@ -62,8 +62,13 @@ export default function Candidatures() {
     },
   ];
   return (
-    <LoggedUsersLayout>
-      <section className="candidatures">
+    <SpecialUsersLayout>
+      <section className="users-management">
+        <h1>Gestion des Utilisateurs</h1>
+        <div className="users-management-div">
+          <button type="button">Supprimer le profil</button>
+          <button type="button">Créer un compte consultant</button>
+        </div>
         <table width="100%">
           <tbody>
             <tr>
@@ -71,18 +76,18 @@ export default function Candidatures() {
               <th>Retour Entreprise</th>
               <th>Entretien</th>
             </tr>
-            {arrayCandidature.map((favorite) => (
-              <tr key={favorite.id}>
+            {arrayCandidature.map((candidature) => (
+              <tr key={candidature.id}>
                 <td>
-                  {favorite.name} - {favorite.city}
+                  {candidature.name} - {candidature.city}
                 </td>
-                <td>{favorite.feedback}</td>
-                <td>{favorite.meeting}</td>
+                <td>{candidature.feedback}</td>
+                <td>{candidature.meeting}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </section>
-    </LoggedUsersLayout>
+    </SpecialUsersLayout>
   );
 }
