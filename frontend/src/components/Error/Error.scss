@@ -16,6 +16,20 @@
       margin-bottom: 3.1rem;
     }
   }
+  h2 {
+    font-size: $title-size;
+    font-weight: 500;
+    color: $brand-color;
+    margin: 0.5rem;
+    @media screen and (min-width: 750px) {
+      h2 {
+        font-size: $title-size;
+        font-weight: 500;
+        color: $brand-color;
+        margin: 0.5rem;
+      }
+    }
+  }
 }
 
 .notFoundLottie {
