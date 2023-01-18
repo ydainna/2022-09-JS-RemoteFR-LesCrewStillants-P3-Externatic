@@ -1,7 +1,7 @@
 @import "../../../assets/variables";
 
 .users-management {
-  margin: $basic-space * 2 auto;
+  margin: $basic-space * 2 auto $basic-space * 5 auto;
   width: 50%;
   text-align: center;
   display: flex;
@@ -31,6 +31,40 @@
     }
   }
 
+  .users-management-filter {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $basic-space;
+    margin-bottom: $basic-space * 2;
+
+    button {
+      padding: $half-space * 1.5 $basic-space;
+      border: none;
+      background-color: $secondary-color-three;
+      font-size: $font-size;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    input,
+    select {
+      background-color: $secondary-color-three;
+      border: none;
+      height: $title-bigger-size;
+      outline: none;
+    }
+
+    input {
+      padding: $basic-space;
+    }
+
+    select {
+      box-sizing: content-box;
+      padding: $half-space $basic-space;
+    }
+  }
+
   table {
     // border-spacing: 2px 0;
     tbody {
@@ -56,7 +90,7 @@
 
         th,
         td {
-          padding: $basic-space * 2 $basic-space * 5;
+          padding: $basic-space $basic-space * 2.5;
           font-weight: 500;
 
           @media screen and (max-width: 920px) {
