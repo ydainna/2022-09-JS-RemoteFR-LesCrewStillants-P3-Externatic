@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CardOffer from "../../components/Offers/CardOffer";
-import OffersToAccept from "../../components/Offers/offerstoaccept";
+import OffersToAccept from "../../services/offersToAccept";
 import "../../components/Offers/offerlist.css";
 
 function OfferList() {
@@ -32,7 +32,6 @@ function OfferList() {
   };
 
   const handleClick = (e) => {
-    // console.log(e.target.checked);
     if (e.target.checked) {
       setOffers(OffersToAccept.filter((offer) => offer.remote));
     } else {
@@ -86,11 +85,9 @@ function OfferList() {
         </div>
         <div className="offers-cards">
           <div className="cards">
-            {/* <!-- CARD EXAMPLE --> */}
             {offers.map((offer) => (
               <CardOffer key={offer.id} offer={offer} />
             ))}
-            {/* <!-- CARD EXAMPLE --> */}
           </div>
         </div>
       </div>
