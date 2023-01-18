@@ -69,11 +69,9 @@ const log = (req, res) => {
       if (!user) {
         return res.status(403).json({ error: "User not found" });
       }
-      // vérifier le MDP
       verify(user.password, password)
         .then((match) => {
           if (match) {
-            // 3 je retourne mon token//
             const token = generateToken({
               id: user.id,
               email: user.email,

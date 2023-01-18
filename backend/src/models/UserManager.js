@@ -18,7 +18,7 @@ class UserManager extends AbstractManager {
 
   findByEmail(email) {
     return this.connection.query(
-      `select email from ${this.table} where email = ?`,
+      `select email, password from ${this.table} where email = ?`,
       [email]
     );
   }
