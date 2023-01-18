@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./SubNavSpecialUsers.scss";
 
@@ -15,24 +16,29 @@ export default function SubNavSpecialUsers() {
   return (
     <section id="SubNavSpecialUsers">
       <ul>
-        <li
-          id={currentCandidatePage === 0 ? "currentCandidatePage" : ""}
-          onClick={() => setCurrentCandidatePage(0)}
-          aria-hidden="true"
-        >
-          {isAdminView
-            ? "Gestion des Profils"
-            : "Gestion des Pages Entreprises"}
-        </li>
-        <li
-          id={currentCandidatePage === 1 ? "currentCandidatePage" : ""}
-          onClick={() => setCurrentCandidatePage(1)}
-          aria-hidden="true"
-        >
-          {isAdminView
-            ? "Validation des Pages Entreprises"
-            : "Gestion des Candidats"}
-        </li>
+        <Link to={isAdminView ? "/users-management" : ""}>
+          <li
+            id={currentCandidatePage === 0 ? "currentCandidatePage" : ""}
+            onClick={() => setCurrentCandidatePage(0)}
+            aria-hidden="true"
+          >
+            {isAdminView
+              ? "Gestion des Utilisateurs"
+              : "Gestion des Pages Entreprises"}
+          </li>
+        </Link>
+
+        <Link to={isAdminView ? "/companies-validation" : ""}>
+          <li
+            id={currentCandidatePage === 1 ? "currentCandidatePage" : ""}
+            onClick={() => setCurrentCandidatePage(1)}
+            aria-hidden="true"
+          >
+            {isAdminView
+              ? "Validation des Pages Entreprises"
+              : "Gestion des Candidats"}
+          </li>
+        </Link>
 
         {isAdmin ? (
           <li
