@@ -18,6 +18,8 @@ import OfferRegister from "@pages/Offers/OfferRegister";
 
 import Company from "@pages/Companies/Company";
 
+import Error from "@pages/Error/Error";
+
 import UsersManagement from "@pages/Admin/UsersManagement";
 import CompanyValidation from "@pages/Admin/CompanyValidation";
 
@@ -44,6 +46,7 @@ export default function Router() {
         <Route path="/offerRegister" element={<OfferRegister />} />
         <Route path="/companies/:id" element={<Company />} />
 
+        <Route path="*" element={<Error />} />
         <Route path="/users-management" element={<UsersManagement />} />
         <Route path="/companies-validation" element={<CompanyValidation />} />
       </Routes>
