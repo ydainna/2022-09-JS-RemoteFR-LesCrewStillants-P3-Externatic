@@ -1,0 +1,54 @@
+@import "../../../assets/variables";
+
+#searchParameters {
+  form {
+    background-color: $secondary-color-three;
+    padding: $basic-space;
+    margin: $basic-space 0;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 720px) {
+      margin: $basic-space auto;
+      padding: $basic-space * 2;
+      display: block;
+      max-width: 50rem;
+    }
+
+    h1 {
+      margin-bottom: $basic-space * 1.5;
+      font-weight: 500;
+    }
+
+    label {
+      background-color: $primary-color;
+      padding: $basic-space;
+      margin-bottom: $basic-space;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: $basic-space;
+
+      input,
+      select {
+        background-color: $secondary-color-three;
+        border: none;
+        height: $title-bigger-size;
+        outline: none;
+      }
+    }
+
+    button {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      min-width: 10rem;
+      min-height: 2.5rem;
+      padding: $half-space $basic-space;
+      background-color: $brand-color;
+      border: none;
+      color: $primary-color;
+      margin: 0.5rem 0;
+      align-self: center;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/Logo-Externatic.svg";
 
@@ -11,7 +12,9 @@ function Header() {
   return (
     <header>
       <div className="header">
-        <img className="logo" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="logo" src={logo} alt="Logo" />
+        </Link>
         <button type="button" className="burger" onClick={handleShowLinks}>
           <span
             className={`"burger-bar" ${
@@ -19,27 +22,71 @@ function Header() {
             }`}
           />
         </button>
-        <button type="button" className="button">
-          <h1>ESPACE CANDIDAT</h1>
-        </button>
+        <Link to="/login">
+          <button type="button" className="button">
+            <h1>ESPACE CANDIDAT</h1>
+          </button>
+        </Link>
       </div>
       <nav>
         <ul className={`${showLinks ? "show-nav " : "hide-nav"}`}>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            OFFRES D'EMPLOI
+            <Link to="/offerlist">OFFRES D'EMPLOI</Link>
           </li>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            CANDIDATS
+            <a
+              href="https://www.externatic.fr/candidat/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CANDIDATS
+            </a>
           </li>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            ENTREPRISES
+            <a
+              href="https://www.externatic.fr/entreprise/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ENTREPRISES
+            </a>
           </li>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            QUI SOMMES-NOUS ?
+            <a
+              href="https://www.externatic.fr/qui-sommes-nous/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              QUI SOMMES-NOUS ?
+            </a>
           </li>
-          <li className={`${showLinks ? "list liShown" : "list"}`}>OUTILS</li>
-          <li className={`${showLinks ? "list liShown" : "list"}`}>BLOG</li>
-          <li className={`${showLinks ? "list liShown" : "list"}`}>CONTACT</li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            <a
+              href="https://www.externatic.fr/grille-des-salaires-2022/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              OUTILS
+            </a>
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            <a
+              href="https://www.externatic.fr/blog/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              BLOG
+            </a>
+          </li>
+          <li className={`${showLinks ? "list liShown" : "list"}`}>
+            <a
+              href="https://www.externatic.fr/contact/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CONTACT
+            </a>
+          </li>
         </ul>
       </nav>
     </header>

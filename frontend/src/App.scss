@@ -8,3 +8,9 @@ body,
 button {
   font-family: $font-stack;
 }
+
+body {
+  overflow-x: hidden;
+  background-color: $primary-color;
+  color: $font-color;
+}

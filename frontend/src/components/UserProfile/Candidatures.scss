@@ -1,0 +1,41 @@
+@import "../../assets/variables";
+
+.favorite-offers {
+  margin: 5rem auto;
+  width: 80%;
+  text-align: center;
+
+  table {
+    // border-spacing: 2px 0;
+    tr {
+      background-color: $secondary-color-two;
+
+      @media screen and (max-width: 920px) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 1px;
+      }
+
+      &:nth-child(1) {
+        background-color: $secondary-color;
+        color: $primary-color;
+      }
+
+      &:nth-child(2n) {
+        background-color: $secondary-color-three;
+      }
+
+      th,
+      td {
+        padding: $basic-space * 2 $basic-space * 5;
+
+        @media screen and (max-width: 920px) {
+          padding: $basic-space;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

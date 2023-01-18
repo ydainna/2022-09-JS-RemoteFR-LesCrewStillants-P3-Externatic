@@ -1,9 +1,8 @@
-@import "../assets/variables";
+@import "../../../assets/variables";
 
 .totalBanner {
-  width: 100%;
   height: fit-content;
-  background-image: url(../assets/home/homeBanner.png);
+  background-image: url(../../../assets/home/homeBanner.png);
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 1.8rem;

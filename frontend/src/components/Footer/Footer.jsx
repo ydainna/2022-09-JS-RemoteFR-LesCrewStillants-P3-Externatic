@@ -5,7 +5,7 @@ import facebook from "@assets/socialnetworks/fb.svg";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="reseaux">
         <img src={linkedin} alt="Logo Linkedin" />
         <img src={facebook} alt="Logo Facebook" />
@@ -13,7 +13,7 @@ function Footer() {
       </div>
 
       <div className="text">
-        <h4>Externatic 2022 - tout droit réservés</h4>
+        <h4>Externatic 2022 - tous droits réservés</h4>
       </div>
 
       <div className="mention">
@@ -21,7 +21,7 @@ function Footer() {
         <ul>Politique de confidentialité</ul>
         <ul>Politique de Cookies</ul>
       </div>
-    </div>
+    </footer>
   );
 }
 

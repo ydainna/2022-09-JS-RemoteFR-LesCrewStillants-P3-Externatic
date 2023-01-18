@@ -1,23 +1,37 @@
-@import "../assets/_variables.scss";
+@import "../../assets/_variables.scss";
 
 .footer {
   position: absolute;
   height: auto;
   width: 100%;
   background-color: $brand-color;
-  font-family: $font-stack;
   font-size: $title-bigger-size;
   display: flex;
   justify-content: space-around;
-  color: $secondary-color-three;
+  color: $secondary-color-four;
+  padding: $basic-space 0;
+
+  h4 {
+    font-weight: 500;
+  }
 }
 
 .reseaux {
-  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .text {
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mention {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -26,7 +40,6 @@
     height: auto;
     width: 100%;
     background-color: $brand-color;
-    font-family: $font-stack;
     font-size: $font-size;
     color: $secondary-color-three;
     flex-direction: column;
@@ -34,14 +47,22 @@
 
   .reseaux {
     flex-direction: row;
-  }
-
-  .mention {
-    display: flex;
-    flex-direction: row;
+    order: 1;
   }
 
   .text {
     margin-top: 0px;
+  }
+
+  .mention {
+    order: 2;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .text,
+  .mention,
+  .reseaux {
+    align-items: center;
   }
 }
