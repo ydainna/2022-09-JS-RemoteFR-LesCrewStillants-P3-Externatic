@@ -1,10 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 // TODO: créer la fonction generateToken
-function generateToken(user) {
-  const payload = { sub: user.id };
-  const token = jwt.sign(payload, process.env.JWT_SECRET);
-  return token;
+function generateToken(payload) {
+  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 }
 
 // TODO: créer la fonction decodeToken
