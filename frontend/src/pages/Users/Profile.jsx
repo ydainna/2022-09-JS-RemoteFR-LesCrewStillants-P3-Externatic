@@ -29,7 +29,7 @@ export default function Profile() {
 
   return (
     <LoggedUsersLayout>
-      <Presentation />
+      <Presentation info={info} />
       <Cv />
       <CurrentSituation />
       <SearchParameters />
