@@ -1,7 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+
+import Notify from "@utils/notification";
 
 import "../../components/Auth/Login/Login.scss";
 
@@ -11,7 +12,7 @@ export default function Login() {
 
   const instance = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL,
-    withCredentials: false,
+    withCredentials: true,
   });
 
   const handleChangeLogin = (e) => {
@@ -25,19 +26,12 @@ export default function Login() {
       .post("/login", loginUser)
       .then(() => navigate("/profile"))
       .catch((err) =>
-        console.error(err, toast.error("Wrong informations ! ❌"))
+        console.error(err, Notify.error("Wrong informations ! ❌"))
       );
   };
 
   return (
     <div className="connexion">
-      <ToastContainer
-        theme="dark"
-        autoClose={2000}
-        position="bottom-center"
-        className="toast-container"
-        toastClassName="dark-toast"
-      />
       <div className="rectangle">
         <p className="texte">Connexion : </p>
         <form onSubmit={handleLogin}>
@@ -45,6 +39,7 @@ export default function Login() {
           <input
             className="input-mail"
             type="email"
+            name="email"
             onChange={handleChangeLogin}
             required
           />
@@ -54,17 +49,15 @@ export default function Login() {
           <input
             className="input-mdp"
             type="password"
+            name="password"
             onChange={handleChangeLogin}
             required
           />
           <a href="https://support.google.com/accounts/answer/7682439?hl=fr">
             Mot de passe oublié
           </a>
-
           <div className="button">
-            <Link to="/profile">
-              <button type="submit">Se connecter</button>
-            </Link>
+            <button type="submit">Se connecter</button>
             <Link to="/register">
               <button type="submit">S'inscrire</button>
             </Link>
