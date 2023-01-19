@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import bannerOffer from "@assets/offers/bannerOffer.png";
-import eye from "@assets/icons/eye.svg";
+import eye from "@assets/icons/Eye.svg";
 
 import "../../components/Company/company.scss";
 
