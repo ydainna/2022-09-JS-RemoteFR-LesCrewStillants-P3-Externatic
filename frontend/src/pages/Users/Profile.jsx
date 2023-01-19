@@ -25,11 +25,9 @@ export default function Profile() {
     reloadInfo();
   }, []);
 
-  console.warn(info);
-
   return (
     <LoggedUsersLayout>
-      <Presentation />
+      <Presentation info={info} />
       <Cv />
       <CurrentSituation />
       <SearchParameters />

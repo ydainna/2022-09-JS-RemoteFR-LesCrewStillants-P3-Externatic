@@ -29,6 +29,20 @@ class UserManager extends AbstractManager {
       [id]
     );
   }
+
+  update(user) {
+    return this.connection.query(
+      `update ${this.table} set email = ?, civility = ?, phone_number = ?, lastname = ?, firstname = ? where id = ?`,
+      [
+        user.email,
+        user.civility,
+        user.phone_number,
+        user.lastname,
+        user.firstname,
+        user.id,
+      ]
+    );
+  }
 }
 
 module.exports = UserManager;

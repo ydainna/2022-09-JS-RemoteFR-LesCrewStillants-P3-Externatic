@@ -22,7 +22,7 @@ export default function Login() {
       .then((res) => sessionStorage.setItem("token", res.data.token))
       .then(() => navigate("/profile"))
       .catch((err) =>
-        console.error(err, Notify.error("Wrong informations ! ❌"))
+        console.error(err, Notify.error("Mauvaises informations ! ❌"))
       );
   };
 

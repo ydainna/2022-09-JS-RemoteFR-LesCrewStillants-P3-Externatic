@@ -20,5 +20,6 @@ router.post("/login", userControllers.log);
 // router.use(decodeToken);
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
+router.put("/users/:id", userControllers.edit);
 
 module.exports = router;
