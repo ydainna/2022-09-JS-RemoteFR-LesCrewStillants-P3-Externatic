@@ -19,6 +19,7 @@ export default function Login() {
     e.preventDefault();
     instance
       .post("/login", loginUser)
+      .then((res) => sessionStorage.setItem("token", res.data.token))
       .then(() => navigate("/profile"))
       .catch((err) =>
         console.error(err, Notify.error("Wrong informations ! ❌"))

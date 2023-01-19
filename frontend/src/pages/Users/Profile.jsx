@@ -5,23 +5,26 @@ import Cv from "@components/UserProfile/cv/Cv";
 import Parameters from "@components/UserProfile/parameters/Parameters";
 import Presentation from "@components/UserProfile/presentation/Presentation";
 import SearchParameters from "@components/UserProfile/searchParameters/SearchParameters";
-import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 
 import instance from "@utils/instance";
 
 export default function Profile() {
-  const token = browser.cookie.get("user_auth");
   const [info, setInfo] = useState([]);
+  const token = sessionStorage.getItem("token");
 
   const reloadInfo = () => {
-    // au lieu de 8 on mettre ${id} et il faut qu'on trouve le moyen de le récupérer cet id depuis le token
-    // const id = 8;
-    const decoded = jwt_decode(token);
+    // depuis le back, on res.json({ message: "Ok", token});
+    // depuis le front, on récupère le token
+    // option, session ou context
+    // sessionStorage.setItem("token", res.data.token);
+    // const token: sessionStorage.getItem('token')
+    // console.log(jwtDecode(token));
 
-    const decodedHeader = jwt_decode(token, { header: true });
+    const decodedHeader = jwtDecode(token);
     console.warn(decodedHeader);
 
-    instance.get(`/users/${id}`).then((response) => {
+    instance.get(`/users/${decodedHeader.id}`).then((response) => {
       setInfo(response.data);
     });
   };
