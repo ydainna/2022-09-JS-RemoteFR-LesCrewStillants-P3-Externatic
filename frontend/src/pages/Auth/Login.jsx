@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import instance from "@utils/instance";
 
 import Notify from "@utils/notification";
 
@@ -9,11 +9,6 @@ import "../../components/Auth/Login/Login.scss";
 export default function Login() {
   const [loginUser, setLoginUser] = useState("");
   const navigate = useNavigate();
-
-  const instance = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL,
-    withCredentials: true,
-  });
 
   const handleChangeLogin = (e) => {
     const { name, value } = e.target;
