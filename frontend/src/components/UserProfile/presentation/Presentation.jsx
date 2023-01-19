@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-
-// import Notify from "@utils/notification";
+import instance from "@utils/instance";
+import Notify from "@utils/notification";
 
 import avatarTemoin from "@assets/avatar/avatarTemoin.png";
 
 import "./Presentation.scss";
 
 export default function Presentation({ info }) {
+  const [error, setError] = useState(false);
   const [updateUser, setUpdateUser] = useState({
     civility: "",
     firstname: "",
@@ -24,18 +25,23 @@ export default function Presentation({ info }) {
   // function to send the form value to backend
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (updateUser.email === "") {
+      Notify.error("Veuillez renseigner une addresse mail.");
+      setError(true);
+      return;
+    }
+    instance
+      .put(`/users/${info.id}`, updateUser)
+      .catch((err) =>
+        console.error(err, Notify.error("Mauvaises Informations! ❌"))
+      );
 
-    // if (updateUser.email === "") {
-    //   Notify.error("Please fill all the required fields");
-    //   setError(true);
-    //   return;
-    // }
+    Notify.success("Vos informations ont été mises à jour!");
   };
   useEffect(() => {
     setUpdateUser([info][0]);
   }, [info]);
 
-  console.warn(updateUser);
   return (
     <section id="presentation">
       <form onSubmit={handleSubmit}>
@@ -45,7 +51,6 @@ export default function Presentation({ info }) {
 
           <button type="button">Mettre à jour la photo</button>
         </div>
-
         <label>
           Civilité{" "}
           <select
@@ -95,6 +100,7 @@ export default function Presentation({ info }) {
             type="email"
             name="email"
             placeholder="mail@mail.fr"
+            className={error ? "error" : ""}
             value={updateUser.email}
             onChange={handleChange}
           />
