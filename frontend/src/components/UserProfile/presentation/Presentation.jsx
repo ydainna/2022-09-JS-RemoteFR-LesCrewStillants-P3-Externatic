@@ -7,8 +7,6 @@ import avatarTemoin from "@assets/avatar/avatarTemoin.png";
 import "./Presentation.scss";
 
 export default function Presentation({ info }) {
-  console.warn(info);
-
   const [updateUser, setUpdateUser] = useState({
     civility: "",
     firstname: "",
@@ -16,8 +14,6 @@ export default function Presentation({ info }) {
     email: "",
     phone_number: "",
   });
-
-  console.warn(updateUser);
 
   // function to register every change from the form in the state
   const handleChange = (e) => {
@@ -36,9 +32,10 @@ export default function Presentation({ info }) {
     // }
   };
   useEffect(() => {
-    setUpdateUser(info);
-  }, []);
+    setUpdateUser([info][0]);
+  }, [info]);
 
+  console.warn(updateUser);
   return (
     <section id="presentation">
       <form onSubmit={handleSubmit}>
@@ -54,7 +51,7 @@ export default function Presentation({ info }) {
           <select
             name="civility"
             id="civility-select"
-            value={info.civility}
+            value={updateUser.civility}
             onChange={handleChange}
           >
             <option value="">--Veuillez choisir une option--</option>
@@ -64,20 +61,44 @@ export default function Presentation({ info }) {
         </label>
         <label>
           Prénom{" "}
-          <input type="text" value={info.firstname} onChange={handleChange} />
+          <input
+            type="text"
+            name="firstname"
+            placeholder="Prénom"
+            value={updateUser.firstname}
+            onChange={handleChange}
+          />
         </label>
         <label>
           Nom{" "}
-          <input type="text" value={info.lastname} onChange={handleChange} />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Nom"
+            value={updateUser.lastname}
+            onChange={handleChange}
+          />
         </label>
         <label>
           Téléphone{" "}
-          <input type="tel" value={info.phone_number} onChange={handleChange} />
+          <input
+            type="tel"
+            name="phone_number"
+            placeholder="0203040506"
+            value={updateUser.phone_number}
+            onChange={handleChange}
+          />
         </label>
         <label>
-          Mail <input type="email" value={info.email} onChange={handleChange} />
+          Mail{" "}
+          <input
+            type="email"
+            name="email"
+            placeholder="mail@mail.fr"
+            value={updateUser.email}
+            onChange={handleChange}
+          />
         </label>
-
         <button type="submit">Enregistrer</button>
       </form>
     </section>
