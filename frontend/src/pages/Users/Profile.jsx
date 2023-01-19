@@ -25,8 +25,6 @@ export default function Profile() {
     reloadInfo();
   }, []);
 
-  console.warn(info);
-
   return (
     <LoggedUsersLayout>
       <Presentation info={info} />
