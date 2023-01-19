@@ -3,7 +3,7 @@ import "./CurrentSituation.scss";
 export default function CurrentSituation() {
   return (
     <section id="currentSituation">
-      <form action="">
+      <form>
         <h1>Situation Actuelle</h1>
         <label>
           Recherche Active <input type="radio" name="search" value="active" />
