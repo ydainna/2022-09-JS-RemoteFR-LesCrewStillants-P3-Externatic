@@ -11,21 +11,16 @@ function OfferList() {
     { name: "Stage", id: 4 },
   ];
 
+  const localisationTypeArray = [
+    { name: "Paris", id: 1 },
+    { name: "Toulouse", id: 2 },
+    { name: "Marseille", id: 3 },
+    { name: "Lille", id: 4 },
+  ];
+
   const [offers, setOffers] = useState([]);
   const [contract, setContract] = useState("All");
   const [localisation, setLocalisation] = useState("All");
-
-  const handleSelectContract = (e) => {
-    setContract(e.target.value);
-  };
-
-  const handleClick = (e) => {
-    if (e.target.checked) {
-      setOffers(offers.filter((offer) => offer.remote));
-    } else {
-      setOffers(offers);
-    }
-  };
 
   useEffect(() => {
     instance
@@ -57,17 +52,19 @@ function OfferList() {
             onChange={(e) => setLocalisation(e.target.value)}
           >
             <option value="All">Localisation</option>
-            <option value={localisation}>Paris</option>
-            <option value={localisation}>Toulouse</option>
-            <option value={localisation}>Marseille</option>
+            {localisationTypeArray.map((loc) => (
+              <option key={loc.id} value={loc.name}>
+                {loc.name}
+              </option>
+            ))}
           </select>
 
           <select
             className="select-contract"
             name="offer"
-            onChange={handleSelectContract}
+            onChange={(e) => setContract(e.target.value)}
           >
-            <option value="">Contrats</option>
+            <option value="All">Contrats</option>
             {contractsTypeArray.map((contrat) => (
               <option key={contrat.id} value={contrat.name}>
                 {contrat.name}
@@ -81,7 +78,7 @@ function OfferList() {
               className="remote-checkbox"
               name="checkbox"
               id=""
-              onClick={handleClick}
+              // onClick={(e) => setRemote(e.target.value)}
             />
           </div>
         </div>
@@ -90,7 +87,9 @@ function OfferList() {
             {offers
               .filter(
                 (offer) =>
-                  offer.type_of_contract === contract || contract === ""
+                  (offer.type_of_contract === contract || contract === "All") &&
+                  (offer.localisation === localisation ||
+                    localisation === "All")
               )
               .map((offer) => (
                 <CardOffer key={offer.id} offer={offer} />
