@@ -1,43 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import instance from "@utils/instance";
 import CardOffer from "../../components/Offers/CardOffer";
-import OffersToAccept from "../../services/offersToAccept";
 import "../../components/Offers/offerlist.css";
 
 function OfferList() {
-  const [offers, setOffers] = useState(OffersToAccept);
+  const contractsTypeArray = [
+    { name: "CDD", id: 1 },
+    { name: "CDI", id: 2 },
+    { name: "Alternance", id: 3 },
+    { name: "Stage", id: 4 },
+  ];
 
-  const handleSelect = (e) => {
-    const typeContrat = e.target.value;
-    const typeLocalisation = e.target.value;
+  const [offers, setOffers] = useState([]);
+  const [contract, setContract] = useState("All");
+  const [localisation, setLocalisation] = useState("All");
 
-    if (typeContrat === "CDI") {
-      setOffers(OffersToAccept.filter((offer) => offer.contrat === "CDI"));
-    } else if (typeContrat === "CDD") {
-      setOffers(OffersToAccept.filter((offer) => offer.contrat === "CDD"));
-    } else if (typeLocalisation === "Paris") {
-      setOffers(
-        OffersToAccept.filter((offer) => offer.localisation === "Paris")
-      );
-    } else if (typeLocalisation === "Toulouse") {
-      setOffers(
-        OffersToAccept.filter((offer) => offer.localisation === "Toulouse")
-      );
-    } else if (typeLocalisation === "Marseille") {
-      setOffers(
-        OffersToAccept.filter((offer) => offer.localisation === "Marseille")
-      );
-    } else {
-      setOffers(OffersToAccept);
-    }
+  const handleSelectContract = (e) => {
+    setContract(e.target.value);
   };
 
   const handleClick = (e) => {
     if (e.target.checked) {
-      setOffers(OffersToAccept.filter((offer) => offer.remote));
+      setOffers(offers.filter((offer) => offer.remote));
     } else {
-      setOffers(OffersToAccept);
+      setOffers(offers);
     }
   };
+
+  useEffect(() => {
+    instance
+      .get("/offers")
+      .then((result) => {
+        setOffers(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -55,22 +54,25 @@ function OfferList() {
           <select
             className="select-localisation"
             name="offer"
-            onChange={handleSelect}
+            onChange={(e) => setLocalisation(e.target.value)}
           >
             <option value="All">Localisation</option>
-            <option value="Paris">Paris</option>
-            <option value="Toulouse">Toulouse</option>
-            <option value="Marseille">Marseille</option>
+            <option value={localisation}>Paris</option>
+            <option value={localisation}>Toulouse</option>
+            <option value={localisation}>Marseille</option>
           </select>
 
           <select
             className="select-contract"
             name="offer"
-            onChange={handleSelect}
+            onChange={handleSelectContract}
           >
-            <option value="All">Contrats</option>
-            <option value="CDD">CDD</option>
-            <option value="CDI">CDI</option>
+            <option value="">Contrats</option>
+            {contractsTypeArray.map((contrat) => (
+              <option key={contrat.id} value={contrat.name}>
+                {contrat.name}
+              </option>
+            ))}
           </select>
           <div>
             <label htmlFor="remote">Show only Remote </label>
@@ -85,9 +87,14 @@ function OfferList() {
         </div>
         <div className="offers-cards">
           <div className="cards">
-            {offers.map((offer) => (
-              <CardOffer key={offer.id} offer={offer} />
-            ))}
+            {offers
+              .filter(
+                (offer) =>
+                  offer.type_of_contract === contract || contract === ""
+              )
+              .map((offer) => (
+                <CardOffer key={offer.id} offer={offer} />
+              ))}
           </div>
         </div>
       </div>

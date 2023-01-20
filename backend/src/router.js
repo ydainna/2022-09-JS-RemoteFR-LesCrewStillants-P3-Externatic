@@ -22,9 +22,11 @@ router.post("/login", userControllers.log);
 
 // routes offers
 router.get("/offers", offerControllers.browse);
+router.get("/offers/:id", offerControllers.read);
 
 // routes company
 router.get("/company", companyControllers.browse);
+router.get("/company/:id", companyControllers.read);
 
 // routes information
 router.get("/information", infoControllers.browse);

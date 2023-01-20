@@ -16,12 +16,11 @@ class UserManager extends AbstractManager {
   //     );
   //   }
 
-  //   findById(id) {
-  //     return this.connection.query(
-  //       `select id, avatar, email, civility, firstname, lastname, phone_number, created_at, role_id, information_id, address_id from ${this.table} where id = ?`,
-  //       [id]
-  //     );
-  //   }
+  findById(id) {
+    return this.connection.query(`select * from ${this.table} where id = ?`, [
+      id,
+    ]);
+  }
 
   //   update(offer) {
   //     return this.connection.query(

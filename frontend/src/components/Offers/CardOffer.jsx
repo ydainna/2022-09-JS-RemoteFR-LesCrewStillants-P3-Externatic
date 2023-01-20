@@ -4,21 +4,15 @@ import instance from "@utils/instance";
 import Heart from "@assets/icons/Heart.svg";
 import "./cardofferstyle.css";
 
-function CardOffer() {
+function CardOffer({ offer }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [offers, setOffers] = useState([]);
-  // const [company, setCompany] = useState([]);
-  // const [information, setInformation] = useState([]);
+  const [company, setCompany] = useState([]);
 
   useEffect(() => {
     instance
-      .get("/offers")
-      .get("/compagny")
-      .get("/information")
+      .get(`/company/${offer.company_id}`)
       .then((result) => {
-        setOffers(result.data);
-        // setCompany(result.data);
-        // setInformation(result.data);
+        setCompany(result.data);
       })
       .catch((err) => {
         console.error(err);
@@ -29,12 +23,12 @@ function CardOffer() {
     <div className="card">
       <div className="card-personalize">
         <div className="card-header">
-          {/* <img src={company.banner} alt="company offer description" /> */}
+          <img src={company.banner} alt="company offer description" />
         </div>
         <div className="card-body">
-          <h2 className="card-title">{offers.title}</h2>
-          <p className="card-description">{offers.job_description}</p>
-          {/* <p className="card-contract">{information.type_of_contract}</p> */}
+          <h2 className="card-title">{offer.title}</h2>
+          <p className="card-description">{offer.job_description}</p>
+          <p className="card-contract">{offer.type_of_contract}</p>
         </div>
       </div>
       <div className="offerbuttons">
