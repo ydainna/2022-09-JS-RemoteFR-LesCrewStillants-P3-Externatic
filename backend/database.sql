@@ -41,7 +41,7 @@ firstname VARCHAR(100) NULL,
 lastname VARCHAR(150) NULL,
 phone_number VARCHAR(20) NULL,
 created_at DATE NULL, 
-role_id INT NULL,
+role_id INT NULL DEFAULT 2,
 CONSTRAINT fk_user_role
 FOREIGN KEY (role_id)
 REFERENCES role(id),

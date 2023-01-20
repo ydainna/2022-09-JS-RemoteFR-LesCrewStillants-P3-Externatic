@@ -31,7 +31,7 @@ export default function Profile() {
       <Cv />
       <CurrentSituation />
       <SearchParameters />
-      <Parameters />
+      <Parameters id={info.id} />
     </LoggedUsersLayout>
   );
 }

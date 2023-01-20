@@ -116,10 +116,27 @@ const edit = (req, res) => {
     });
 };
 
+const destroy = (req, res) => {
+  models.user
+    .delete(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: "Couldn't delete user!" });
+      } else {
+        res.status(204).json({ success: "User was successfuly deleted" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   add,
   log,
   edit,
+  destroy,
 };
