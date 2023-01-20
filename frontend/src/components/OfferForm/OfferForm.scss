@@ -65,7 +65,6 @@
     h2 {
       font-size: $title-size;
       font-family: $font-stack;
-
       padding-bottom: 0.5rem;
     }
     h3 {
@@ -101,10 +100,13 @@
       font-size: $font-size;
       font-family: $font-stack;
       padding-bottom: 0.5rem;
+      padding-top: $basic-space * 2;
+    }
+    .first-h2 {
+      padding-top: 0;
     }
 
     p {
-      padding-bottom: 2rem;
       font-family: $font-stack;
     }
     textarea {
@@ -116,6 +118,7 @@
   .button {
     background-color: transparent;
     border: none;
+    margin-top: $basic-space *2 ;
   }
 }
 

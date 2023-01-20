@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import parse from "html-react-parser";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 import offerData from "@services/offerData";
 import Pencil from "@assets/icons/Pencil.svg";
@@ -161,35 +164,41 @@ function OfferForm() {
         {isEditingForm2 ? (
           <>
             <form className="description_job" onSubmit={handleSubmit}>
-              <h2>Description du poste</h2>
-              <textarea
+              <h2 className="first-h2">Description du poste</h2>
+              <ReactQuill
+                theme="snow"
+                className="textarea"
                 value={descJob}
                 rows={4}
-                onChange={(event) => setDescJob(event.target.value)}
+                onChange={(value) => setDescJob(value)}
               />
               <h2>Description de l'entreprise</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={descEntreprise}
-                onChange={(event) => setDescEntreprise(event.target.value)}
+                onChange={(value) => setDescEntreprise(value)}
               />
               <h2>Votre mission</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={mission}
-                onChange={(event) => setMission(event.target.value)}
+                onChange={(value) => setMission(value)}
               />
               <h2>Profil et expérience souhaités</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={profil}
-                onChange={(event) => setProfil(event.target.value)}
+                onChange={(value) => setProfil(value)}
               />
               <h2>Avantages</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={advantages}
-                onChange={(event) => setAdvantages(event.target.value)}
+                onChange={(value) => setAdvantages(value)}
               />
             </form>
             <div className="align">
@@ -201,16 +210,16 @@ function OfferForm() {
         ) : (
           <>
             <form className="description_job">
-              <h2>Description du poste</h2>
-              <p>{descJob}</p>
+              <h2 className="first-h2">Description du poste</h2>
+              <p>{parse(descJob)}</p>
               <h2>Description de l'entreprise</h2>
-              <p>{descEntreprise}</p>
+              <p>{parse(descEntreprise)}</p>
               <h2>Votre mission</h2>
-              <p>{mission}</p>
+              <p>{parse(mission)}</p>
               <h2>Profil et expérience souhaités</h2>
-              <p>{profil}</p>
+              <p>{parse(profil)}</p>
               <h2>Avantages</h2>
-              <p>{advantages}</p>
+              <p>{parse(advantages)}</p>
             </form>
             <div className="align">
               <button className="button" type="submit" onClick={handleEdit2}>
