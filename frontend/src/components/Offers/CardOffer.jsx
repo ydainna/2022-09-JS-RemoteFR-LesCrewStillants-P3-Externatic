@@ -1,20 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import instance from "@utils/instance";
 
 import Heart from "@assets/icons/Heart.svg";
 import "./cardofferstyle.css";
 
 function CardOffer({ offer }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [company, setCompany] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get(`/company/${offer.company_id}`)
+      .then((result) => {
+        setCompany(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <div className="card">
       <div className="card-personalize">
         <div className="card-header">
-          <img src={offer.img} alt="company offer description" />
+          <img src={company.banner} alt="company offer description" />
         </div>
         <div className="card-body">
-          <h2 className="card-title">{offer.name}</h2>
-          <p className="card-description">{offer.desc}</p>
-          <p className="card-contract">{offer.contrat}</p>
+          <h2 className="card-title">{offer.title}</h2>
+          <p className="card-description">{offer.job_description}</p>
+          <p className="card-contract">{offer.type_of_contract}</p>
         </div>
       </div>
       <div className="offerbuttons">
