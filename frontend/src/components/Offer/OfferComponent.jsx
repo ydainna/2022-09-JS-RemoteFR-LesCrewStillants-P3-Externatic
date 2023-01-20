@@ -5,20 +5,28 @@ import offerData from "@services/offerData";
 import Heart from "@assets/icons/Heart.svg";
 import "./OfferComponent.scss";
 
-function OfferComponent({ offer }) {
+function OfferComponent() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [company, setCompany] = useState([]);
   const [offers, setOffers] = useState([]);
   const { id } = useParams();
-
   useEffect(() => {
     instance
       .get(`/offers/${id}`)
-
       .then((result) => {
         setOffers(result.data);
+        // extract the company_id from the returned data
+        const companyId = result.data.company_id;
+        // make the second request using the company_id
+        instance
+          .get(`/company/${companyId}`)
+          .then((results) => {
+            setCompany(results.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
-
       .catch((err) => {
         console.error(err);
       });
@@ -32,8 +40,8 @@ function OfferComponent({ offer }) {
           <h3>{company.name}</h3>
           <h3>{offers.localisation}</h3>
           <p>{offers.type_of_contract}</p>
-          <p>{offerData[0].compensation}</p>
-          <p>{offerData[0].schedule}</p>
+          <p>{offers.compensation}</p>
+          <p>{offers.schedule}</p>
         </div>
         <div className="buttons-offer">
           <button className="button-offer" type="button">

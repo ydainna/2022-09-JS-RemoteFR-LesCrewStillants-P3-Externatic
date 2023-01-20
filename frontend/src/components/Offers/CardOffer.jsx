@@ -33,13 +33,7 @@ function CardOffer({ offer }) {
         </div>
       </div>
       <div className="offerbuttons">
-        <Link
-          to={{
-            pathname: `/offers/${offer.id}`,
-            state: { offer },
-          }}
-          key={offer.id}
-        >
+        <Link to={`/offers/${offer.id}`} key={offer.id}>
           <button className="card-button" type="button">
             Voir
           </button>
