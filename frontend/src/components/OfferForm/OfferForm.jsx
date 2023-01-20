@@ -167,7 +167,6 @@ function OfferForm() {
               <h2 className="first-h2">Description du poste</h2>
               <ReactQuill
                 theme="snow"
-                className="textarea"
                 value={descJob}
                 rows={4}
                 onChange={(value) => setDescJob(value)}
