@@ -121,9 +121,9 @@ const destroy = (req, res) => {
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
-        res.sendStatus(404);
+        res.status(404).json({ error: "Couldn't delete user!" });
       } else {
-        res.sendStatus(204);
+        res.status(204).json({ success: "User was successfuly deleted" });
       }
     })
     .catch((err) => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
 import CurrentSituation from "@components/UserProfile/currentSituation/CurrentSituation";
 import Cv from "@components/UserProfile/cv/Cv";
@@ -10,6 +11,7 @@ import jwtDecode from "jwt-decode";
 import instance from "@utils/instance";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const [info, setInfo] = useState([]);
   const token = sessionStorage.getItem("token");
 
@@ -22,7 +24,11 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    reloadInfo();
+    if (info === null) {
+      reloadInfo();
+    } else {
+      navigate("/login");
+    }
   }, []);
 
   return (
