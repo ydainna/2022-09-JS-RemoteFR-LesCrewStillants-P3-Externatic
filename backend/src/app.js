@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 
 // API routes
+
 app.use(router);
 
 // Redirect all requests to the REACT app
