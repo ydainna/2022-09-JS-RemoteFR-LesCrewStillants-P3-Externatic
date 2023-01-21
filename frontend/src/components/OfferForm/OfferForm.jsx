@@ -17,13 +17,13 @@ function OfferForm() {
   const { id } = useParams();
 
   // States pour changer les données dans la database
-  const [img, setImg] = useState(company.banner);
-  const [nameJob, setNameJob] = useState(offers.title);
-  const [nameEntreprise, setNameEntreprise] = useState(company.name);
-  const [adressEntreprise, setAdressEntreprise] = useState(offers.localisation);
-  const [contrat, setContrat] = useState(offers.type_of_contrat);
-  const [compensation, setCompensation] = useState(offers.compensation);
-  const [schedule, setSchedule] = useState(offers.schedule);
+  const [img, setImg] = useState("");
+  const [nameJob, setNameJob] = useState("");
+  const [nameEntreprise, setNameEntreprise] = useState("");
+  const [adressEntreprise, setAdressEntreprise] = useState("");
+  const [contrat, setContrat] = useState("");
+  const [compensation, setCompensation] = useState("");
+  const [schedule, setSchedule] = useState("");
   const [descJob, setDescJob] = useState("");
   const [descEntreprise, setDescEntreprise] = useState("");
   const [mission, setMission] = useState("");
@@ -44,6 +44,11 @@ function OfferForm() {
   // Pour le 2ème form, la dépendance react-quill nous oblige à récupérer une string vide dans le state, c'est pourquoi on utilise un useEffect pour récupérer les données dans un 2ème temps.
   useEffect(() => {
     if (offers.length !== 0) {
+      setNameJob(offers.title);
+      setAdressEntreprise(offers.localisation);
+      setContrat(offers.type_of_contract);
+      setCompensation(offers.compensation);
+      setSchedule(offers.schedule);
       setDescJob(offers.job_description);
       setMission(offers.mission);
       setProfil(offers.seeked_profile);
@@ -52,6 +57,8 @@ function OfferForm() {
   }, [offers]);
   useEffect(() => {
     if (company.length !== 0) {
+      setImg(company.banner);
+      setNameEntreprise(company.name);
       setDescEntreprise(company.description);
     }
   }, [company]);
@@ -77,7 +84,7 @@ function OfferForm() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [id]);
 
   // Fonctions handleEdit qui permettent de passer en mode édition des formulaires
   function handleEdit1() {
