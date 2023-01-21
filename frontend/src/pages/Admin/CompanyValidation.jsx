@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import instance from "@utils/instance";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
@@ -14,7 +14,6 @@ export default function CompanyValidation() {
       .get("/company")
       .then((result) => {
         setArrayCompanies(result.data);
-        console.warn(arrayCompanies);
       })
       .catch((err) => {
         console.error(err);
