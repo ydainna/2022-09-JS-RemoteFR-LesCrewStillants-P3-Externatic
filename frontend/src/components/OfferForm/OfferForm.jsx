@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import instance from "@utils/instance";
+import { ToastContainer, toast } from "react-toastify";
 
 import parse from "html-react-parser";
 import ReactQuill from "react-quill";
@@ -144,6 +145,7 @@ function OfferForm() {
       .catch((err) => {
         console.error(err);
       });
+    toast.success("Les modifications ont bien été faites");
   }
 
   return (
@@ -298,6 +300,7 @@ function OfferForm() {
           Envoyer les modifications
         </button>
       </div>
+      <ToastContainer />
     </section>
   );
 }
