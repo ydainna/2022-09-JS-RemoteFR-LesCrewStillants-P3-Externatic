@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
 import CurrentSituation from "@components/UserProfile/currentSituation/CurrentSituation";
 import Cv from "@components/UserProfile/cv/Cv";
 import Parameters from "@components/UserProfile/parameters/Parameters";
 import Presentation from "@components/UserProfile/presentation/Presentation";
 import SearchParameters from "@components/UserProfile/searchParameters/SearchParameters";
-import jwtDecode from "jwt-decode";
 
 import instance from "@utils/instance";
-import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [info, setInfo] = useState([]);
@@ -38,6 +38,13 @@ export default function Profile() {
 
   return (
     <LoggedUsersLayout>
+      {info.role_id === 1 || info.role_id === 3 ? (
+        <Link to="/users-management" className="link-consultant">
+          Accéder aux pages consultants
+        </Link>
+      ) : (
+        ""
+      )}
       <Presentation info={info} />
       <Cv />
       <CurrentSituation />

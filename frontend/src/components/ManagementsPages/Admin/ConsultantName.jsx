@@ -10,7 +10,6 @@ export default function ConsultantName({ id }) {
     });
   }, []);
 
-  console.warn(name);
   return (
     <>
       {name.firstname} {name.lastname}
