@@ -1,58 +1,25 @@
+import React, { useState, useEffect } from "react";
+import instance from "@utils/instance";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
+import ConsultantName from "@components/ManagementsPages/Admin/ConsultantName";
 
 import "@components/ManagementsPages/Admin/CompanyValidation.scss";
 
 export default function CompanyValidation() {
-  const arrayCompanies = [
-    {
-      id: 1,
-      name: "Maison du Monde",
-      link: "",
-      consultant: "Georges",
-    },
-    {
-      id: 2,
-      name: "Elmer Entreprise",
-      link: "",
-      consultant: "Valentin",
-    },
-    {
-      id: 3,
-      name: "Induseo",
-      link: "",
-      consultant: "Damien",
-    },
-    {
-      id: 4,
-      name: "Underguard",
-      link: "",
-      consultant: "Laure",
-    },
-    {
-      id: 5,
-      name: "Decathlon Tech",
-      link: "",
-      consultant: "Anaïs",
-    },
-    {
-      id: 6,
-      name: "Groupama",
-      link: "",
-      consultant: "Alicia",
-    },
-    {
-      id: 7,
-      name: "U Iris",
-      link: "",
-      consultant: "Yohan",
-    },
-    {
-      id: 8,
-      name: "Lucca",
-      link: "",
-      consultant: "Christopher",
-    },
-  ];
+  const [arrayCompanies, setArrayCompanies] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get("/company")
+      .then((result) => {
+        setArrayCompanies(result.data);
+        console.warn(arrayCompanies);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <SpecialUsersLayout>
       <section className="companies-validation">
@@ -75,7 +42,9 @@ export default function CompanyValidation() {
                 <td>
                   <input type="checkbox" name="" id="" />
                 </td>
-                <td>{company.consultant}</td>
+                <td>
+                  <ConsultantName id={company.user_id} />
+                </td>
               </tr>
             ))}
           </tbody>
