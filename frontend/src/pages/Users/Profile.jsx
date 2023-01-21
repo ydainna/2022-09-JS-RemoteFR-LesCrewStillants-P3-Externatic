@@ -8,17 +8,28 @@ import SearchParameters from "@components/UserProfile/searchParameters/SearchPar
 import jwtDecode from "jwt-decode";
 
 import instance from "@utils/instance";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [info, setInfo] = useState([]);
   const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
 
   const reloadInfo = () => {
-    const decodedHeader = jwtDecode(token);
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
 
-    instance.get(`/users/${decodedHeader.id}`).then((response) => {
-      setInfo(response.data);
-    });
+      return instance
+        .get(`/users/${decodedHeader.id}`)
+        .then((response) => {
+          setInfo(response.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    return navigate("/login");
   };
 
   useEffect(() => {
