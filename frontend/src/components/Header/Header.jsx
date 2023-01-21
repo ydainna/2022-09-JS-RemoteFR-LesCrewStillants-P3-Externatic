@@ -41,7 +41,7 @@ function Header() {
       <nav>
         <ul className={`${showLinks ? "show-nav " : "hide-nav"}`}>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            <Link to="/offerlist">OFFRES D'EMPLOI</Link>
+            <Link to="/offers">OFFRES D'EMPLOI</Link>
           </li>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
             <a
