@@ -6,6 +6,7 @@ import "@components/ManagementsPages/Admin/UsersManagement.scss";
 
 export default function UsersManagement() {
   const [arrayCandidature, setArrayCandidature] = useState([]);
+  const arrayRoleName = ["Admin", "Candidat", "Consultant"];
 
   useEffect(() => {
     instance
@@ -53,7 +54,7 @@ export default function UsersManagement() {
                 <td>{candidature.lastname}</td>
                 <td>{candidature.firstname}</td>
                 <td>{candidature.email}</td>
-                <td>{candidature.role_id}</td>
+                <td>{arrayRoleName[candidature.role_id - 1]}</td>
               </tr>
             ))}
           </tbody>
