@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import instance from "@utils/instance";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import ConsultantName from "@components/ManagementsPages/Admin/ConsultantName";
@@ -37,7 +38,9 @@ export default function CompanyValidation() {
               <tr key={company.id}>
                 <td>{company.name}</td>
                 <td>
-                  <a href={company.link}>Voir la page</a>
+                  <Link to={`/companies/${company.id}`} target="_blank">
+                    Voir la page
+                  </Link>
                 </td>
                 <td>
                   <input type="checkbox" name="" id="" />
