@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import instance from "@utils/instance";
+import parse from "html-react-parser";
 import Heart from "@assets/icons/Heart.svg";
 import "./OfferComponent.scss";
 
@@ -8,7 +9,27 @@ function OfferComponent() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [company, setCompany] = useState([]);
   const [offers, setOffers] = useState([]);
+  const [descJob, setDescJob] = useState("");
+  const [descEntreprise, setDescEntreprise] = useState("");
+  const [mission, setMission] = useState("");
+  const [profil, setProfil] = useState("");
+  const [advantages, setAdvantages] = useState("");
   const { id } = useParams();
+
+  useEffect(() => {
+    if (offers.length !== 0) {
+      setDescJob(offers.job_description);
+      setMission(offers.mission);
+      setProfil(offers.seeked_profile);
+      setAdvantages(offers.complementary_info);
+    }
+  }, [offers]);
+  useEffect(() => {
+    if (company.length !== 0) {
+      setDescEntreprise(company.description);
+    }
+  }, [company]);
+
   useEffect(() => {
     instance
       .get(`/offers/${id}`)
@@ -61,20 +82,20 @@ function OfferComponent() {
       </section>
       <section className="description_job-offer">
         <h2>Description du poste</h2>
-        <p>{offers.job_description}</p>
+        <p>{parse(descJob)}</p>
         <h2>Description de l'entreprise</h2>
-        <p>{company.description}</p>
+        <p>{parse(descEntreprise)}</p>
         <div className="align-offer">
           <button className="button-offer" type="button">
             Voir l'entreprise
           </button>
         </div>
         <h2>Votre mission</h2>
-        <p>{offers.mission}</p>
+        <p>{parse(mission)}</p>
         <h2>Profil et expérience souhaités</h2>
-        <p>{offers.seeked_profile}</p>
+        <p>{parse(profil)}</p>
         <h2>Avantages</h2>
-        <p>{offers.complementary_info}</p>
+        <p>{parse(advantages)}</p>
         <div className="align-offer">
           <button className="button-offer" type="button">
             Postuler
