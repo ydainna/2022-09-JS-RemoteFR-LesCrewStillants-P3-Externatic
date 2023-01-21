@@ -80,7 +80,7 @@ localisation TEXT NOT NULL,
 mission TEXT NULL,
 seeked_profile TEXT NULL,
 complementary_info TEXT NULL,
-user_id INT NOT NULL,
+user_id INT NULL,
 CONSTRAINT fk_offer_user FOREIGN KEY (user_id) REFERENCES user(id),
 company_id INT NOT NULL,
 CONSTRAINT fk_offer_company FOREIGN KEY (company_id) REFERENCES company(id));

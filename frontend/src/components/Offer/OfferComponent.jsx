@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import instance from "@utils/instance";
-import offerData from "@services/offerData";
 import Heart from "@assets/icons/Heart.svg";
 import "./OfferComponent.scss";
 
