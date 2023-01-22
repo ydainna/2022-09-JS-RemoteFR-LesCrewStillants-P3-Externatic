@@ -25,12 +25,14 @@ router.get("/offers", offerControllers.browse);
 router.get("/offers/:id", offerControllers.read);
 router.post("/offers", offerControllers.add);
 router.put("/offers/:id", offerControllers.edit);
+router.delete("/offers/:id", offerControllers.destroy);
 
 // routes company
 router.get("/company", companyControllers.browse);
 router.get("/company/:id", companyControllers.read);
 router.post("/company", companyControllers.add);
 router.put("/company/:id", companyControllers.edit);
+router.delete("/company/:id", companyControllers.destroy);
 
 // routes information
 router.get("/information", infoControllers.browse);
