@@ -36,7 +36,7 @@ const add = (req, res) => {
   models.offer
     .insert(offer)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/offers/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);

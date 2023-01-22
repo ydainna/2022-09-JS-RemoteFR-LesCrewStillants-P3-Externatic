@@ -29,6 +29,8 @@ router.put("/offers/:id", offerControllers.edit);
 // routes company
 router.get("/company", companyControllers.browse);
 router.get("/company/:id", companyControllers.read);
+router.post("/company", companyControllers.add);
+router.put("/company/:id", companyControllers.edit);
 
 // routes information
 router.get("/information", infoControllers.browse);

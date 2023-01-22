@@ -64,7 +64,7 @@ description TEXT NOT NULL,
 banner VARCHAR(250) NOT NULL, 
 link VARCHAR(250) NOT NULL, 
 contact_name VARCHAR(80) NOT NULL, 
-user_id INT NOT NULL,
+user_id INT NULL,
 CONSTRAINT fk_user_company FOREIGN KEY (user_id) REFERENCES user(id), 
 address_id INT NOT NULL,
 CONSTRAINT fk_address_company FOREIGN KEY (address_id) REFERENCES address(id));

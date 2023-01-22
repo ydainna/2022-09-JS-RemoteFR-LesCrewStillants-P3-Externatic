@@ -28,7 +28,47 @@ const read = (req, res) => {
     });
 };
 
+const add = (req, res) => {
+  const company = req.body;
+
+  // TODO validations (length, format...)
+
+  models.company
+    .insert(company)
+    .then(([result]) => {
+      res.location(`/company/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const edit = (req, res) => {
+  const company = req.body;
+
+  // TODO validations (length, format...)
+
+  company.id = parseInt(req.params.id, 10);
+
+  models.company
+    .update(company)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
+  add,
+  edit,
 };
