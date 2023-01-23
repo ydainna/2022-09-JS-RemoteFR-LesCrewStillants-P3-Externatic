@@ -54,7 +54,6 @@ const add = (req, res) => {
           .insert()
           // make user using information id and address id
           .then(([address]) => {
-            console.warn(information.insertId, address.insertId);
             models.user
               .insert(user, information.insertId, address.insertId)
               .then(([rows]) => {
