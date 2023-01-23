@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import instance from "@utils/instance";
 import parse from "html-react-parser";
 import Heart from "@assets/icons/Heart.svg";
@@ -53,7 +53,14 @@ function OfferComponent() {
   }, []);
 
   return (
-    <section className="container-offer">
+    <section
+      className="container-offer"
+      style={{
+        backgroundImage: `url(${company.banner})`,
+        backgroundSize: "100% auto",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <section className="banner_job-offer">
         <div className="title_job-offer">
           <h2>{offers.title}</h2>
@@ -86,9 +93,11 @@ function OfferComponent() {
         <h2>Description de l'entreprise</h2>
         <p>{parse(descEntreprise)}</p>
         <div className="align-offer">
-          <button className="button-offer" type="button">
-            Voir l'entreprise
-          </button>
+          <Link to={`/companies/${company.id}`}>
+            <button className="button-offer" type="button">
+              Voir l'entreprise
+            </button>
+          </Link>
         </div>
         <h2>Votre mission</h2>
         <p>{parse(mission)}</p>

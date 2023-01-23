@@ -36,7 +36,7 @@ const add = (req, res) => {
   models.offer
     .insert(offer)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res.location(`/offers/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -66,9 +66,26 @@ const edit = (req, res) => {
     });
 };
 
+const destroy = (req, res) => {
+  models.offer
+    .delete(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: "Couldn't delete offer!" });
+      } else {
+        res.status(204).json({ success: "Offer was successfuly deleted" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
+  destroy,
 };
