@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import instance from "@utils/instance";
 
 import Heart from "@assets/icons/Heart.svg";
@@ -32,9 +33,11 @@ function CardOffer({ offer }) {
         </div>
       </div>
       <div className="offerbuttons">
-        <button className="card-button" type="button">
-          Voir
-        </button>
+        <Link to={`/offers/${offer.id}`} key={offer.id}>
+          <button className="card-button" type="button">
+            Voir
+          </button>
+        </Link>
 
         <button
           className="heart-offer"
