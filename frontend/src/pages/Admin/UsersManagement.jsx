@@ -1,66 +1,27 @@
+import { useState, useEffect } from "react";
+import instance from "@utils/instance";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 
 import "@components/ManagementsPages/Admin/UsersManagement.scss";
 
 export default function UsersManagement() {
-  const arrayCandidature = [
-    {
-      id: 1,
-      lastname: "Dupont",
-      firstname: "Martine",
-      email: "martine.dupont@email.com",
-      role: "Candidat",
-    },
-    {
-      id: 2,
-      lastname: "Elmer",
-      firstname: "Valentin",
-      email: "valentin.elmer@externatic.fr",
-      role: "Consultant",
-    },
-    {
-      id: 3,
-      lastname: "Durand",
-      firstname: "Patrick",
-      email: "patric.durand@externatic.fr",
-      role: "Admin",
-    },
-    {
-      id: 4,
-      lastname: "Dugoûter",
-      firstname: "Alicia",
-      email: "aliciadugouter@gmail.fr",
-      role: "Candidat",
-    },
-    {
-      id: 5,
-      lastname: "Castanor",
-      firstname: "Estelle",
-      email: "estelle.castanor@yahoo.org",
-      role: "Candidat",
-    },
-    {
-      id: 6,
-      lastname: "Dupuis",
-      firstname: "Marie",
-      email: "marie.dupuis@msn.fr",
-      role: "Candidat",
-    },
-    {
-      id: 7,
-      lastname: "Doe",
-      firstname: "John",
-      email: "johndoe@yopmail.com",
-      role: "Candidat",
-    },
-    {
-      id: 8,
-      lastname: "Pivert",
-      firstname: "Georges",
-      email: "georges.pivert@externatic.fr",
-      role: "Consultant",
-    },
-  ];
+  const arrayRoleName = ["Admin", "Candidat", "Consultant"];
+
+  const [arrayCandidature, setArrayCandidature] = useState([]);
+
+  const [roleFilter, setRoleFilter] = useState(0);
+
+  useEffect(() => {
+    instance
+      .get("/users")
+      .then((result) => {
+        setArrayCandidature(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <SpecialUsersLayout>
       <section className="users-management">
@@ -71,11 +32,15 @@ export default function UsersManagement() {
         </div>
         <div className="users-management-filter">
           <input type="search" name="" id="" placeholder="Rechercher..." />
-          <select name="" id="">
-            <option value="Rôles">Rôles</option>
-            <option value="Candidat">Candidats</option>
-            <option value="Consultant">Consultants</option>
-            <option value="Admin">Admins</option>
+          <select
+            name=""
+            id=""
+            onChange={(e) => setRoleFilter(parseInt(e.target.value, 10))}
+          >
+            <option value="0">Rôles</option>
+            <option value="2">Candidats</option>
+            <option value="3">Consultants</option>
+            <option value="1">Admins</option>
           </select>
           <button type="button">Réinitialiser ma rechercher</button>
         </div>
@@ -88,17 +53,22 @@ export default function UsersManagement() {
               <th>Email</th>
               <th>Rôles</th>
             </tr>
-            {arrayCandidature.map((candidature) => (
-              <tr key={candidature.id}>
-                <td>
-                  <input type="checkbox" name="" id="" />
-                </td>
-                <td>{candidature.lastname}</td>
-                <td>{candidature.firstname}</td>
-                <td>{candidature.email}</td>
-                <td>{candidature.role}</td>
-              </tr>
-            ))}
+            {arrayCandidature
+              .filter(
+                (candidat) =>
+                  candidat.role_id === roleFilter || roleFilter === 0
+              )
+              .map((candidature) => (
+                <tr key={candidature.id}>
+                  <td>
+                    <input type="checkbox" name="" id="" />
+                  </td>
+                  <td>{candidature.lastname}</td>
+                  <td>{candidature.firstname}</td>
+                  <td>{candidature.email}</td>
+                  <td>{arrayRoleName[candidature.role_id - 1]}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </section>

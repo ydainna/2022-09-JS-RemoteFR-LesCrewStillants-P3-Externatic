@@ -35,7 +35,6 @@ export default function Router() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/offerlist" element={<OfferList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/:id" element={<ProfileCandidat />} />
         <Route path="/favorite-offers" element={<FavoriteOffers />} />
