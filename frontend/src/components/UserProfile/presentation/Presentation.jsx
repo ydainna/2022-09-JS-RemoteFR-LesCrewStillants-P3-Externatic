@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
 
@@ -7,6 +7,7 @@ import avatarTemoin from "@assets/avatar/avatarTemoin.png";
 import "./Presentation.scss";
 
 export default function Presentation({ info }) {
+  const inputRef = useRef();
   const [error, setError] = useState(false);
   const [updateUser, setUpdateUser] = useState({
     civility: "",
@@ -36,6 +37,13 @@ export default function Presentation({ info }) {
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );
 
+    const formData = new FormData();
+    formData.append("avatar", inputRef.current.files[0]);
+    instance.post(
+      `${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`,
+      formData
+    );
+
     Notify.success("Vos informations ont été mises à jour!");
   };
   useEffect(() => {
@@ -44,12 +52,16 @@ export default function Presentation({ info }) {
 
   return (
     <section id="presentation">
-      <form onSubmit={handleSubmit}>
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <h1>Présentation</h1>
         <div>
           <img src={avatarTemoin} alt="Avatar Témoin" />
-
-          <button type="button">Mettre à jour la photo</button>
+          <input
+            className="input_image"
+            type="file"
+            name="avatar"
+            ref={inputRef}
+          />
         </div>
         <label>
           Civilité{" "}

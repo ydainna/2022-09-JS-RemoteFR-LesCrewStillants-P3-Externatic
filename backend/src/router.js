@@ -3,7 +3,7 @@ const fs = require("fs");
 const multer = require("multer");
 
 // Destination de stockage des fichiers
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "uploads/avatar/" });
 const { v4: uuidv4 } = require("uuid");
 
 const router = express.Router();
@@ -50,14 +50,14 @@ router.put("/users/:id", userControllers.edit);
 router.delete("/users/:id", userControllers.destroy);
 
 // route POST pour recevoir un fichier
-router.post("/api/avatar", upload.single("avatar"), (req, res) => {
+router.post("/uploads/avatar", upload.single("avatar"), (req, res) => {
   const { originalname } = req.file;
 
   const { filename } = req.file;
 
   fs.rename(
-    `uploads/${filename}`,
-    `uploads/${uuidv4()}-${originalname}`,
+    `uploads/avatar/${filename}`,
+    `uploads/avatar/${uuidv4()}-${originalname}`,
     (err) => {
       if (err) throw err;
       res.send("File uploaded");
