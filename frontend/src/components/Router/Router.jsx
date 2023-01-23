@@ -43,7 +43,7 @@ export default function Router() {
 
         <Route path="/offers" element={<OfferList />} />
         <Route path="/offers/:id" element={<Offer />} />
-        <Route path="/offerRegister" element={<OfferRegister />} />
+        <Route path="/offerRegister/:id" element={<OfferRegister />} />
         <Route path="/companies/:id" element={<Company />} />
 
         <Route path="*" element={<Error />} />

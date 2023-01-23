@@ -23,6 +23,8 @@ router.post("/login", userControllers.log);
 // routes offers
 router.get("/offers", offerControllers.browse);
 router.get("/offers/:id", offerControllers.read);
+router.post("/offers", offerControllers.add);
+router.put("/offers/:id", offerControllers.edit);
 
 // routes company
 router.get("/company", companyControllers.browse);
