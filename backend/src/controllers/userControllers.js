@@ -45,13 +45,34 @@ const add = (req, res) => {
 
     // TODO validations (length, format...)
 
-    models.user
-      .insert(user)
-      .then(([rows]) => {
-        if (rows.affectedRows === 1) {
-          return res.status(201).json({ success: "User saved" });
-        }
-        return res.status(403).json({ error: "une erreur s'est produite" });
+    // make information to get a res which will be used as information.id
+    models.information
+      .insert()
+      .then(([information]) => {
+        // make address to get a res which will be used as address.id
+        models.address
+          .insert()
+          // make user using information id and address id
+          .then(([address]) => {
+            models.user
+              .insert(user, information.insertId, address.insertId)
+              .then(([rows]) => {
+                if (rows.affectedRows === 1) {
+                  return res.status(201).json({ success: "User saved" });
+                }
+                return res
+                  .status(403)
+                  .json({ error: "une erreur s'est produite" });
+              })
+              .catch((err) => {
+                console.error(err);
+                res.sendStatus(500);
+              });
+          })
+          .catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+          });
       })
       .catch((err) => {
         console.error(err);
