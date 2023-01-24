@@ -1,4 +1,10 @@
 const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const multer = require("multer");
+
+// Destination de stockage des fichiers
+const upload = multer({ dest: "public/uploads/avatar/" });
 
 const router = express.Router();
 
@@ -42,5 +48,21 @@ router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
 router.delete("/users/:id", userControllers.destroy);
+
+// route POST pour recevoir un fichier
+router.post("/uploads/avatar", upload.single("avatar"), (req, res) => {
+  const { originalname } = req.file;
+
+  const { filename } = req.file;
+
+  fs.rename(
+    `${path.join(__dirname, "../public")}/uploads/avatar/${filename}`,
+    `${path.join(__dirname, "../public")}/uploads/avatar/${originalname}`,
+    (err) => {
+      if (err) throw err;
+      res.send("File uploaded");
+    }
+  );
+});
 
 module.exports = router;
