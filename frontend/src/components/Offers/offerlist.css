@@ -43,3 +43,9 @@ header {
 .card {
   margin: 1rem auto;
 }
+
+@media screen and (max-width: 720px) {
+  .offers-cards {
+    width: 98%;
+  }
+}

@@ -14,7 +14,6 @@ CREATE TABLE information (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 cv VARCHAR(100) NULL,
 actual_situation VARCHAR(80),
-isRemote BOOLEAN NOT NULL DEFAULT FALSE,
 isActiveSearch BOOLEAN NOT NULL DEFAULT FALSE,
 job TEXT NULL,
 technology TEXT NULL,
@@ -80,6 +79,7 @@ schedule VARCHAR(80),
 localisation TEXT NOT NULL,
 mission TEXT NULL,
 seeked_profile TEXT NULL,
+isRemote BOOLEAN NOT NULL DEFAULT FALSE,
 complementary_info TEXT NULL,
 user_id INT NULL,
 CONSTRAINT fk_offer_user FOREIGN KEY (user_id) REFERENCES user(id),
@@ -100,13 +100,13 @@ VALUES ("admin"),
 ("candidat"),
 ("consultant");
 
-INSERT into information (cv, actual_situation, isRemote, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job)
-VALUES ("","en recherche d'emploi", 0, 0, "web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
-("", "en recrutement", 0, 0, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
-("", "en poste", 1, 1, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", "");
+INSERT into information (cv, actual_situation, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job)
+VALUES ("","en recherche d'emploi", 0, "web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
+("", "en recrutement",  0, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
+("", "en poste", 1, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
+("", "",  0, "Consultante", "", "", "2022-02-09", ""),
+("", "",  0, "Consultante", "", "", "2022-02-09", ""),
+("", "",  0, "Consultante", "", "", "2022-02-09", "");
 
 INSERT into address (number_address, street_name, zipcode, city, country)
 VALUES ("123", "rue victor hugo", "75011", "Paris","France"),
@@ -130,15 +130,15 @@ VALUES ("Apple", "technologie", "12345678900012", "https://upload.wikimedia.org/
 ("Wild Code School", "organisme de formation", "79492606300023", "https://www.wildcodeschool.com/static/imgs/logo.png", "La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.", "https://pr1.nicelocal.fr/9TBEIi6XCLJdmCYSCxaMhg/640x360,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2akU4C3-pXS2_BxHMKL2p8rnvj_GigA50mjUqCc5ENexYb5MdSD6EcwutG4YfjqzdQ", "https://www.wildcodeschool.com/fr-FR", "Nicolas", 3, 7, 1 ),
 ("Ubisoft", "développement et édition de jeux vidéos", "50143053200033", "https://www.1min30.com/wp-content/uploads/2018/04/logo-Ubisoft.jpg", "Ubisoft est une entreprise française de développement, d'édition et de distribution de jeux vidéo","https://www.numerama.com/wp-content/uploads/2020/07/ubisoft.jpeg", "https://www.ubisoft.com/fr-fr/", "Rayman", 6, 7, 1 );
 
-INSERT into offer (title, job_description, type_of_contract, compensation, schedule, localisation, mission, seeked_profile, complementary_info, user_id, company_id)
-VALUES ("Developer FullStack", "Un job super dans une entreprise trop bien", "CDI", "50K", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", "Tickets restaurant", 4, 1),
-("Developer FrontEnd", "Un job super dans une entreprise trop bien", "CDD", "50K", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", "Tickets restaurant", 4, 1),
-("Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "28K", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+45 dans le domaine de la tech, venez chez nous !", "Tickets restaurant", 4, 3),
-("Data Analyst", "Un job super dans une entreprise trop bien", "CDI", "31K", "horaires classiques", "Lille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
-("Data Engineer", "Un job super dans une entreprise trop bien", "CDI", "28 à 32K selon expérience", "horaires classiques","Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
-("Teaching Assistant - Web Developper", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
-("Teaching Assistant - UX/UI Designer", "Un job super dans une entreprise trop bien", "CDI", "1600€/mois", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
-("Teaching Assistant - Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", "Tickets restaurant, Formations adaptés, babyfoot", 5, 2);
+INSERT into offer (title, job_description, type_of_contract, compensation, schedule, localisation, mission, seeked_profile, isRemote, complementary_info, user_id, company_id)
+VALUES ("Developer FullStack", "Un job super dans une entreprise trop bien", "CDI", "50K", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", 0, "Tickets restaurant", 4, 1),
+("Developer FrontEnd", "Un job super dans une entreprise trop bien", "CDD", "50K", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant", 4, 1),
+("Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "28K", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+4 dans le domaine de la tech, venez chez nous !", 0, "Tickets restaurant", 4, 3),
+("Data Analyst", "Un job super dans une entreprise trop bien", "CDI", "31K", "horaires classiques", "Lille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
+("Data Engineer", "Un job super dans une entreprise trop bien", "CDI", "28 à 32K selon expérience", "horaires classiques","Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
+("Teaching Assistant - Web Developper", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
+("Teaching Assistant - UX/UI Designer", "Un job super dans une entreprise trop bien", "CDI", "1600€/mois", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 0, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
+("Teaching Assistant - Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 0, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2);
 
 INSERT into user_offer (isFavorite, isApplied, user_id, offer_id)
 VALUES 

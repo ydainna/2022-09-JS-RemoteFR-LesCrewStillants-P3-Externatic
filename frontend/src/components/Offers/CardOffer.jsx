@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import instance from "@utils/instance";
 
 import Heart from "@assets/icons/Heart.svg";
-import "./cardofferstyle.css";
+import "./cardofferstyle.scss";
 
 function CardOffer({ offer }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -23,9 +23,11 @@ function CardOffer({ offer }) {
   return (
     <div className="card">
       <div className="card-personalize">
-        <div className="card-header">
-          <img src={company.banner} alt="company offer description" />
-        </div>
+        <img
+          className="card-header"
+          src={company.banner}
+          alt="company offer description"
+        />
         <div className="card-body">
           <h2 className="card-title">{offer.title}</h2>
           <p className="card-description">{offer.job_description}</p>

@@ -22,6 +22,24 @@ function OfferList() {
   const [contract, setContract] = useState("All");
   const [localisation, setLocalisation] = useState("All");
 
+  const handleClick = (e) => {
+    if (e.target.checked) {
+      setOffers(offers.filter((offer) => offer.isRemote === 1));
+    } else {
+      setOffers(offers);
+    }
+  };
+
+  const handleChange = (e) => {
+    const search = e.target.value.toLowerCase();
+    setOffers(
+      offers.filter((offer) => offer.title.toLowerCase().includes(search))
+    );
+    if (search === "") {
+      setOffers(offers);
+    }
+  };
+
   useEffect(() => {
     instance
       .get("/offers")
@@ -44,6 +62,7 @@ function OfferList() {
             type="text"
             className="search-input"
             placeholder="🔎 Type to search"
+            onChange={handleChange}
           />
 
           <select
@@ -75,10 +94,10 @@ function OfferList() {
             <label htmlFor="remote">Show only Remote </label>
             <input
               type="checkbox"
-              className="remote-checkbox"
+              className="available-checkbox"
               name="checkbox"
               id=""
-              // onClick={(e) => setRemote(e.target.value)}
+              onClick={handleClick}
             />
           </div>
         </div>
