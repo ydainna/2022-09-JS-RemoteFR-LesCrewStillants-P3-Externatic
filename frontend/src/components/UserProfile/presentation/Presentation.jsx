@@ -44,7 +44,6 @@ export default function Presentation({
             id="civility-select"
             value={updateUser.civility}
             onChange={handleChange}
-            // style={{ display: "none" }}
           >
             <option value="">--Veuillez choisir une option--</option>
             <option value="M">M</option>

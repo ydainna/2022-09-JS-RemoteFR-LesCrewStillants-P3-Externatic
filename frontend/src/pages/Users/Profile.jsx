@@ -37,7 +37,7 @@ export default function Profile() {
     reloadInfo();
   }, [info]);
 
-  // oskour
+  // Retrieve data from the database
   const inputRef = useRef();
   const [error, setError] = useState(false);
   const [filesToUpload, setFilesToUpload] = useState(info.avatar);

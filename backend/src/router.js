@@ -47,7 +47,6 @@ router.get("/information", infoControllers.browse);
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
-// router.put("/users/avatar/:id", userControllers.editAvatar);
 router.delete("/users/:id", userControllers.destroy);
 
 // route POST pour recevoir un fichier
