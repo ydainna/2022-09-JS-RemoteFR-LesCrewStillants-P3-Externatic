@@ -1,0 +1,55 @@
+@import "../../assets/_variables.scss";
+
+.candidatManag {
+    display: flex;
+    justify-content: center;
+    font-style: $font-stack;
+    font-family: $font-stack;
+}
+
+
+.rectangle {
+    text-align: center;
+    margin-top: 2rem;
+    height: 7rem;
+    width: 60rem;
+    background-color: $secondary-color-four;
+}
+
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.button1 {
+    margin-left: 2rem;
+    background-color: $secondary-color-three ;
+}
+
+h5 {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+select {
+    width: 20rem;
+    height: 4rem;
+}
+
+p {
+    margin-right: 2rem;
+}
+
+.bu {
+    height: 5rem;
+    width: 20rem;
+}
+
+.fin {
+    color: $secondary-color-three;
+    padding: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
