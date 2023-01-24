@@ -2,14 +2,19 @@ import { useRef, useState, useEffect } from "react";
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
 
-import avatarTemoin from "@assets/avatar/avatarTemoin.png";
+// import avatarTemoin from "@assets/avatar/avatarTemoin.png";
 
 import "./Presentation.scss";
 
 export default function Presentation({ info }) {
   const inputRef = useRef();
   const [error, setError] = useState(false);
-  const [avatar, setavatar] = useState(null);
+  const [filesToUpload, setFilesToUpload] = useState(info.avatar);
+
+  const handleFilesChange = (file) => {
+    setFilesToUpload(file.target.value.split("\\")[2]);
+  };
+
   const [updateUser, setUpdateUser] = useState({
     civility: "",
     firstname: "",
@@ -23,9 +28,6 @@ export default function Presentation({ info }) {
     const { name, value } = e.target;
     setUpdateUser({ ...updateUser, [name]: value });
   };
-  const handleChangeAvatar = (e) => {
-    setavatar(e.target.files[0]);
-  };
 
   // function to send the form value to backend
   const handleSubmit = (e) => {
@@ -35,37 +37,47 @@ export default function Presentation({ info }) {
       setError(true);
       return;
     }
-    instance
-      .put(`/users/${info.id}`, updateUser)
-      .catch((err) =>
-        console.error(err, Notify.error("Mauvaises Informations! ❌"))
-      );
 
     const formData = new FormData();
     formData.append("avatar", inputRef.current.files[0]);
-    instance.post(
-      `${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`,
-      formData
-    );
 
+    // post de l'image done ✅
+    instance
+      .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
+      .then((res) => {
+        console.warn(res.data);
+      })
+      .catch((err) => console.error(err));
+
+    instance
+      .put(`/users/${info.id}`, { filesToUpload, updateUser })
+      .catch((err) =>
+        console.error(err, Notify.error("Mauvaises Informations! ❌"))
+      );
     Notify.success("Vos informations ont été mises à jour!");
   };
+
   useEffect(() => {
     setUpdateUser([info][0]);
   }, [info]);
 
   return (
     <section id="presentation">
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
-        <h1>Présentation</h1>
+      <form encType="multipart/form-data">
+        <h1>Avatar</h1>
         <div className="input_image">
-          <img src={avatarTemoin} alt="Avatar Témoin" />
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
+              updateUser.avatar
+            }`}
+            alt="Avatar"
+          />
           <input
             type="file"
             style={{ display: "none" }}
-            onChange={handleChangeAvatar}
             name="avatar"
             ref={inputRef}
+            onChange={handleFilesChange}
           />
           <button
             type="button"
@@ -74,8 +86,12 @@ export default function Presentation({ info }) {
           >
             Choisir une photo
           </button>
-          {avatar && <p>{avatar.name}</p>}
+          {updateUser.avatar && <p>{updateUser.avatar.name}</p>}
         </div>
+      </form>
+
+      <form onSubmit={handleSubmit}>
+        <h1>Présentation</h1>
         <label>
           Civilité{" "}
           <select
@@ -83,7 +99,7 @@ export default function Presentation({ info }) {
             id="civility-select"
             value={updateUser.civility}
             onChange={handleChange}
-            style={{ display: "none" }}
+            // style={{ display: "none" }}
           >
             <option value="">--Veuillez choisir une option--</option>
             <option value="M">M</option>

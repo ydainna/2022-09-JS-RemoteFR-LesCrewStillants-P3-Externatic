@@ -95,11 +95,14 @@ const log = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
+  const { filesToUpload, updateUser } = req.body;
 
-  // TODO validations (length, format...)
+  updateUser.id = parseInt(req.params.id, 10);
 
-  user.id = parseInt(req.params.id, 10);
+  const user = {
+    ...updateUser,
+    avatar: filesToUpload,
+  };
 
   models.user
     .update(user)
