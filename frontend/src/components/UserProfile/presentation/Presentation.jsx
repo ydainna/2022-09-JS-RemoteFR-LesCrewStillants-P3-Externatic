@@ -9,6 +9,7 @@ import "./Presentation.scss";
 export default function Presentation({ info }) {
   const inputRef = useRef();
   const [error, setError] = useState(false);
+  const [avatar, setavatar] = useState(null);
   const [updateUser, setUpdateUser] = useState({
     civility: "",
     firstname: "",
@@ -21,6 +22,9 @@ export default function Presentation({ info }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateUser({ ...updateUser, [name]: value });
+  };
+  const handleChangeAvatar = (e) => {
+    setavatar(e.target.files[0]);
   };
 
   // function to send the form value to backend
@@ -54,14 +58,23 @@ export default function Presentation({ info }) {
     <section id="presentation">
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <h1>Présentation</h1>
-        <div>
+        <div className="input_image">
           <img src={avatarTemoin} alt="Avatar Témoin" />
           <input
-            className="input_image"
             type="file"
+            style={{ display: "none" }}
+            onChange={handleChangeAvatar}
             name="avatar"
             ref={inputRef}
           />
+          <button
+            type="button"
+            className="custom_button"
+            onClick={() => inputRef.current.click()}
+          >
+            Choisir une photo
+          </button>
+          {avatar && <p>{avatar.name}</p>}
         </div>
         <label>
           Civilité{" "}
@@ -70,6 +83,7 @@ export default function Presentation({ info }) {
             id="civility-select"
             value={updateUser.civility}
             onChange={handleChange}
+            style={{ display: "none" }}
           >
             <option value="">--Veuillez choisir une option--</option>
             <option value="M">M</option>
