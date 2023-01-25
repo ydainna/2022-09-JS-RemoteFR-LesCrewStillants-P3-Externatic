@@ -13,6 +13,7 @@ const userControllers = require("./controllers/userControllers");
 const offerControllers = require("./controllers/offerControllers");
 const companyControllers = require("./controllers/companyControllers");
 const infoControllers = require("./controllers/infoControllers");
+const addressControllers = require("./controllers/addressControllers");
 
 // const decodeToken = require("./services/jwt");
 
@@ -42,6 +43,11 @@ router.delete("/company/:id", companyControllers.destroy);
 
 // routes information
 router.get("/information", infoControllers.browse);
+router.get("/information/:id", infoControllers.read);
+
+// routes address
+router.get("/address", addressControllers.browse);
+router.get("/address/:id", addressControllers.read);
 
 // router.use(decodeToken);
 router.get("/users", userControllers.browse);

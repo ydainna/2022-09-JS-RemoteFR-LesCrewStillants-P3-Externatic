@@ -5,6 +5,12 @@ class AddressManager extends AbstractManager {
     super({ table: "address" });
   }
 
+  findById(id) {
+    return this.connection.query(`select * from ${this.table} where id = ?`, [
+      id,
+    ]);
+  }
+
   insert() {
     return this.connection.query(`insert into ${this.table} () values ()`, []);
   }
