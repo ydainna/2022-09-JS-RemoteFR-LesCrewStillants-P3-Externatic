@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
 import sadPage from "../../assets/lottie/sadPage.json";
 
@@ -9,17 +10,20 @@ export default function Error() {
       <div className="notFoundContainer">
         <Player autoplay loop src={sadPage} className="notFoundLottie" />
         <h2>
-          Il semblerais ne rien y avoir ici aucune entreprise, aucune offre rien
-          ... seulement une page vide assise ici en attendant de trouver la
+          Il semblerait ne rien y avoir içi, aucune entreprise, aucune offre
+          rien... Seulement une page vide assise içi en attendant de trouver la
           bonne recherche.
         </h2>
         <h2>
-          Est-ce vous ? vous pouvez retourner à l'accueil du site si vous le
-          souhaitez
+          Est-ce vous ? Vous pouvez retourner à l'accueil du site si vous le
+          souhaitez!
         </h2>
-        <button type="button" className="notFoundButton">
-          Go Back
-        </button>
+
+        <Link to="/">
+          <button type="button" className="notFoundButton">
+            Go Back
+          </button>
+        </Link>
       </div>
       {/*
         __                 
