@@ -5,12 +5,13 @@ import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import "@components/ManagementsPages/Admin/UsersManagement.scss";
 
 export default function UsersManagement() {
+  // filters states and array for roles
   const arrayRoleName = ["Admin", "Candidat", "Consultant"];
-
-  const [arrayCandidature, setArrayCandidature] = useState([]);
+  const [roleFilter, setRoleFilter] = useState(0);
   const [search, setSearch] = useState("");
 
-  const [roleFilter, setRoleFilter] = useState(0);
+  // state array of users that we get from axios and axios to get data
+  const [arrayCandidature, setArrayCandidature] = useState([]);
 
   useEffect(() => {
     instance
@@ -22,6 +23,19 @@ export default function UsersManagement() {
         console.error(err);
       });
   }, []);
+
+  // state for users to delete
+  const [usersToDelete, setUsersToDelete] = useState([]);
+
+  const handleCheck = (candidatureId, statusCheckBox) => {
+    if (statusCheckBox) {
+      setUsersToDelete([...usersToDelete, candidatureId]);
+    }
+  };
+
+  useEffect(() => {
+    console.warn(usersToDelete);
+  }, [usersToDelete]);
 
   return (
     <SpecialUsersLayout>
@@ -47,7 +61,7 @@ export default function UsersManagement() {
             <option value="3">Consultants</option>
             <option value="1">Admins</option>
           </select>
-          <button type="button">Réinitialiser ma rechercher</button>
+          <button type="button">Réinitialiser ma sélection</button>
         </div>
         <table width="100%">
           <tbody>
@@ -79,7 +93,12 @@ export default function UsersManagement() {
               .map((candidature) => (
                 <tr key={candidature.id}>
                   <td>
-                    <input type="checkbox" name="" id="" />
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        handleCheck(candidature.id, e.target.checked)
+                      }
+                    />
                   </td>
                   <td>{candidature.lastname}</td>
                   <td>{candidature.firstname}</td>
