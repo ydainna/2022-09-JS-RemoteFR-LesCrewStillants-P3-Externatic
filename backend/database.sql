@@ -33,7 +33,7 @@ complementary_info VARCHAR(250) NULL);
 
 CREATE TABLE user (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-avatar VARCHAR(250) NULL,
+avatar VARCHAR(250) NULL DEFAULT 'avatarTemoin.png',
 email VARCHAR(80) NOT NULL,
 password VARCHAR(250) NOT NULL,
 civility VARCHAR(20) NULL,
@@ -123,7 +123,7 @@ VALUES ("https://img.freepik.com/photos-gratuite/beau-jeune-homme-t-shirt-blanc-
 ("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "siri@applemail.com", "admin", "Mme.", "Siri", "Appletech", "0198765432", "2023-01-17", 1, 2, 2),
 ("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "nicolas@carensac.fr", "qwerty", "M.", "Nicolas", "Carensac", "0269765432", "2023-01-19", 2, 3, 3),
 ("https://media.licdn.com/dms/image/C5603AQHWw3KW8KUmHQ/profile-displayphoto-shrink_800_800/0/1589282191440?e=1679529600&v=beta&t=Ri2A9XGSktFOv1HIIyFn6tW91VF8YErtAesFmfUmGf4", "perrine.dupisson@externatic.fr", "consultante", "Mme.", "Perrine", "Dupisson", "0269765432", "2023-02-01", 3, 4, 4),
-("", "jeanmarc.pahayrault@externatic.fr", "consultant", "M.", "Jean-Marc", "PaHayrault", "0225644932", "2023-01-16", 3, 5, 5),
+("avatarTemoin.png", "jeanmarc.pahayrault@externatic.fr", "consultant", "M.", "Jean-Marc", "PaHayrault", "0225644932", "2023-01-16", 3, 5, 5),
 ("https://play-lh.googleusercontent.com/SkNOjuAwZsCpzCUqYLOpyw4ksoy2Q8AqXsbaNAf5HO5YWAuYfwVCxMURfymwSWNZHYQ", "rayman@ubisoft.com", "lapincretin", "M.", "Rayman", "Ubisoft", "0612587896", "2023-01-18", 3, 6, 7);
 
 INSERT into company (name, sector, siret, logo, description, banner, link, contact_name, user_id, address_id, is_validated)

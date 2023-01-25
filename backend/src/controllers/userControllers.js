@@ -116,12 +116,12 @@ const log = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const { filesToUpload, updateUser } = req.body;
+  const { filesToUpload, info } = req.body;
 
-  updateUser.id = parseInt(req.params.id, 10);
+  info.id = parseInt(req.params.id, 10);
 
   const user = {
-    ...updateUser,
+    ...info,
     avatar: filesToUpload,
   };
 
