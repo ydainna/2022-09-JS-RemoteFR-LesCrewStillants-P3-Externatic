@@ -14,6 +14,7 @@ CREATE TABLE information (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 cv VARCHAR(100) NULL,
 actual_situation VARCHAR(80),
+isRemote BOOLEAN NOT NULL DEFAULT FALSE,
 isActiveSearch BOOLEAN NOT NULL DEFAULT FALSE,
 job TEXT NULL,
 technology TEXT NULL,
@@ -100,13 +101,13 @@ VALUES ("admin"),
 ("candidat"),
 ("consultant");
 
-INSERT into information (cv, actual_situation, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job)
-VALUES ("","en recherche d'emploi", 0, "web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
-("", "en recrutement",  0, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
-("", "en poste", 1, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
-("", "",  0, "Consultante", "", "", "2022-02-09", ""),
-("", "",  0, "Consultante", "", "", "2022-02-09", ""),
-("", "",  0, "Consultante", "", "", "2022-02-09", "");
+INSERT into information (cv, actual_situation, isRemote, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job)
+VALUES ("","en recherche d'emploi", 0, 0, "web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
+("", "en recrutement", 0, 0, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
+("", "en poste", 1, 1, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
+("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
+("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
+("", "", 1, 0, "Consultante", "", "", "2022-02-09", "");
 
 INSERT into address (number_address, street_name, zipcode, city, country)
 VALUES ("123", "rue victor hugo", "75011", "Paris","France"),

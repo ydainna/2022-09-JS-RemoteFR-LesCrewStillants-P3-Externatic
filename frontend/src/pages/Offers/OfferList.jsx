@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import instance from "@utils/instance";
 import CardOffer from "../../components/Offers/CardOffer";
-import "../../components/Offers/offerlist.css";
+import "../../components/Offers/offerlist.scss";
 
 function OfferList() {
   const contractsTypeArray = [
@@ -21,24 +21,8 @@ function OfferList() {
   const [offers, setOffers] = useState([]);
   const [contract, setContract] = useState("All");
   const [localisation, setLocalisation] = useState("All");
-
-  const handleClick = (e) => {
-    if (e.target.checked) {
-      setOffers(offers.filter((offer) => offer.isRemote === 1));
-    } else {
-      setOffers(offers);
-    }
-  };
-
-  const handleChange = (e) => {
-    const search = e.target.value.toLowerCase();
-    setOffers(
-      offers.filter((offer) => offer.title.toLowerCase().includes(search))
-    );
-    if (search === "") {
-      setOffers(offers);
-    }
-  };
+  const [isRemote, setIsRemote] = useState(0);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     instance
@@ -62,7 +46,7 @@ function OfferList() {
             type="text"
             className="search-input"
             placeholder="🔎 Type to search"
-            onChange={handleChange}
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           <select
@@ -97,7 +81,7 @@ function OfferList() {
               className="available-checkbox"
               name="checkbox"
               id=""
-              onClick={handleClick}
+              onClick={() => setIsRemote(isRemote === 0 ? 1 : 0)}
             />
           </div>
         </div>
@@ -108,7 +92,9 @@ function OfferList() {
                 (offer) =>
                   (offer.type_of_contract === contract || contract === "All") &&
                   (offer.localisation === localisation ||
-                    localisation === "All")
+                    localisation === "All") &&
+                  (offer.isRemote === isRemote || isRemote === 0) &&
+                  offer.title.toLowerCase().includes(search.toLowerCase())
               )
               .map((offer) => (
                 <CardOffer key={offer.id} offer={offer} />
