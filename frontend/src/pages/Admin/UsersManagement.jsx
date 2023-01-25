@@ -8,6 +8,7 @@ export default function UsersManagement() {
   const arrayRoleName = ["Admin", "Candidat", "Consultant"];
 
   const [arrayCandidature, setArrayCandidature] = useState([]);
+  const [search, setSearch] = useState("");
 
   const [roleFilter, setRoleFilter] = useState(0);
 
@@ -31,7 +32,11 @@ export default function UsersManagement() {
           <button type="button">Créer un compte consultant</button>
         </div>
         <div className="users-management-filter">
-          <input type="search" name="" id="" placeholder="Rechercher..." />
+          <input
+            type="text"
+            placeholder="Rechercher..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <select
             name=""
             id=""
@@ -56,7 +61,17 @@ export default function UsersManagement() {
             {arrayCandidature
               .filter(
                 (candidat) =>
-                  candidat.role_id === roleFilter || roleFilter === 0
+                  ((candidat.role_id === roleFilter || roleFilter === 0) &&
+                    (candidat.firstname
+                      ? candidat.firstname
+                          .toLowerCase()
+                          .includes(search.toLowerCase())
+                      : "")) ||
+                  (candidat.lastname
+                    ? candidat.lastname
+                        .toLowerCase()
+                        .includes(search.toLowerCase())
+                    : "")
               )
               .map((candidature) => (
                 <tr key={candidature.id}>
