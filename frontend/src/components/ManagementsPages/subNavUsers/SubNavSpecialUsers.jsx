@@ -16,7 +16,7 @@ export default function SubNavSpecialUsers() {
   return (
     <section id="SubNavSpecialUsers">
       <ul>
-        <Link to={isAdminView ? "/users-management" : ""}>
+        <Link to={isAdminView ? "/users-management" : "/company-management"}>
           <li
             id={currentCandidatePage === 0 ? "currentCandidatePage" : ""}
             onClick={() => setCurrentCandidatePage(0)}
@@ -28,7 +28,9 @@ export default function SubNavSpecialUsers() {
           </li>
         </Link>
 
-        <Link to={isAdminView ? "/companies-validation" : ""}>
+        <Link
+          to={isAdminView ? "/companies-validation" : "/candidate-management"}
+        >
           <li
             id={currentCandidatePage === 1 ? "currentCandidatePage" : ""}
             onClick={() => setCurrentCandidatePage(1)}
