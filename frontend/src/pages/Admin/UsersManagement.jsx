@@ -31,11 +31,10 @@ export default function UsersManagement() {
     if (statusCheckBox) {
       setUsersToDelete([...usersToDelete, candidatureId]);
     }
+    if (!statusCheckBox) {
+      setUsersToDelete([...usersToDelete.filter((id) => id !== candidatureId)]);
+    }
   };
-
-  useEffect(() => {
-    console.warn(usersToDelete);
-  }, [usersToDelete]);
 
   return (
     <SpecialUsersLayout>
