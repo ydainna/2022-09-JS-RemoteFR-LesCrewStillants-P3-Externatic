@@ -36,10 +36,8 @@ function OfferList() {
   }, []);
 
   return (
-    <div>
-      <header>
-        <h1>Offres d'emploi</h1>
-      </header>
+    <section id="offer-list">
+      <h1>Offres d'emploi</h1>
       <div className="wrapper">
         <div className="filters">
           <input
@@ -102,7 +100,7 @@ function OfferList() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
