@@ -17,12 +17,13 @@ import Offer from "@pages/Offers/Offer";
 import OfferRegister from "@pages/Offers/OfferRegister";
 
 import Company from "@pages/Companies/Company";
+import CompanyManagement from "@pages/Companies/CompanyManagement";
 
 import Error from "@pages/Error/Error";
 
 import UsersManagement from "@pages/Admin/UsersManagement";
 import CompanyValidation from "@pages/Admin/CompanyValidation";
-
+import CanditateManagement from "@pages/Companies/CandidateManagement";
 import Footer from "@components/Footer/Footer";
 
 export default function Router() {
@@ -48,6 +49,8 @@ export default function Router() {
         <Route path="*" element={<Error />} />
         <Route path="/users-management" element={<UsersManagement />} />
         <Route path="/companies-validation" element={<CompanyValidation />} />
+        <Route path="/candidate-management" element={<CanditateManagement />} />
+        <Route path="/company-management" element={<CompanyManagement />} />
       </Routes>
       <Footer />
     </BrowserRouter>
