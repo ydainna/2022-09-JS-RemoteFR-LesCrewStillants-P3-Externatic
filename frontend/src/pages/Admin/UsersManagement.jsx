@@ -61,12 +61,15 @@ export default function UsersManagement() {
             {arrayCandidature
               .filter(
                 (candidat) =>
-                  ((candidat.role_id === roleFilter || roleFilter === 0) &&
-                    (candidat.firstname
-                      ? candidat.firstname
-                          .toLowerCase()
-                          .includes(search.toLowerCase())
-                      : "")) ||
+                  candidat.role_id === roleFilter || roleFilter === 0
+              )
+              .filter(
+                (candidat) =>
+                  (candidat.firstname
+                    ? candidat.firstname
+                        .toLowerCase()
+                        .includes(search.toLowerCase())
+                    : "") ||
                   (candidat.lastname
                     ? candidat.lastname
                         .toLowerCase()
