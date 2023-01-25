@@ -14,37 +14,27 @@ export default function ProfileCandidat() {
   const { id } = useParams();
 
   useEffect(() => {
-    instance
-      .get(`/users/${id}`)
-      .then((result) => {
-        setProfile(result.data);
-      })
-      .catch((err) => {
+    const fetchData = async () => {
+      try {
+        const profile = await instance.get(`/users/${id}`);
+        setProfile(profile.data);
+
+        const infos = await instance.get(
+          `/information/${profile.data.information_id}`
+        );
+        setInformation(infos.data);
+
+        const adresse = await instance.get(
+          `/address/${profile.data.address_id}`
+        );
+        setAddress(adresse.data);
+      } catch (err) {
         console.error(err);
-      });
+      }
+    };
+
+    fetchData(id);
   }, [id]);
-
-  useEffect(() => {
-    instance
-      .get(`/information/${profil.information_id}`)
-      .then((result) => {
-        setInformation(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [profil.information_id]);
-
-  useEffect(() => {
-    instance
-      .get(`/address/${profil.address_id}`)
-      .then((result) => {
-        setAddress(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [profil.address_id]);
 
   return (
     <section className="container_profile">
