@@ -2,11 +2,12 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
-import CurrentSituation from "@components/UserProfile/currentSituation/CurrentSituation";
-import Cv from "@components/UserProfile/cv/Cv";
-import Parameters from "@components/UserProfile/parameters/Parameters";
 import Presentation from "@components/UserProfile/presentation/Presentation";
+import Address from "@components/UserProfile/address/Address";
+import Cv from "@components/UserProfile/cv/Cv";
+import CurrentSituation from "@components/UserProfile/currentSituation/CurrentSituation";
 import SearchParameters from "@components/UserProfile/searchParameters/SearchParameters";
+import Parameters from "@components/UserProfile/parameters/Parameters";
 
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
@@ -81,7 +82,7 @@ export default function Profile() {
 
   useEffect(() => {
     reloadInfo();
-  }, [handleSubmit]);
+  }, []);
 
   useEffect(() => {
     setFilesToUpload(info.avatar);
@@ -109,6 +110,7 @@ export default function Profile() {
             filesToUpload={filesToUpload}
             className={error}
           />
+          <Address id={info.address_id} />
           <Cv />
           <CurrentSituation />
           <SearchParameters />
