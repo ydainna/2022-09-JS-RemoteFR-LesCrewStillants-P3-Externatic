@@ -16,12 +16,20 @@ class InformationManager extends AbstractManager {
     return this.connection.query(`insert into ${this.table} () values ()`, []);
   }
 
-  // update(item) {
-  //   return this.connection.query(
-  //     `update ${this.table} set title = ? where id = ?`,
-  //     [item.title, item.id]
-  //   );
-  // }
+  update(information) {
+    return this.connection.query(
+      `update ${this.table} set type_of_contract = ?, start_date = ?, localisation_job = ?, isRemote = ?, job = ?, technology = ? where id = ?`,
+      [
+        information.type_of_contract,
+        information.start_date,
+        information.localisation_job,
+        information.isRemote,
+        information.job,
+        information.technology,
+        information.id,
+      ]
+    );
+  }
 }
 
 module.exports = InformationManager;
