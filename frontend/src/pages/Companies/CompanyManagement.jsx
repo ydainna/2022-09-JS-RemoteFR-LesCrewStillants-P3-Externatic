@@ -5,7 +5,7 @@ import oeil from "@assets/icons/Eye.svg";
 
 function CompanyManagement() {
   return (
-    <>
+    <section id="company-management">
       <div className="companyManag">
         <div className="rectangle">
           <h4>Validation des pages Entreprises</h4>
@@ -22,7 +22,7 @@ function CompanyManagement() {
         </button>
       </div>
 
-      <section className="infos">
+      <div className="infos">
         <img
           className="image"
           alt="#"
@@ -48,7 +48,7 @@ function CompanyManagement() {
         <div>
           <p>Lien vers votre site</p>
         </div>
-      </section>
+      </div>
 
       <div className="tab">
         <div className="tableau1">
@@ -81,7 +81,7 @@ function CompanyManagement() {
           Ajoutez une offre
         </button>
       </div>
-    </>
+    </section>
   );
 }
 

@@ -2,7 +2,7 @@ import "./CandidateManagement.scss";
 
 function CanditateManagement() {
   return (
-    <div>
+    <section id="candidate-management">
       <div className="candidatManag">
         <div className="rectangle">
           <h4>Gestion des pages candidats</h4>
@@ -74,7 +74,7 @@ function CanditateManagement() {
           Envoyer un message
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 
