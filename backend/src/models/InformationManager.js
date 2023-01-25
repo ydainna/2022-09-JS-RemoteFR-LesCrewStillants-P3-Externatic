@@ -5,6 +5,13 @@ class InformationManager extends AbstractManager {
     super({ table: "information" });
   }
 
+  findById(id) {
+    return this.connection.query(
+      `select cv, actual_situation, isRemote, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job from ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
   insert() {
     return this.connection.query(`insert into ${this.table} () values ()`, []);
   }

@@ -24,7 +24,7 @@ localisation_job VARCHAR(250) NULL);
 
 CREATE TABLE address (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, 
-number_address INT NULL, type_of_street VARCHAR(20) NULL, 
+number_address INT NULL, 
 street_name VARCHAR(150) NULL, 
 zipcode INT NULL,
 city VARCHAR(50) NULL, 
@@ -102,24 +102,24 @@ VALUES ("admin"),
 ("consultant");
 
 INSERT into information (cv, actual_situation, isRemote, isActiveSearch, job, technology, type_of_contract, start_date, localisation_job)
-VALUES ("","en recherche d'emploi", 0, 0, "web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
-("", "en recrutement", 0, 0, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
-("", "en poste", 1, 1, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", ""),
-("", "", 1, 0, "Consultante", "", "", "2022-02-09", "");
+VALUES ("","En recherche d'emploi", false, false, "Web developer", "HTML, CSS, Javascript, React, Angular, Java", "CDI", "2022-02-09", "Paris"),
+("", "En recrutement", false, false, "Developer fullstack", "HTML, CSS, Javascript, Java, Python", "CDD", "2022-02-03", "Paris"),
+("", "En poste", true, true, "Data Analyst", "HTML, CSS, Javascript, Java, Python", "CDI", "2022-02-09", "Lille"),
+("", "", true, false, "Consultante", "", "", "2022-02-09", ""),
+("", "", true, false, "Consultante", "", "", "2022-02-09", ""),
+("", "", true, false, "Consultante", "", "", "2022-02-09", "");
 
-INSERT into address (number_address, street_name, zipcode, city, country)
-VALUES ("123", "rue victor hugo", "75011", "Paris","France"),
-("12", "avenue Lamartine", "75003", "Paris","France"),
-("9", "rue de la fricatelle", "59000", "Lille","France"),
-("25", "rue de la fricatelle", "59000", "Lille","France"),
-("5", "rue Mendes France", "59001", "Lille","France"),
-("1", "Apple Avenue", "01000", "Paris","France"),
-("28", "rue Armand Carrel", "93100", "Montreuil","France");
+INSERT into address (number_address, street_name, zipcode, city, country, complementary_info)
+VALUES ("123", "rue victor hugo", "75011", "Paris", "France", ""),
+("12", "avenue Lamartine", "75003", "Paris", "France", ""),
+("9", "rue de la fricatelle", "59000", "Lille", "France", ""),
+("25", "rue de la fricatelle", "59000", "Lille", "France", ""),
+("5", "rue Mendes France", "59001", "Lille", "France", ""),
+("1", "Apple Avenue", "01000", "Paris", "France", ""),
+("28", "rue Armand Carrel", "93100", "Montreuil", "France", "");
 
 INSERT into user (avatar, email, password, civility, firstname, lastname, phone_number, created_at, role_id, information_id, address_id)
-VALUES ("https://img.freepik.com/photos-gratuite/beau-jeune-homme-t-shirt-blanc-poitrine-bras-croises-souriant-heureux_176420-21607.jpg?w=2000","hello@reallygreatsite.com", "azerty", "M.", "John", "Doe", "0612345678", "2023-01-17", 2, 1, 1),
+VALUES ("https://img.freepik.com/photos-gratuite/beau-jeune-homme-t-shirt-blanc-poitrine-bras-croises-souriant-heureux_176420-21607.jpg?w=2000","hello@reallygreatsite.com", "azerty", "M.", "John", "Doe", "0612345678", "2023-01-17", 2, 2, 1),
 ("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "siri@applemail.com", "admin", "Mme.", "Siri", "Appletech", "0198765432", "2023-01-17", 1, 2, 2),
 ("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "nicolas@carensac.fr", "qwerty", "M.", "Nicolas", "Carensac", "0269765432", "2023-01-19", 2, 3, 3),
 ("https://media.licdn.com/dms/image/C5603AQHWw3KW8KUmHQ/profile-displayphoto-shrink_800_800/0/1589282191440?e=1679529600&v=beta&t=Ri2A9XGSktFOv1HIIyFn6tW91VF8YErtAesFmfUmGf4", "perrine.dupisson@externatic.fr", "consultante", "Mme.", "Perrine", "Dupisson", "0269765432", "2023-02-01", 3, 4, 4),
