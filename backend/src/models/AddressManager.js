@@ -15,12 +15,20 @@ class AddressManager extends AbstractManager {
     return this.connection.query(`insert into ${this.table} () values ()`, []);
   }
 
-  // update(item) {
-  //   return this.connection.query(
-  //     `update ${this.table} set title = ? where id = ?`,
-  //     [item.title, item.id]
-  //   );
-  // }
+  update(address) {
+    return this.connection.query(
+      `update ${this.table} set number_address = ?, street_name = ?, zipcode = ?, city = ?, country = ?, complementary_info where id = ?`,
+      [
+        address.number_address,
+        address.street_name,
+        address.zipcode,
+        address.city,
+        address.country,
+        address.complementary_info,
+        address.id,
+      ]
+    );
+  }
 }
 
 module.exports = AddressManager;
