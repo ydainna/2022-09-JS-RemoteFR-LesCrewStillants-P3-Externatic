@@ -16,27 +16,6 @@ export default function Profile() {
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
 
-  const reloadInfo = () => {
-    if (token !== null) {
-      const decodedHeader = jwtDecode(token);
-
-      return instance
-        .get(`/users/${decodedHeader.id}`)
-        .then((response) => {
-          setInfo(response.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-
-    return navigate("/login");
-  };
-
-  useEffect(() => {
-    reloadInfo();
-  }, [info]);
-
   // Retrieve data from the database
   const inputRef = useRef();
   const [error, setError] = useState(false);
@@ -91,6 +70,27 @@ export default function Profile() {
   useEffect(() => {
     setUpdateUser([info][0]);
   }, [info]);
+
+  const reloadInfo = () => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return instance
+        .get(`/users/${decodedHeader.id}`)
+        .then((response) => {
+          setInfo(response.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    return navigate("/login");
+  };
+
+  useEffect(() => {
+    reloadInfo();
+  }, [info, setInfo, handleSubmit]);
 
   return (
     <LoggedUsersLayout>

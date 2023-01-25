@@ -33,7 +33,7 @@ complementary_info VARCHAR(250) NULL);
 
 CREATE TABLE user (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-avatar VARCHAR(250) NOT NULL DEFAULT 'avatarTemoin.png',
+avatar VARCHAR(250) NULL DEFAULT 'avatarTemoin.png',
 email VARCHAR(80) NOT NULL,
 password VARCHAR(250) NOT NULL,
 civility VARCHAR(20) NULL,
