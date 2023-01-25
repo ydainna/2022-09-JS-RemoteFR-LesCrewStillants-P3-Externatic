@@ -17,7 +17,7 @@ class AddressManager extends AbstractManager {
 
   update(address) {
     return this.connection.query(
-      `update ${this.table} set number_address = ?, street_name = ?, zipcode = ?, city = ?, country = ?, complementary_info where id = ?`,
+      `update ${this.table} set number_address = ?, street_name = ?, zipcode = ?, city = ?, country = ?, complementary_info = ? where id = ?`,
       [
         address.number_address,
         address.street_name,

@@ -44,10 +44,12 @@ router.delete("/company/:id", companyControllers.destroy);
 // routes information
 router.get("/information", infoControllers.browse);
 router.get("/information/:id", infoControllers.read);
+router.put("/information/:id", infoControllers.edit);
 
 // routes address
 router.get("/address", addressControllers.browse);
 router.get("/address/:id", addressControllers.read);
+router.put("/address/:id", addressControllers.edit);
 
 // router.use(decodeToken);
 router.get("/users", userControllers.browse);

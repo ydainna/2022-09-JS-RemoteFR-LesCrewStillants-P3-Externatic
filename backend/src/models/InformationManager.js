@@ -18,10 +18,10 @@ class InformationManager extends AbstractManager {
 
   update(information) {
     return this.connection.query(
-      `update ${this.table} set type_of_contract = ?, starte_date = ?, localisation_job = ?, isRemote = ?, job = ?, technology where id = ?`,
+      `update ${this.table} set type_of_contract = ?, start_date = ?, localisation_job = ?, isRemote = ?, job = ?, technology = ? where id = ?`,
       [
         information.type_of_contract,
-        information.starte_date,
+        information.start_date,
         information.localisation_job,
         information.isRemote,
         information.job,
