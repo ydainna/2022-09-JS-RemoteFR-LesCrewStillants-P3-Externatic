@@ -113,7 +113,7 @@ export default function Profile() {
           <Address id={info.address_id} />
           <Cv />
           <CurrentSituation />
-          <SearchParameters />
+          <SearchParameters id={info.information_id} />
           <Parameters id={info.id} />
         </>
       )}

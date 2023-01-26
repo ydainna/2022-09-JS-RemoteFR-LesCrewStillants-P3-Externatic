@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
+import axios from "axios";
 
 import "./Address.scss";
-import axios from "axios";
 
 export default function Address({ id }) {
   const [info, setInfo] = useState([]);

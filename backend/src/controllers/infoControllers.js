@@ -30,13 +30,15 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const information = req.body;
-
+  information.id = parseInt(req.params.id, 10);
+  const info = {
+    ...information,
+    start_date: information.start_date.split("T")[0],
+  };
   // TODO validations (length, format...)
 
-  information.id = parseInt(req.params.id, 10);
-
   models.information
-    .update(information)
+    .update(info)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
