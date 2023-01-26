@@ -7,8 +7,8 @@ class UofferManager extends AbstractManager {
 
   deleteMultipleUserOffer(userId) {
     return this.connection.query(
-      `delete from ${this.table} where user_id IN (?)`,
-      [userId]
+      `delete from ${this.table} where user_id IN (?) or consultant_id IN (?)`,
+      [userId, userId]
     );
   }
 }
