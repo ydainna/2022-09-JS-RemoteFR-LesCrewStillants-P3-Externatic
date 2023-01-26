@@ -26,12 +26,14 @@ export default function UsersManagement() {
   };
 
   const handleDeleteClick = () => {
-    instance
-      .delete("/users-deletion", { data: { arr: usersToDelete } })
-      // .then(() => setUsersToDelete([]))
-      .catch((err) => {
-        console.error(err);
-      });
+    if (usersToDelete.length !== 0) {
+      instance
+        .delete("/users-deletion", { data: { arr: usersToDelete } })
+        // .then(() => setUsersToDelete([]))
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   // axios to get data, it should refresh each time we delete some users if everything goes well
