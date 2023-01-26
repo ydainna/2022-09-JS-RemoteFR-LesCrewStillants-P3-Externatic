@@ -26,7 +26,6 @@ export default function UsersManagement() {
   };
 
   const handleDeleteClick = () => {
-    console.warn(usersToDelete);
     instance
       .delete("/users-deletion", { data: { arr: usersToDelete } })
       // .then(() => setUsersToDelete([]))
@@ -45,7 +44,7 @@ export default function UsersManagement() {
       .catch((err) => {
         console.error(err);
       });
-  }, [handleDeleteClick]);
+  }, []);
 
   return (
     <SpecialUsersLayout>

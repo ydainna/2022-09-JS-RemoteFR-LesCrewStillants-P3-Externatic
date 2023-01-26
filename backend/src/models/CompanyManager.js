@@ -52,6 +52,13 @@ class CompanyManager extends AbstractManager {
       ]
     );
   }
+
+  deleteMulipleCompany(userId) {
+    return this.connection.query(
+      `delete from ${this.table} where user_id IN (?)`,
+      [userId]
+    );
+  }
 }
 
 module.exports = CompanyManager;

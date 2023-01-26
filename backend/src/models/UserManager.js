@@ -44,6 +44,12 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  deleteMulipleUser(userId) {
+    return this.connection.query(`delete from ${this.table} where id IN (?)`, [
+      userId,
+    ]);
+  }
 }
 
 module.exports = UserManager;
