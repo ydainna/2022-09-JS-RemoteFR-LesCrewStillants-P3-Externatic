@@ -10,19 +10,8 @@ export default function UsersManagement() {
   const [roleFilter, setRoleFilter] = useState(0);
   const [search, setSearch] = useState("");
 
-  // state array of users that we get from axios and axios to get data
+  // state array of users that we get from axios
   const [arrayCandidature, setArrayCandidature] = useState([]);
-
-  useEffect(() => {
-    instance
-      .get("/users")
-      .then((result) => {
-        setArrayCandidature(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
 
   // state for users to delete
   const [usersToDelete, setUsersToDelete] = useState([]);
@@ -36,12 +25,36 @@ export default function UsersManagement() {
     }
   };
 
+  const handleDeleteClick = () => {
+    console.warn(usersToDelete);
+    instance
+      .delete("/users-deletion", { data: { arr: usersToDelete } })
+      // .then(() => setUsersToDelete([]))
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  // axios to get data, it should refresh each time we delete some users if everything goes well
+  useEffect(() => {
+    instance
+      .get("/users")
+      .then((result) => {
+        setArrayCandidature(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [handleDeleteClick]);
+
   return (
     <SpecialUsersLayout>
       <section className="users-management">
         <h1>Gestion des Utilisateurs</h1>
         <div className="users-management-div">
-          <button type="button">Supprimer le profil</button>
+          <button type="button" onClick={handleDeleteClick}>
+            Supprimer les profil
+          </button>
           <button type="button">Créer un compte consultant</button>
         </div>
         <div className="users-management-filter">
