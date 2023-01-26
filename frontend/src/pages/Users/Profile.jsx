@@ -110,7 +110,11 @@ export default function Profile() {
             filesToUpload={filesToUpload}
             className={error}
           />
-          <Address id={info.address_id} />
+          <Address
+            id={info.address_id}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+          />
           <Cv />
           <CurrentSituation />
           <SearchParameters />
