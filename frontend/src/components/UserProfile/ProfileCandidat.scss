@@ -1,7 +1,6 @@
 @import "../../assets/variables";
 
 .container_profile {
-
   h1 {
     background-color: $secondary-color-four;
     color: $secondary-color;
@@ -78,10 +77,8 @@
 
     .modal {
       display: flex;
-      img {
-        width: 50%;
-        margin: auto;
-      }
+      width: 80%;
+      margin: auto;
     }
   }
 

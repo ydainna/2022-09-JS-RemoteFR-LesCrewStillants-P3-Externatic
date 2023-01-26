@@ -31,7 +31,6 @@ export default function SearchParameters({ id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(info);
     axios
       .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info, {
         withCredentials: true,

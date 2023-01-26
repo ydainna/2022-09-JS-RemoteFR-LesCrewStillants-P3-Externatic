@@ -111,7 +111,7 @@ export default function Profile() {
             className={error}
           />
           <Address id={info.address_id} />
-          <Cv />
+          <Cv id={info.information_id} />
           <CurrentSituation id={info.information_id} />
           <SearchParameters id={info.information_id} />
           <Parameters id={info.id} />
