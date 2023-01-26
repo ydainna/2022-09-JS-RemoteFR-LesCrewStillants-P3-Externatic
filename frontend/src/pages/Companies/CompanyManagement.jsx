@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import instance from "@utils/instance";
 import "./CManagement.scss";
 import triangle from "@assets/icons/Triangle.svg";
 import stylo from "@assets/icons/Pencil.svg";
@@ -5,6 +7,31 @@ import oeil from "@assets/icons/Eye.svg";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 
 function CompanyManagement() {
+  const [company, setComapany] = useState([]);
+  const [offers, setOffers] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get(`/company`)
+      .then((result) => {
+        setComapany(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    instance
+      .get("/offers")
+      .then((result) => {
+        setOffers(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <SpecialUsersLayout>
       <section id="company-management">
@@ -24,59 +51,45 @@ function CompanyManagement() {
           </button>
         </div>
 
-        <div className="infos">
-          <img
-            className="image"
-            alt="#"
-            src="https://img-0.journaldunet.com/gcFxQdXNrx_SEqEx53NYdxidcGM=/1500x/smart/df12c3d6f77445008518acae53aa34a4/ccmcms-jdn/11174895.jpg"
-          />
+        {company.map((companys) => (
+          <div key={companys.id} className="infos">
+            <img className="image" alt="#" src={companys.banner} />
 
-          <div>
-            <p>Nom entreprise</p>
-          </div>
-
-          <div>
-            <p className="secteur">Secteur</p>
-          </div>
-
-          <div>
-            <img alt="#" className="icones" src={stylo} />
-          </div>
-
-          <div>
-            <p>Description</p>
-          </div>
-
-          <div>
-            <p>Lien vers votre site</p>
-          </div>
-        </div>
-
-        <div className="tab">
-          <div className="tableau1">
-            <p>Nom Offre - Ville</p>
             <div>
-              <img alt="#" className="icn" src={oeil} />
-              <img alt="#" className="icn" src={stylo} />
+              <p>{companys.name}</p>
+            </div>
+
+            <div>
+              <p className="secteur" />
+            </div>
+
+            <div>
+              <p>{company.description}</p>
+            </div>
+
+            <div>
+              <a href={company.link}>{company.link}</a>
+            </div>
+
+            <div>
+              <img alt="#" className="icones" src={stylo} />
             </div>
           </div>
+        ))}
 
-          <div className="tableau2">
-            <p>Nom Offre - Ville</p>
-            <div>
-              <img alt="#" className="icn" src={oeil} />
-              <img alt="#" className="icn" src={stylo} />
+        {offers.map((offer) => (
+          <div key={offers.id} className="tab">
+            <div className="tableau1">
+              <p>
+                {offer.title} - {offer.localisation}
+              </p>
+              <div>
+                <img alt="#" className="icn" src={oeil} />
+                <img alt="#" className="icn" src={stylo} />
+              </div>
             </div>
           </div>
-
-          <div className="tableau3">
-            <p>Nom Offre - Ville</p>
-            <div>
-              <img alt="#" className="icn" src={oeil} />
-              <img alt="#" className="icn" src={stylo} />
-            </div>
-          </div>
-        </div>
+        ))}
 
         <div className="end">
           <button type="submit" className="button_end">
