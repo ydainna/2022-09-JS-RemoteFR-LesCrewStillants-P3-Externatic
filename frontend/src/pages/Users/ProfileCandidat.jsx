@@ -41,7 +41,13 @@ export default function ProfileCandidat() {
       <h1>Profil Candidat</h1>
       <section className="candidat_resume">
         <div className="candidat_presentation">
-          <img className="avatar" src={profil.avatar} alt="Avatar" />
+          <img
+            className="avatar"
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
+              profil.avatar
+            }`}
+            alt="Avatar"
+          />
           <div className="description">
             <p>
               {profil.firstname} {profil.lastname}
