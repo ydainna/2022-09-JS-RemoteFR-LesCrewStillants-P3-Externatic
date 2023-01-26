@@ -24,6 +24,11 @@ export default function SearchParameters({ id }) {
     setInfo({ ...info, [name]: value });
   };
 
+  const handleRemoteChange = (e) => {
+    const { value } = e.target;
+    setInfo({ ...info, isRemote: value === "true" });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.warn(info);
@@ -44,7 +49,6 @@ export default function SearchParameters({ id }) {
     <section id="searchParameters">
       <form onSubmit={handleSubmit}>
         <h1>Critères de recherche</h1>
-
         <label>
           Contrat{" "}
           <select
@@ -83,11 +87,11 @@ export default function SearchParameters({ id }) {
           <select
             name="isRemote"
             id="teletravail-select"
-            value={info.isRemote}
-            onChange={handleChange}
+            value={info.isRemote ? "true" : "false"}
+            onChange={handleRemoteChange}
           >
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
           </select>
         </label>
         <label>
