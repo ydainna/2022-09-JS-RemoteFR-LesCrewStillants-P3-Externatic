@@ -2,7 +2,6 @@ import { Document, Page } from "react-pdf";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Document, Page } from "react-pdf/dist/esm/entry.vite";
 import moment from "moment";
 
 import instance from "@utils/instance";
