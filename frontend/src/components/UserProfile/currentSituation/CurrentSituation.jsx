@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
-import axios from "axios";
 
 import "./CurrentSituation.scss";
 
 export default function CurrentSituation({ id }) {
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState([""]);
 
   useEffect(() => {
     instance
@@ -31,11 +30,9 @@ export default function CurrentSituation({ id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(info);
-    axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info, {
-        withCredentials: true,
-      })
+    instance
+      .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info)
+      .then(console.warn(info))
       .then((res) => {
         console.warn(res);
       })
@@ -51,7 +48,7 @@ export default function CurrentSituation({ id }) {
         <div
           name="type_of_contract"
           id="contrat-select"
-          value={info.isActiveSearch}
+          // value={info.isActiveSearch}
           onChange={handleActiveSearchChange}
         >
           <label>
@@ -83,7 +80,6 @@ export default function CurrentSituation({ id }) {
             onChange={handleChange}
           />
         </label>
-
         <button type="submit">Enregistrer</button>
       </form>
     </section>
