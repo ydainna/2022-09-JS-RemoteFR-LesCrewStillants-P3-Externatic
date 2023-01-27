@@ -22,6 +22,24 @@
     font-weight: 500;
   }
 
+  label {
+    background-color: $primary-color;
+    padding: $basic-space;
+    margin-bottom: $basic-space;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: $basic-space;
+
+    input,
+    select {
+      background-color: $secondary-color-three;
+      border: none;
+      height: $title-bigger-size;
+      outline: none;
+    }
+  }
+
   button {
     display: block;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -33,10 +51,9 @@
     color: $primary-color;
     margin: 0.5rem 0;
     cursor: pointer;
-
-    &:last-of-type {
-      background-color: #c10f0f;
-      margin-top: $basic-space;
-    }
+  }
+  .delete-button {
+    background-color: #c10f0f;
+    margin-top: $basic-space;
   }
 }
