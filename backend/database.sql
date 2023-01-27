@@ -121,12 +121,12 @@ VALUES ("123", "rue victor hugo", "75011", "Paris", "France", ""),
 ("28", "rue Armand Carrel", "93100", "Montreuil", "France", "");
 
 INSERT into user (avatar, email, password, civility, firstname, lastname, phone_number, created_at, role_id, information_id, address_id)
-VALUES ("https://img.freepik.com/photos-gratuite/beau-jeune-homme-t-shirt-blanc-poitrine-bras-croises-souriant-heureux_176420-21607.jpg?w=2000","hello@reallygreatsite.com", "azerty", "M.", "John", "Doe", "0612345678", "2023-01-17", 2, 2, 1),
-("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "siri@applemail.com", "admin", "Mme.", "Siri", "Appletech", "0198765432", "2023-01-17", 1, 2, 2),
-("https://prod.liveshare.vsengsaas.visualstudio.com/join?52EC688E5DFEC3EACF371DE9AA010089957F", "nicolas@carensac.fr", "qwerty", "M.", "Nicolas", "Carensac", "0269765432", "2023-01-19", 2, 3, 3),
-("https://media.licdn.com/dms/image/C5603AQHWw3KW8KUmHQ/profile-displayphoto-shrink_800_800/0/1589282191440?e=1679529600&v=beta&t=Ri2A9XGSktFOv1HIIyFn6tW91VF8YErtAesFmfUmGf4", "perrine.dupisson@externatic.fr", "consultante", "Mme.", "Perrine", "Dupisson", "0269765432", "2023-02-01", 3, 4, 4),
-("avatarTemoin.png", "jeanmarc.pahayrault@externatic.fr", "consultant", "M.", "Jean-Marc", "PaHayrault", "0225644932", "2023-01-16", 3, 5, 5),
-("https://play-lh.googleusercontent.com/SkNOjuAwZsCpzCUqYLOpyw4ksoy2Q8AqXsbaNAf5HO5YWAuYfwVCxMURfymwSWNZHYQ", "rayman@ubisoft.com", "lapincretin", "M.", "Rayman", "Ubisoft", "0612587896", "2023-01-18", 3, 6, 7);
+VALUES ("","hello@reallygreatsite.com", '$argon2id$v=19$m=65536,t=5,p=1$/YQjilP56CLc1d7xhLe+Jw$tWIdMtp2S6NYtJYMPX7nNC1kI1mbmZE2aZu6RcBkgNU', "M.", "John", "Doe", "0612345678", "2023-01-17", 2, 2, 1),
+("", "siri@applemail.com", '$argon2id$v=19$m=65536,t=5,p=1$gqjn8M7yUUvhGRcrYYD6Wg$+Q8DZ3owWlIXaFraJQm46ECiHxUbvG8/cZMN4Ag4zLk', "Mme.", "Siri", "Appletech", "0198765432", "2023-01-17", 1, 2, 2),
+("", "nicolas@carensac.fr", '$argon2id$v=19$m=65536,t=5,p=1$p5j0JsqBx2R9eK0CYhvcaQ$yDkfymrrM7DqpsZKeBmmbul3SBt8sSybpGgi7K/8+oY', "M.", "Nicolas", "Carensac", "0269765432", "2023-01-19", 2, 3, 3),
+("", "perrine.dupisson@externatic.fr", '$argon2id$v=19$m=65536,t=5,p=1$96CiA5ePJIWvlSFyWDzFcQ$3zw9knJPFErn2vM4Eh75DpBMpISjRAYLLVXVEMeV7vg', "Mme.", "Perrine", "Dupisson", "0269765432", "2023-02-01", 3, 4, 4),
+("", "jeanmarc.pahayrault@externatic.fr", '$argon2id$v=19$m=65536,t=5,p=1$FYhLS+de/YzhOSbeoCRjqg$E6ne7rMASAqIXrJfo6s3zUGGwlLkHteHDCiwlQKA+PI', "M.", "Jean-Marc", "PaHayrault", "0225644932", "2023-01-16", 3, 5, 5),
+("", "rayman@ubisoft.com", '$argon2id$v=19$m=65536,t=5,p=1$nTMtPSya8xr+zF7ikpw7Yw$KdYmdNfRKrrUVFwR5X21SRUKEuimjp6qNsLdN/GYtt4', "M.", "Rayman", "Ubisoft", "0612587896", "2023-01-18", 3, 6, 7);
 
 INSERT into company (name, sector, siret, logo, description, banner, link, contact_name, user_id, address_id, is_validated)
 VALUES ("Apple", "technologie", "12345678900012", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png", "Une magnifique entreprise","https://www.sudradio.fr/wp-content/uploads/2017/02/610529-ez-apple.jpg", "https://www.apple.com/fr/", "Siri", 4, 6, 1 ),
