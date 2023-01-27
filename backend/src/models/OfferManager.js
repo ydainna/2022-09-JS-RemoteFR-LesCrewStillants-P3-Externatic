@@ -52,6 +52,13 @@ class UserManager extends AbstractManager {
       ]
     );
   }
+
+  deleteMultipleOffer(userId) {
+    return this.connection.query(
+      `delete from ${this.table} where user_id IN (?)`,
+      [userId]
+    );
+  }
 }
 
 module.exports = UserManager;

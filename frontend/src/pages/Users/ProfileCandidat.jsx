@@ -1,8 +1,8 @@
+import { Document, Page } from "react-pdf";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { Document, Page } from "react-pdf/dist/esm/entry.vite";
-
 import moment from "moment";
 
 import instance from "@utils/instance";
@@ -18,6 +18,7 @@ export default function ProfileCandidat() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
+  // eslint-disable-next-line no-shadow
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
     setPageNumber(pageNumber);
@@ -54,7 +55,7 @@ export default function ProfileCandidat() {
           <img
             className="avatar"
             src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
-              profil.avatar
+              profil.avatar !== "" ? profil.avatar : "avatarTemoin.png"
             }`}
             alt="Avatar"
           />

@@ -15,6 +15,7 @@ const offerControllers = require("./controllers/offerControllers");
 const companyControllers = require("./controllers/companyControllers");
 const infoControllers = require("./controllers/infoControllers");
 const addressControllers = require("./controllers/addressControllers");
+const adminControllers = require("./controllers/adminControllers");
 
 // const decodeToken = require("./services/jwt");
 
@@ -41,6 +42,7 @@ router.get("/company/:id", companyControllers.read);
 router.post("/company", companyControllers.add);
 router.put("/company/:id", companyControllers.edit);
 router.delete("/company/:id", companyControllers.destroy);
+router.put("/company/validate/:id", companyControllers.validate);
 
 // routes information
 router.get("/information", infoControllers.browse);
@@ -57,7 +59,11 @@ router.put("/address/:id", addressControllers.edit);
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
+router.put("/users/edit-password/:id", userControllers.editPassword);
 router.delete("/users/:id", userControllers.destroy);
+
+// route admin for deleting multiple users and all associated entries
+router.delete("/users-deletion", adminControllers.destroyMultiple);
 
 // route POST pour recevoir un fichier
 router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
