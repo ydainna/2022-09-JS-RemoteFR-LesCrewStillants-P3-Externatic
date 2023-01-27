@@ -32,6 +32,13 @@ class InformationManager extends AbstractManager {
       ]
     );
   }
+
+  updateCV(information) {
+    return this.connection.query(
+      `update ${this.table} set cv = ? where id = ?`,
+      [information.filesToUpload, information.id]
+    );
+  }
 }
 
 module.exports = InformationManager;

@@ -4,7 +4,8 @@ const path = require("path");
 const multer = require("multer");
 
 // Destination de stockage des fichiers
-const upload = multer({ dest: "public/uploads/avatar/" });
+const uploadAvatar = multer({ dest: "public/uploads/avatar/" });
+const uploadCV = multer({ dest: "public/uploads/cv/" });
 
 const router = express.Router();
 
@@ -45,6 +46,7 @@ router.delete("/company/:id", companyControllers.destroy);
 router.get("/information", infoControllers.browse);
 router.get("/information/:id", infoControllers.read);
 router.put("/information/:id", infoControllers.edit);
+router.put("/information/cv/:id", infoControllers.editCV);
 
 // routes address
 router.get("/address", addressControllers.browse);
@@ -58,7 +60,7 @@ router.put("/users/:id", userControllers.edit);
 router.delete("/users/:id", userControllers.destroy);
 
 // route POST pour recevoir un fichier
-router.post("/uploads/avatar", upload.single("avatar"), (req, res) => {
+router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
   const { originalname } = req.file;
 
   const { filename } = req.file;
@@ -66,6 +68,21 @@ router.post("/uploads/avatar", upload.single("avatar"), (req, res) => {
   fs.rename(
     `${path.join(__dirname, "../public")}/uploads/avatar/${filename}`,
     `${path.join(__dirname, "../public")}/uploads/avatar/${originalname}`,
+    (err) => {
+      if (err) throw err;
+      res.send("File uploaded");
+    }
+  );
+});
+
+router.post("/uploads/cv", uploadCV.single("cv"), (req, res) => {
+  console.warn(req.file);
+  const { originalname } = req.file;
+  const { filename } = req.file;
+
+  fs.rename(
+    `${path.join(__dirname, "../public")}/uploads/cv/${filename}`,
+    `${path.join(__dirname, "../public")}/uploads/cv/${originalname}`,
     (err) => {
       if (err) throw err;
       res.send("File uploaded");

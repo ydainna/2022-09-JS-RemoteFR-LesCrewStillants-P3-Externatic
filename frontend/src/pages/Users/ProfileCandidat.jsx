@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Document, Page } from "react-pdf";
+import { Document, Page } from "react-pdf/dist/esm/entry.vite";
 
 import moment from "moment";
 
@@ -81,6 +81,7 @@ export default function ProfileCandidat() {
         {isOpen && (
           <div className="modal">
             <Document
+              workerSrc="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js"
               file={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
                 information.cv
               }`}
