@@ -64,11 +64,11 @@ function CompanyManagement() {
             </div>
 
             <div>
-              <p>{company.description}</p>
+              <p>{companys.description}</p>
             </div>
 
             <div>
-              <a href={company.link}>{company.link}</a>
+              <a href={companys.link}>{companys.link}</a>
             </div>
 
             <div>
