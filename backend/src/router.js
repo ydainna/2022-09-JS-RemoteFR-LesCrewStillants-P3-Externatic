@@ -41,6 +41,7 @@ router.get("/company/:id", companyControllers.read);
 router.post("/company", companyControllers.add);
 router.put("/company/:id", companyControllers.edit);
 router.delete("/company/:id", companyControllers.destroy);
+router.put("/company/validate/:id", companyControllers.validate);
 
 // routes information
 router.get("/information", infoControllers.browse);

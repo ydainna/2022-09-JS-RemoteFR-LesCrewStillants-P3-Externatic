@@ -42,7 +42,7 @@ export default function CompanyValidation() {
                   </Link>
                 </td>
                 <td>
-                  <input type="checkbox" name="" id="" />
+                  <input type="checkbox" name="validate" />
                 </td>
                 <td>
                   <ConsultantName id={company.user_id} />

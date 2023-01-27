@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import { Document, Page } from "react-pdf";
+
 import moment from "moment";
-// import cvExp from "@assets/cv/cvExp.png";
 
 import instance from "@utils/instance";
 import "@components/UserProfile/ProfileCandidat.scss";
@@ -12,6 +14,14 @@ export default function ProfileCandidat() {
   const [information, setInformation] = useState([]);
   const [address, setAddress] = useState([]);
   const { id } = useParams();
+
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setPageNumber(pageNumber);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +51,13 @@ export default function ProfileCandidat() {
       <h1>Profil Candidat</h1>
       <section className="candidat_resume">
         <div className="candidat_presentation">
-          <img className="avatar" src={profil.avatar} alt="Avatar" />
+          <img
+            className="avatar"
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
+              profil.avatar
+            }`}
+            alt="Avatar"
+          />
           <div className="description">
             <p>
               {profil.firstname} {profil.lastname}
@@ -64,7 +80,17 @@ export default function ProfileCandidat() {
         </button>
         {isOpen && (
           <div className="modal">
-            <img src={information.cv} className="modal" alt="Cv" />
+            <Document
+              file={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
+                information.cv
+              }`}
+              onLoadSuccess={onDocumentLoadSuccess}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document>
+            <p>
+              Page {pageNumber} of {numPages}
+            </p>
           </div>
         )}
       </section>
