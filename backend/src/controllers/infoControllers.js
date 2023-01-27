@@ -52,8 +52,30 @@ const edit = (req, res) => {
     });
 };
 
+const editCV = (req, res) => {
+  const cv = req.body;
+
+  // TODO validations (length, format...)
+
+  cv.id = parseInt(req.params.id, 10);
+  models.information
+    .updateCV(cv)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
+  editCV,
 };
