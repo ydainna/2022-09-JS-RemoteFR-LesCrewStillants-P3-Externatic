@@ -34,7 +34,7 @@ export default function Parameters({ id }) {
       return;
     }
     instance
-      .put("/users/edit-password/:id", passwordUpdate)
+      .put(`/users/edit-password/${id}`, passwordUpdate)
       .then(() => Notify.success("Votre mot de passe a bien été modifié"))
       .catch((err) =>
         console.error(err, Notify.error("Une erreur est survenue ❌"))

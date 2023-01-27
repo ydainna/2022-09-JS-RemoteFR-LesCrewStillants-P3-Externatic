@@ -45,6 +45,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  updatePassword(user) {
+    return this.connection.query(
+      `update ${this.table} set password = ? where id = ?`,
+      [user.hashedPassword, user.id]
+    );
+  }
+
   deleteMulipleUser(userId) {
     return this.connection.query(`delete from ${this.table} where id IN (?)`, [
       userId,

@@ -56,6 +56,7 @@ router.put("/address/:id", addressControllers.edit);
 router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
+router.put("/users/edit-password/:id", userControllers.editPassword);
 router.delete("/users/:id", userControllers.destroy);
 
 // route admin for deleting multiple users and all associated entries
