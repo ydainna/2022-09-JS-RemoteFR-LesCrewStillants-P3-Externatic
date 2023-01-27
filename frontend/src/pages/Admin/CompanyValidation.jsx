@@ -8,17 +8,6 @@ import "@components/ManagementsPages/Admin/CompanyValidation.scss";
 
 export default function CompanyValidation() {
   const [arrayCompanies, setArrayCompanies] = useState([]);
-  const [companiesToValidate, setCompaniesToValidate] = useState([]);
-
-  const handleCheck = (compaieId, isChecked) => {
-    if (isChecked) {
-      setCompaniesToValidate([...companiesToValidate, compaieId]);
-    } else {
-      setCompaniesToValidate(
-        companiesToValidate.filter((id) => id !== compaieId)
-      );
-    }
-  };
 
   useEffect(() => {
     instance
@@ -53,10 +42,7 @@ export default function CompanyValidation() {
                   </Link>
                 </td>
                 <td>
-                  <input
-                    type="checkbox"
-                    onChange={(e) => handleCheck(company.id, e.target.checked)}
-                  />
+                  <input type="checkbox" name="validate" />
                 </td>
                 <td>
                   <ConsultantName id={company.user_id} />

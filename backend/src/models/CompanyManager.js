@@ -55,7 +55,7 @@ class CompanyManager extends AbstractManager {
 
   validate(company) {
     return this.connection.query(
-      `update ${this.table} set is_validated = ? where id = ?`,
+      `update ${this.table} set is_validated = ? where id IN (?)`,
       [company.is_validated, company.id]
     );
   }
