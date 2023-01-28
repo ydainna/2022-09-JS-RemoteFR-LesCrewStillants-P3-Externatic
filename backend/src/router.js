@@ -71,6 +71,13 @@ router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
 
   const { filename } = req.file;
 
+  //check file is jpg or png
+  if (req.file.mimetype !== "image/jpeg" && req.file.mimetype !== "image/png") {
+    const error = new Error("Only .png and .jpg format allowed!");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+
   fs.rename(
     `${path.join(__dirname, "../public")}/uploads/avatar/${filename}`,
     `${path.join(__dirname, "../public")}/uploads/avatar/${originalname}`,
@@ -85,6 +92,12 @@ router.post("/uploads/cv", uploadCV.single("cv"), (req, res) => {
   console.warn(req.file);
   const { originalname } = req.file;
   const { filename } = req.file;
+
+  if (req.file.mimetype !== "application/pdf") {
+    const error = new Error("Only .pdf format allowed!");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
 
   fs.rename(
     `${path.join(__dirname, "../public")}/uploads/cv/${filename}`,
