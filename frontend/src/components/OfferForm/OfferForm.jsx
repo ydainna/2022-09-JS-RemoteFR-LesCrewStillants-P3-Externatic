@@ -277,15 +277,15 @@ function OfferForm() {
           <>
             <form className="description_job">
               <h2 className="first-h2">Description du poste</h2>
-              <p>{parse(descJob)}</p>
+              {parse(descJob)}
               <h2>Description de l'entreprise</h2>
-              <p>{parse(descEntreprise)}</p>
+              {parse(descEntreprise)}
               <h2>Votre mission</h2>
-              <p>{parse(mission)}</p>
+              {parse(mission)}
               <h2>Profil et expérience souhaités</h2>
-              <p>{parse(profil)}</p>
+              {parse(profil)}
               <h2>Avantages</h2>
-              <p>{parse(advantages)}</p>
+              {parse(advantages)}
             </form>
             <div className="align">
               <button className="button" type="submit" onClick={handleEdit2}>
