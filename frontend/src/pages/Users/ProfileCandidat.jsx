@@ -1,4 +1,3 @@
-import { Document, Page } from "react-pdf";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -13,15 +12,6 @@ export default function ProfileCandidat() {
   const [information, setInformation] = useState([]);
   const [address, setAddress] = useState([]);
   const { id } = useParams();
-
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-
-  // eslint-disable-next-line no-shadow
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setPageNumber(pageNumber);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,19 +69,16 @@ export default function ProfileCandidat() {
           {isOpen ? "Fermer" : "Voir le CV"}
         </button>
         {isOpen && (
-          <div className="modal">
-            <Document
-              workerSrc="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js"
-              file={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
+          <div>
+            <iframe
+              title={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
                 information.cv
               }`}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              <Page pageNumber={pageNumber} />
-            </Document>
-            <p>
-              Page {pageNumber} of {numPages}
-            </p>
+              src={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
+                information.cv
+              }`}
+              className="modal"
+            />
           </div>
         )}
       </section>
