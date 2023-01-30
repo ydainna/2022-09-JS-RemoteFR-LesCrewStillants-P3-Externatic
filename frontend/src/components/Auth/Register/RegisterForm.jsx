@@ -32,7 +32,7 @@ export default function RegisterForm() {
     }
     instance
       .post("/register", registerUser)
-      .then(() => Notify.success("Inscription réussie"))
+      .then(() => Notify.success("Inscription réussie ! 🎉"))
       .then(() => navigate("/login"))
       .catch(() => Notify.error("Une erreur est survenue ❌"));
   };

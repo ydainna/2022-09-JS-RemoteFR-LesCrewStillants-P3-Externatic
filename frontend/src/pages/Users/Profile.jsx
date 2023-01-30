@@ -50,7 +50,7 @@ export default function Profile() {
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
         .then(() => {
-          Notify.success("Vos informations ont été mises à jour!");
+          Notify.success("Vos informations ont été mises à jour !");
         })
         .catch(() =>
           Notify.error("Erreur lors de la mise à jour des informations ❌")

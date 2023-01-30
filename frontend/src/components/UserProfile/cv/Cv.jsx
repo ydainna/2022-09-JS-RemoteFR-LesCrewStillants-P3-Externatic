@@ -34,7 +34,7 @@ export default function Cv({ id }) {
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/cv`, formData)
         .then(() => {
-          Notify.success("Vos informations ont été mises à jour!");
+          Notify.success("Vos informations ont été mises à jour !");
         })
         .catch(() => Notify.error("Erreur lors de l'upload ❌"));
     }
