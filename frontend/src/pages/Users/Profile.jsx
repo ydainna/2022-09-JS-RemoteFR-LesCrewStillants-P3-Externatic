@@ -46,7 +46,7 @@ export default function Profile() {
     formData.append("avatar", inputRef.current.files[0]);
 
     // si j'upload une image alors, post moi le
-    if (filesToUpload) {
+    if (filesToUpload !== info.avatar && filesToUpload) {
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
         .then(() => {
