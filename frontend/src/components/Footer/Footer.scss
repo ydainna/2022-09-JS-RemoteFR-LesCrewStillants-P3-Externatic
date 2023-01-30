@@ -3,21 +3,22 @@
 .footer {
   height: auto;
   width: 100%;
+  height: 3rem;
   background-color: $brand-color;
-  font-size: $title-bigger-size;
+  font-size: $font-size;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   color: $secondary-color-four;
-  padding: $basic-space 0;
-
-  h4 {
-    font-weight: 500;
-  }
+  padding: $basic-space;
 
   .reseaux {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      width: 4rem;
+    }
   }
 
   .text {
@@ -30,6 +31,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: $basic-space * 3;
   }
 
   @media screen and (max-width: 480px) {
@@ -39,6 +41,10 @@
     font-size: $font-size;
     color: $secondary-color-three;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-left: 0;
 
     .reseaux {
       flex-direction: row;
