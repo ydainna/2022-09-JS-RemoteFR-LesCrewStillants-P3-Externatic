@@ -106,12 +106,16 @@ export default function UsersManagement() {
               .map((candidature) => (
                 <tr key={candidature.id}>
                   <td>
-                    <input
-                      type="checkbox"
-                      onChange={(e) =>
-                        handleCheck(candidature.id, e.target.checked)
-                      }
-                    />
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        className="checkbox-box"
+                        onChange={(e) =>
+                          handleCheck(candidature.id, e.target.checked)
+                        }
+                      />
+                      <span className="checkbox-cursor" />
+                    </label>
                   </td>
                   <td>{candidature.lastname}</td>
                   <td>{candidature.firstname}</td>
