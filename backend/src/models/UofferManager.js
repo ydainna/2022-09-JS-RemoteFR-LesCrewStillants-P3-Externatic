@@ -5,6 +5,13 @@ class UofferManager extends AbstractManager {
     super({ table: "user_offer" });
   }
 
+  findAllByUserId(userId) {
+    return this.connection.query(
+      `select * from  ${this.table} where user_id = ?`,
+      [userId]
+    );
+  }
+
   deleteMultipleUserOffer(userId) {
     return this.connection.query(
       `delete from ${this.table} where user_id IN (?) or consultant_id IN (?)`,
