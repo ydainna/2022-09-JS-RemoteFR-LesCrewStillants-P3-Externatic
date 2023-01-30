@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class UOfferManager extends AbstractManager {
+class UofferManager extends AbstractManager {
   constructor() {
     super({ table: "user_offer" });
   }
@@ -34,7 +34,6 @@ class UOfferManager extends AbstractManager {
       id,
     ]);
   }
-}
 
   findAllByUserId(userId) {
     return this.connection.query(
@@ -52,4 +51,3 @@ class UOfferManager extends AbstractManager {
 }
 
 module.exports = UofferManager;
-
