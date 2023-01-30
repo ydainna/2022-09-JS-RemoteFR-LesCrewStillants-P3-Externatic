@@ -64,7 +64,7 @@ router.put("/users/edit-password/:id", userControllers.editPassword);
 router.delete("/users/:id", userControllers.destroy);
 
 // routes user_offer
-router.get("/user-offer", uofferControllers.browser);
+router.get("/user-offers/:id", uofferControllers.browser);
 
 // route admin for deleting multiple users and all associated entries
 router.delete("/users-deletion", adminControllers.destroyMultiple);
@@ -92,7 +92,6 @@ router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
 });
 
 router.post("/uploads/cv", uploadCV.single("cv"), (req, res) => {
-  console.warn(req.file);
   const { originalname } = req.file;
   const { filename } = req.file;
 

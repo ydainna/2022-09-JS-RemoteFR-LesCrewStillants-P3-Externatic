@@ -1,10 +1,8 @@
 const models = require("../models");
 
 const browser = (req, res) => {
-  const user = req.body;
-
   models.user_offer
-    .findAllByUserId(user.user_id)
+    .findAllByUserId(req.params.id)
     .then(([rows]) => {
       res.send(rows);
     })
