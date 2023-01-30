@@ -127,5 +127,4 @@ function CompanyManagement() {
     </SpecialUsersLayout>
   );
 }
-
 export default CompanyManagement;
