@@ -7,7 +7,7 @@ class UofferManager extends AbstractManager {
 
   findAllByUserId(userId) {
     return this.connection.query(
-      `select * from  ${this.table} where user_id = ?`,
+      `select * from  ${this.table} as u inner join offer as o on u.offer_id = o.id  where u.user_id = ?`,
       [userId]
     );
   }
