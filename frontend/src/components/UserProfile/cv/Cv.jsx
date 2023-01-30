@@ -33,14 +33,12 @@ export default function Cv({ id }) {
       console.warn("uploaded");
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/cv`, formData)
-        .catch((err) => console.error(err));
+        .then(() => {
+          Notify.success("Vos informations ont été mises à jour !");
+        })
+        .catch(() => Notify.error("Erreur lors de l'upload ❌"));
     }
-    instance
-      .put(`/information/cv/${id}`, { filesToUpload })
-      .catch((err) =>
-        console.error(err, Notify.error("Mauvaises Informations! ❌"))
-      );
-    Notify.success("Vos informations ont été mises à jour!");
+    instance.put(`/information/cv/${id}`, { filesToUpload });
   };
 
   return (
