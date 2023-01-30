@@ -13,7 +13,7 @@ function Footer() {
       </div>
 
       <div className="text">
-        <h4>Externatic 2022 - tous droits réservés</h4>
+        <h4>Externatic 2022 - Tous droits réservés</h4>
       </div>
 
       <div className="mention">

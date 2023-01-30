@@ -28,7 +28,30 @@ const read = (req, res) => {
     });
 };
 
+const edit = (req, res) => {
+  const address = req.body;
+  console.warn(address);
+  // TODO validations (length, format...)
+
+  address.id = parseInt(req.params.id, 10);
+
+  models.address
+    .update(address)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.status(204).json({ message: "success" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
+  edit,
 };

@@ -36,4 +36,20 @@ class UOfferManager extends AbstractManager {
   }
 }
 
-module.exports = UOfferManager;
+  findAllByUserId(userId) {
+    return this.connection.query(
+      `select * from  ${this.table} as u inner join offer as o on u.offer_id = o.id  where u.user_id = ?`,
+      [userId]
+    );
+  }
+
+  deleteMultipleUserOffer(userId) {
+    return this.connection.query(
+      `delete from ${this.table} where user_id IN (?) or consultant_id IN (?)`,
+      [userId, userId]
+    );
+  }
+}
+
+module.exports = UofferManager;
+

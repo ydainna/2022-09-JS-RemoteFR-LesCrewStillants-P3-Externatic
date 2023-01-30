@@ -17,7 +17,7 @@ export default function Presentation({
         <div className="input_image">
           <img
             src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
-              updateUser.avatar
+              updateUser.avatar !== "" ? updateUser.avatar : "avatarTemoin.png"
             }`}
             alt="Avatar"
           />

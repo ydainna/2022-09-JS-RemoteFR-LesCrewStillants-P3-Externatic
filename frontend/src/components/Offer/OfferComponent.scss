@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
   background-size: 100%;
   height: fit-content;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $basic-space;
 
   .banner_job-offer {
     display: flex;
@@ -63,16 +67,22 @@
       }
     }
   }
-
+}
   .description_job-offer {
     background-color: $secondary-color-four;
     margin: $basic-space * 2 $basic-space * 6;
     padding: 1.5rem;
+    box-shadow: 0 10px 6px -6px #777;
 
     h2 {
       font-size: $font-size;
       font-family: $font-stack;
       padding-bottom: 0.5rem;
+      padding-top: $basic-space;
+    }
+
+    h2:first-child {
+      padding-top: 0;
     }
 
     p {
@@ -93,6 +103,7 @@
       color: $primary-color;
       width: 15rem;
       height: 3rem;
+      margin-top: $basic-space;
     }
   }
 
@@ -105,6 +116,9 @@
   }
 
   @media (max-width: 768px) {
+    .container-offer {
+      margin: 0;
+      width: 100%;
     .banner_job-offer {
       display: flex;
       flex-direction: column;

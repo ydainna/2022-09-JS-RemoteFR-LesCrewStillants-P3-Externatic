@@ -52,6 +52,20 @@ class CompanyManager extends AbstractManager {
       ]
     );
   }
+
+  deleteMulipleCompany(userId) {
+    return this.connection.query(
+      `delete from ${this.table} where user_id IN (?)`,
+      [userId]
+    );
+  }
+
+  validate(company) {
+    return this.connection.query(
+      `update ${this.table} set is_validated = ? where id IN (?)`,
+      [company.is_validated, company.id]
+    );
+  }
 }
 
 module.exports = CompanyManager;

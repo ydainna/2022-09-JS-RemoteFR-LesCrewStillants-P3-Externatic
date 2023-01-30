@@ -140,15 +140,53 @@ const edit = (req, res) => {
     });
 };
 
+const editPassword = (req, res) => {
+  const { password } = req.body;
+
+  const hashingOptions = {
+    type: argon2id,
+    memoryCost: 2 ** 16,
+    timeCost: 5,
+    parallelism: 1,
+  };
+
+  hash(password, hashingOptions).then((hashedPassword) => {
+    const user = { ...req.body, hashedPassword };
+
+    user.id = parseInt(req.params.id, 10);
+
+    models.user
+      .updatePassword(user)
+      .then(([rows]) => {
+        if (rows.affectedRows === 1) {
+          return res.status(201).json({ success: "User password updated" });
+        }
+        return res.status(403).json({ error: "une erreur s'est produite" });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  });
+};
+
 const destroy = (req, res) => {
-  models.user
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.status(404).json({ error: "Couldn't delete user!" });
-      } else {
-        res.status(204).json({ success: "User was successfuly deleted" });
-      }
+  models.user_offer
+    .deleteMultipleUserOffer(req.params.id)
+    .then(() => {
+      models.offer.deleteMultipleOffer(req.params.id);
+    })
+    .then(() => {
+      models.company.deleteMulipleCompany(req.params.id);
+    })
+    .then(() => {
+      models.user.delete(req.params.id).then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.status(404).json({ error: "Couldn't delete user!" });
+        } else {
+          res.status(204).json({ success: "User was successfuly deleted" });
+        }
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -162,5 +200,6 @@ module.exports = {
   add,
   log,
   edit,
+  editPassword,
   destroy,
 };

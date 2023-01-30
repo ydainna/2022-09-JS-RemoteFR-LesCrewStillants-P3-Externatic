@@ -1,5 +1,6 @@
 const models = require("../models");
 
+
 const add = (req, res) => {
   const uoffer = req.body;
 
@@ -26,6 +27,13 @@ const destroyWhatever = (req, res) => {
       } else {
         res.status(204).json({ success: "This offer was successfuly unliked" });
       }
+
+const browser = (req, res) => {
+  models.user_offer
+    .findAllByUserId(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+
     })
     .catch((err) => {
       console.error(err);
@@ -36,4 +44,5 @@ const destroyWhatever = (req, res) => {
 module.exports = {
   add,
   destroyWhatever,
+  browser,
 };

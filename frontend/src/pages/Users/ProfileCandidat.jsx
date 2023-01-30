@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import moment from "moment";
-// import cvExp from "@assets/cv/cvExp.png";
 
 import instance from "@utils/instance";
 import "@components/UserProfile/ProfileCandidat.scss";
@@ -41,7 +41,13 @@ export default function ProfileCandidat() {
       <h1>Profil Candidat</h1>
       <section className="candidat_resume">
         <div className="candidat_presentation">
-          <img className="avatar" src={profil.avatar} alt="Avatar" />
+          <img
+            className="avatar"
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar/${
+              profil.avatar !== "" ? profil.avatar : "avatarTemoin.png"
+            }`}
+            alt="Avatar"
+          />
           <div className="description">
             <p>
               {profil.firstname} {profil.lastname}
@@ -63,8 +69,16 @@ export default function ProfileCandidat() {
           {isOpen ? "Fermer" : "Voir le CV"}
         </button>
         {isOpen && (
-          <div className="modal">
-            <img src={information.cv} className="modal" alt="Cv" />
+          <div>
+            <iframe
+              title={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
+                information.cv
+              }`}
+              src={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${
+                information.cv
+              }`}
+              className="modal"
+            />
           </div>
         )}
       </section>

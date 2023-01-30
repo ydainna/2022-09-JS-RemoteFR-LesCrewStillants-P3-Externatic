@@ -1,7 +1,7 @@
 // we import the font and make it color variables
 @font-face {
   font-family: "Jost";
-  src: url(../../public/Jost-Regular.ttf);
+  src: url(../../../Jost-Regular.ttf);
 }
 
 $font-stack: "Jost", sans-serif;
@@ -37,3 +37,12 @@ $border-radius: 10px;
 $basic-space: 1rem;
 
 $half-space: calc($basic-space / 2);
+
+// Clickable button effect
+button:active {
+  transform: translateY(2px);
+}
+
+button:hover {
+  cursor: pointer;
+}
