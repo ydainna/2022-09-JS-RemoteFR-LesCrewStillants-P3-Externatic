@@ -73,6 +73,7 @@ router.get("/user-offers/:id", uofferControllers.browser);
 
 // route admin for deleting multiple users and all associated entries
 router.delete("/users-deletion", adminControllers.destroyMultiple);
+router.put("/edit-role", adminControllers.updateRole);
 
 
 // route POST pour recevoir un fichier

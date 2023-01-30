@@ -91,7 +91,7 @@ export default function Profile() {
   return (
     <LoggedUsersLayout>
       {info.role_id === 1 || info.role_id === 3 ? (
-        <Link to="/users-management" className="link-consultant">
+        <Link to="/company-management" className="link-consultant">
           Accéder aux pages consultants
         </Link>
       ) : (
