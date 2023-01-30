@@ -3,14 +3,13 @@
 .container {
   background-repeat: no-repeat;
   background-size: 100%;
-  // height: fit-content;
+  margin-top: 0.5rem;
 
   .titre {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $secondary-color-four;
-    margin-top: 0.5rem;
     h1 {
       font-family: $font-stack;
       font-size: $title-size;
