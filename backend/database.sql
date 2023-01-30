@@ -91,6 +91,8 @@ CREATE TABLE user_offer (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 isFavorite BOOLEAN NOT NULL DEFAULT FALSE,
 isApplied BOOLEAN NOT NULL DEFAULT FALSE,
+feedback  VARCHAR(50) NULL DEFAULT "En attente",
+meeting VARCHAR(50) NULL DEFAULT "En attente",
 user_id INT NOT NULL,
 CONSTRAINT fk_user_user_offer FOREIGN KEY (user_id) REFERENCES user(id), 
 offer_id INT NOT NULL,
