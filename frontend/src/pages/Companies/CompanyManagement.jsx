@@ -56,11 +56,12 @@ function CompanyManagement() {
   };
 
   useEffect(() => {
+    console.warn(companies);
     if (companies.length !== 0) {
-      setNameCompany(companies[0].name);
-      setNameSector(companies[0].sector);
-      setNameDescription(companies[0].description);
-      setNameLink(companies[0].link);
+      setNameCompany(companies[1].name);
+      setNameSector(companies[1].sector);
+      setNameDescription(companies[1].description);
+      setNameLink(companies[1].link);
     }
   }, [companies]);
 
@@ -76,17 +77,17 @@ function CompanyManagement() {
   function handleSubmit() {
     setIsEditing(false);
     instance
-      .put(`/company/${companies[0].id}`, {
+      .put(`/company/${companies[1].id}`, {
         name: nameCompany,
         sector: nameSector,
         description: nameDescription,
         link: nameLink,
-        siret: companies[0].siret,
-        logo: companies[0].logo,
-        banner: companies[0].banner,
-        contact_name: companies[0].contact_name,
-        user_id: companies[0].user_id,
-        address_id: companies[0].address_id,
+        siret: companies[1].siret,
+        logo: companies[1].logo,
+        banner: companies[1].banner,
+        contact_name: companies[1].contact_name,
+        user_id: companies[1].user_id,
+        address_id: companies[1].address_id,
       })
       .then((res) => {
         console.warn(res);
@@ -112,14 +113,13 @@ function CompanyManagement() {
             name="filtre"
             id="filtre"
           >
-            <option value="all">Entreprise</option>
+            <option value="all">Choisir une entreprise</option>
             {companies.map((company) => (
               <option value={company.user_id}>{company.name}</option>
             ))}
           </select>
-
           <button type="submit" className="bu">
-            Crée une nouvelle page entreprise
+            Créer une nouvelle page entreprise
           </button>
         </div>
 
@@ -155,50 +155,53 @@ function CompanyManagement() {
                     handleSubmit();
                   }}
                 >
-                  <img alt="modif" className="icones" src={images[modif]} />
+                  <img alt="modif" className="valid" src={images[modif]} />
                 </button>
               </form>
             );
           }
           return (
-            <>
-              <form className="infos">
-                <img className="image" alt="#" src={company.banner} />
-                <p>{nameCompany}</p>
-                <p>{nameSector}</p>
+            <form className="infos">
+              <img alt="#" src={company.banner} />
+              <div className="column">
+                <h3>{nameCompany}</h3>
                 <p>{nameDescription}</p>
-                <p>{nameLink}</p>
-              </form>
-              <button className="button" type="submit" onClick={handleEdit}>
+                <a href={`${nameLink}`}>{nameLink}</a>
+              </div>
+              <h3 className="sector">{nameSector}</h3>
+              <button className="valid" type="submit" onClick={handleEdit}>
                 <img src={images[modif]} alt="Modif" />
               </button>
-            </>
+            </form>
           );
         })}
 
         {filterOffers.map((offer) => (
-          <div key={offers.user_id} className="tab">
-            <div className="tableau1">
-              <p>
-                {offer.title} - {offer.localisation}
-              </p>
+          <table key={offers.user_id}>
+            <tr>
+              <th>{offer.title}</th>
+              <th>{offer.localisation}</th>
               <div>
-                <Link to={`/offers/${offer.id}`} target="_blank">
-                  <img alt="#" className="icn" src={oeil} />
-                </Link>
-                <Link to={`/offerRegister/${offer.id}`} target="_blank">
-                  <img alt="#" className="icn" src={Pencil} />
-                </Link>
+                <th>
+                  <Link to={`/offers/${offer.id}`} target="_blank">
+                    <img alt="#" className="icn" src={oeil} />
+                  </Link>
+                </th>
+                <th>
+                  <Link to={`/offerRegister/${offer.id}`} target="_blank">
+                    <img alt="#" className="icn" src={Pencil} />
+                  </Link>
+                </th>
               </div>
-            </div>
-          </div>
+            </tr>
+          </table>
         ))}
 
         <div className="end">
           {filterCompanies.length === 0 ? (
             ""
           ) : (
-            <button type="submit" className="button_end">
+            <button type="submit" className="add_offer">
               Ajoutez une offre
             </button>
           )}
