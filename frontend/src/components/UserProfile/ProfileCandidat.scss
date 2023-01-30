@@ -107,6 +107,8 @@
         margin-top: $basic-space;
         padding: 1rem;
         background-color: $primary-color;
+        box-shadow: 0 3px 10px 2px #777;
+
       }
       .box3 {
         grid-column-start: 1;
@@ -119,7 +121,7 @@
         grid-column-end: 5;
         margin-bottom: $basic-space;
         padding: 1rem;
-
+        box-shadow: 0 3px 10px 2px #777;
         background-color: $primary-color;
       }
     }
