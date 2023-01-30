@@ -34,9 +34,7 @@ export default function RegisterForm() {
       .post("/register", registerUser)
       .then(() => Notify.success("Inscription réussie"))
       .then(() => navigate("/login"))
-      .catch((err) =>
-        console.error(err, Notify.error("Une erreur est survenue ❌"))
-      );
+      .catch(() => Notify.error("Une erreur est survenue ❌"));
   };
 
   const togglePassword = () => {
