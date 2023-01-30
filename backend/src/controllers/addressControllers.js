@@ -30,7 +30,6 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const address = req.body;
-  console.warn(address);
   // TODO validations (length, format...)
 
   address.id = parseInt(req.params.id, 10);
