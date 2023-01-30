@@ -62,7 +62,7 @@ function CardOffer({ offer }) {
           isApplied: false,
           user_id: user,
           offer_id: offer.id,
-          consultant_id: 5,
+          consultant_id: company.user_id,
         })
         .then(() => {
           setIsFavorite(true);
