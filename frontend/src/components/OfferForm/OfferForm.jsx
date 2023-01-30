@@ -1,43 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import instance from "@utils/instance";
+import { ToastContainer, toast } from "react-toastify";
 
-import offerData from "@services/offerData";
+import parse from "html-react-parser";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 import Pencil from "@assets/icons/Pencil.svg";
 import Check from "@assets/icons/Check.svg";
 import "./OfferForm.scss";
 
 function OfferForm() {
-  const [img, setImg] = useState(offerData[0].img);
-  const [nameJob, setNameJob] = useState(offerData[0].nameJob);
-  const [nameEntreprise, setNameEntreprise] = useState(
-    offerData[0].nameEntreprise
-  );
-  const [adressEntreprise, setAdressEntreprise] = useState(
-    offerData[0].adressEntreprise
-  );
-  const [contrat, setContrat] = useState(offerData[0].contrat);
-  const [compensation, setCompensation] = useState(offerData[0].compensation);
-  const [schedule, setSchedule] = useState(offerData[0].schedule);
-  const [descJob, setDescJob] = useState(offerData[0].descJob);
-  const [descEntreprise, setDescEntreprise] = useState(
-    offerData[0].descEntreprise
-  );
-  const [mission, setMission] = useState(offerData[0].mission);
-  const [profil, setProfil] = useState(offerData[0].profil);
-  const [advantages, setAdvantages] = useState(offerData[0].advantages);
+  // States pour récupérer les données dans la database
+  const [company, setCompany] = useState([]);
+  const [offers, setOffers] = useState([]);
+  const { id } = useParams();
 
+  // States pour changer les données dans la database
+  const [img, setImg] = useState("");
+  const [nameJob, setNameJob] = useState("");
+  const [nameEntreprise, setNameEntreprise] = useState("");
+  const [adressEntreprise, setAdressEntreprise] = useState("");
+  const [contrat, setContrat] = useState("");
+  const [compensation, setCompensation] = useState("");
+  const [schedule, setSchedule] = useState("");
+  const [descJob, setDescJob] = useState("");
+  const [descEntreprise, setDescEntreprise] = useState("");
+  const [mission, setMission] = useState("");
+  const [profil, setProfil] = useState("");
+  const [advantages, setAdvantages] = useState("");
+
+  // States pour actionner l'état édition on/off de la page
   const [isEditingForm1, setIsEditingForm1] = useState(false);
   const [isEditingForm2, setIsEditingForm2] = useState(false);
   const [isEditingForm3, setIsEditingForm3] = useState(false);
-
   const [modif, setModif] = useState("Pencil");
-
   const [showModal, setShowModal] = useState(false);
-
   const images = {
     Pencil,
     Check,
   };
 
+  // Pour le 2ème form, la dépendance react-quill nous oblige à récupérer une string vide dans le state, c'est pourquoi on utilise un useEffect pour récupérer les données dans un 2ème temps.
+  useEffect(() => {
+    if (offers.length !== 0) {
+      setNameJob(offers.title);
+      setAdressEntreprise(offers.localisation);
+      setContrat(offers.type_of_contract);
+      setCompensation(offers.compensation);
+      setSchedule(offers.schedule);
+      setDescJob(offers.job_description);
+      setMission(offers.mission);
+      setProfil(offers.seeked_profile);
+      setAdvantages(offers.complementary_info);
+    }
+  }, [offers]);
+  useEffect(() => {
+    if (company.length !== 0) {
+      setImg(company.banner);
+      setNameEntreprise(company.name);
+      setDescEntreprise(company.description);
+    }
+  }, [company]);
+
+  // useEffect pour récupérer les données de la database
+  useEffect(() => {
+    instance
+      .get(`/offers/${id}`)
+      .then((result) => {
+        setOffers(result.data);
+        // extract the company_id from the returned data
+        const companyId = result.data.company_id;
+        // make the second request using the company_id
+        instance
+          .get(`/company/${companyId}`)
+          .then((results) => {
+            setCompany(results.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
+  // Fonctions handleEdit qui permettent de passer en mode édition des formulaires
   function handleEdit1() {
     setIsEditingForm1(!isEditingForm1);
     if (modif === "Pencil") {
@@ -70,18 +120,38 @@ function OfferForm() {
     setShowModal(!showModal);
   }
 
+  // Fonction pour update les données dans la database
   function handleSubmit(event) {
     event.preventDefault();
     setIsEditingForm1(false);
     setIsEditingForm2(false);
     console.warn("infos envoyées");
     // Envoyer les données vers le backend ici
+    instance
+      .put(`/offers/${id}`, {
+        title: nameJob,
+        localisation: adressEntreprise,
+        type_of_contract: contrat,
+        compensation,
+        schedule,
+        job_description: descJob,
+        mission,
+        seeked_profile: profil,
+        complementary_info: advantages,
+      })
+      .then((res) => {
+        console.warn(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    toast.success("Les modifications ont bien été faites");
   }
 
   return (
     <section
       className="container"
-      style={{ backgroundImage: `url(${img})` }}
+      style={{ backgroundImage: `url(${company.banner})` }}
       onChange={(event) => setImg(event.target.value)}
     >
       <div className="titre">
@@ -161,35 +231,40 @@ function OfferForm() {
         {isEditingForm2 ? (
           <>
             <form className="description_job" onSubmit={handleSubmit}>
-              <h2>Description du poste</h2>
-              <textarea
+              <h2 className="first-h2">Description du poste</h2>
+              <ReactQuill
+                theme="snow"
                 value={descJob}
                 rows={4}
-                onChange={(event) => setDescJob(event.target.value)}
+                onChange={(value) => setDescJob(value)}
               />
               <h2>Description de l'entreprise</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={descEntreprise}
-                onChange={(event) => setDescEntreprise(event.target.value)}
+                onChange={(value) => setDescEntreprise(value)}
               />
               <h2>Votre mission</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={mission}
-                onChange={(event) => setMission(event.target.value)}
+                onChange={(value) => setMission(value)}
               />
               <h2>Profil et expérience souhaités</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={profil}
-                onChange={(event) => setProfil(event.target.value)}
+                onChange={(value) => setProfil(value)}
               />
               <h2>Avantages</h2>
-              <textarea
+              <ReactQuill
+                theme="snow"
                 rows={4}
                 value={advantages}
-                onChange={(event) => setAdvantages(event.target.value)}
+                onChange={(value) => setAdvantages(value)}
               />
             </form>
             <div className="align">
@@ -201,16 +276,16 @@ function OfferForm() {
         ) : (
           <>
             <form className="description_job">
-              <h2>Description du poste</h2>
-              <p>{descJob}</p>
+              <h2 className="first-h2">Description du poste</h2>
+              {parse(descJob)}
               <h2>Description de l'entreprise</h2>
-              <p>{descEntreprise}</p>
+              {parse(descEntreprise)}
               <h2>Votre mission</h2>
-              <p>{mission}</p>
+              {parse(mission)}
               <h2>Profil et expérience souhaités</h2>
-              <p>{profil}</p>
+              {parse(profil)}
               <h2>Avantages</h2>
-              <p>{advantages}</p>
+              {parse(advantages)}
             </form>
             <div className="align">
               <button className="button" type="submit" onClick={handleEdit2}>
@@ -225,6 +300,7 @@ function OfferForm() {
           Envoyer les modifications
         </button>
       </div>
+      <ToastContainer />
     </section>
   );
 }

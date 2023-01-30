@@ -1,20 +1,86 @@
+import { useState, useEffect } from "react";
+import instance from "@utils/instance";
+import Notify from "@utils/notification";
+
 import "./CurrentSituation.scss";
 
-export default function CurrentSituation() {
+export default function CurrentSituation({ id }) {
+  const [info, setInfo] = useState([""]);
+
+  useEffect(() => {
+    instance
+      .get(`/information/${id}`)
+      .then((result) => {
+        setInfo(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInfo({ ...info, [name]: value });
+  };
+
+  const handleActiveSearchChange = (e) => {
+    const { value } = e.target;
+    setInfo({ ...info, isActiveSearch: value === "true" });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    instance
+      .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info)
+      .then(console.warn(info))
+      .then((res) => {
+        console.warn(res);
+      })
+      .catch((err) =>
+        console.error(err, Notify.error("Mauvaises Informations! ❌"))
+      );
+    Notify.success("Vos informations ont été mises à jour!");
+  };
   return (
     <section id="currentSituation">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Situation Actuelle</h1>
-        <label>
-          Recherche Active <input type="radio" name="search" value="active" />
-        </label>
+        <div
+          name="type_of_contract"
+          id="contrat-select"
+          // value={info.isActiveSearch}
+          onChange={handleActiveSearchChange}
+        >
+          <label>
+            Recherche Active{" "}
+            <input
+              type="radio"
+              name="isActiveSearch"
+              value="true"
+              checked={info.isActiveSearch ? "true" : ""}
+            />
+          </label>
+          <label>
+            Recherche Passive{" "}
+            <input
+              type="radio"
+              name="isActiveSearch"
+              value="false"
+              checked={info.isActiveSearch ? "" : "false"}
+            />
+          </label>
+        </div>
 
-        <label>
-          Recherche Passive{" "}
-          <input type="radio" name="search" value="passive" checked />
+        <label className="actual_situation">
+          Emploi actuel{" "}
+          <input
+            type="text"
+            name="actual_situation"
+            value={info.actual_situation}
+            onChange={handleChange}
+          />
         </label>
-
-        <button type="button">Enregistrer</button>
+        <button type="submit">Enregistrer</button>
       </form>
     </section>
   );

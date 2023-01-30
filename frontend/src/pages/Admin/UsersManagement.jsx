@@ -1,83 +1,80 @@
+import { useState, useEffect } from "react";
+import instance from "@utils/instance";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 
 import "@components/ManagementsPages/Admin/UsersManagement.scss";
 
 export default function UsersManagement() {
-  const arrayCandidature = [
-    {
-      id: 1,
-      lastname: "Dupont",
-      firstname: "Martine",
-      email: "martine.dupont@email.com",
-      role: "Candidat",
-    },
-    {
-      id: 2,
-      lastname: "Elmer",
-      firstname: "Valentin",
-      email: "valentin.elmer@externatic.fr",
-      role: "Consultant",
-    },
-    {
-      id: 3,
-      lastname: "Durand",
-      firstname: "Patrick",
-      email: "patric.durand@externatic.fr",
-      role: "Admin",
-    },
-    {
-      id: 4,
-      lastname: "Dugoûter",
-      firstname: "Alicia",
-      email: "aliciadugouter@gmail.fr",
-      role: "Candidat",
-    },
-    {
-      id: 5,
-      lastname: "Castanor",
-      firstname: "Estelle",
-      email: "estelle.castanor@yahoo.org",
-      role: "Candidat",
-    },
-    {
-      id: 6,
-      lastname: "Dupuis",
-      firstname: "Marie",
-      email: "marie.dupuis@msn.fr",
-      role: "Candidat",
-    },
-    {
-      id: 7,
-      lastname: "Doe",
-      firstname: "John",
-      email: "johndoe@yopmail.com",
-      role: "Candidat",
-    },
-    {
-      id: 8,
-      lastname: "Pivert",
-      firstname: "Georges",
-      email: "georges.pivert@externatic.fr",
-      role: "Consultant",
-    },
-  ];
+  // filters states and array for roles
+  const arrayRoleName = ["Admin", "Candidat", "Consultant"];
+  const [roleFilter, setRoleFilter] = useState(0);
+  const [search, setSearch] = useState("");
+
+  // state array of users that we get from axios
+  const [arrayCandidature, setArrayCandidature] = useState([]);
+
+  // state for users to delete
+  const [usersToDelete, setUsersToDelete] = useState([]);
+
+  const handleCheck = (candidatureId, statusCheckBox) => {
+    if (statusCheckBox) {
+      setUsersToDelete([...usersToDelete, candidatureId]);
+    }
+    if (!statusCheckBox) {
+      setUsersToDelete([...usersToDelete.filter((id) => id !== candidatureId)]);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    if (usersToDelete.length !== 0) {
+      instance
+        .delete("/users-deletion", { data: { arr: usersToDelete } })
+        // .then(() => setUsersToDelete([]))
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
+
+  // axios to get data, it should refresh each time we delete some users if everything goes well
+  useEffect(() => {
+    instance
+      .get("/users")
+      .then((result) => {
+        setArrayCandidature(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <SpecialUsersLayout>
       <section className="users-management">
         <h1>Gestion des Utilisateurs</h1>
         <div className="users-management-div">
-          <button type="button">Supprimer le profil</button>
+          <button type="button" onClick={handleDeleteClick}>
+            Supprimer les profil
+          </button>
           <button type="button">Créer un compte consultant</button>
         </div>
         <div className="users-management-filter">
-          <input type="search" name="" id="" placeholder="Rechercher..." />
-          <select name="" id="">
-            <option value="Rôles">Rôles</option>
-            <option value="Candidat">Candidats</option>
-            <option value="Consultant">Consultants</option>
-            <option value="Admin">Admins</option>
+          <input
+            type="text"
+            placeholder="Rechercher..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <select
+            name=""
+            id=""
+            onChange={(e) => setRoleFilter(parseInt(e.target.value, 10))}
+          >
+            <option value="0">Rôles</option>
+            <option value="2">Candidats</option>
+            <option value="3">Consultants</option>
+            <option value="1">Admins</option>
           </select>
-          <button type="button">Réinitialiser ma rechercher</button>
+          <button type="button">Réinitialiser ma sélection</button>
         </div>
         <table width="100%">
           <tbody>
@@ -88,17 +85,40 @@ export default function UsersManagement() {
               <th>Email</th>
               <th>Rôles</th>
             </tr>
-            {arrayCandidature.map((candidature) => (
-              <tr key={candidature.id}>
-                <td>
-                  <input type="checkbox" name="" id="" />
-                </td>
-                <td>{candidature.lastname}</td>
-                <td>{candidature.firstname}</td>
-                <td>{candidature.email}</td>
-                <td>{candidature.role}</td>
-              </tr>
-            ))}
+            {arrayCandidature
+              .filter(
+                (candidat) =>
+                  candidat.role_id === roleFilter || roleFilter === 0
+              )
+              .filter(
+                (candidat) =>
+                  (candidat.firstname
+                    ? candidat.firstname
+                        .toLowerCase()
+                        .includes(search.toLowerCase())
+                    : "") ||
+                  (candidat.lastname
+                    ? candidat.lastname
+                        .toLowerCase()
+                        .includes(search.toLowerCase())
+                    : "")
+              )
+              .map((candidature) => (
+                <tr key={candidature.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        handleCheck(candidature.id, e.target.checked)
+                      }
+                    />
+                  </td>
+                  <td>{candidature.lastname}</td>
+                  <td>{candidature.firstname}</td>
+                  <td>{candidature.email}</td>
+                  <td>{arrayRoleName[candidature.role_id - 1]}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </section>

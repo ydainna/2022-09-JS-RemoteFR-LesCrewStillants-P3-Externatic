@@ -1,63 +1,58 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import instance from "@utils/instance";
+import Notify from "@utils/notification";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
+import ConsultantName from "@components/ManagementsPages/Admin/ConsultantName";
 
 import "@components/ManagementsPages/Admin/CompanyValidation.scss";
 
 export default function CompanyValidation() {
-  const arrayCompanies = [
-    {
-      id: 1,
-      name: "Maison du Monde",
-      link: "",
-      consultant: "Georges",
-    },
-    {
-      id: 2,
-      name: "Elmer Entreprise",
-      link: "",
-      consultant: "Valentin",
-    },
-    {
-      id: 3,
-      name: "Induseo",
-      link: "",
-      consultant: "Damien",
-    },
-    {
-      id: 4,
-      name: "Underguard",
-      link: "",
-      consultant: "Laure",
-    },
-    {
-      id: 5,
-      name: "Decathlon Tech",
-      link: "",
-      consultant: "Anaïs",
-    },
-    {
-      id: 6,
-      name: "Groupama",
-      link: "",
-      consultant: "Alicia",
-    },
-    {
-      id: 7,
-      name: "U Iris",
-      link: "",
-      consultant: "Yohan",
-    },
-    {
-      id: 8,
-      name: "Lucca",
-      link: "",
-      consultant: "Christopher",
-    },
-  ];
+  const [arrayCompanies, setArrayCompanies] = useState([]);
+
+  const handleCheck = (companyId, isChecked) => {
+    setArrayCompanies(
+      arrayCompanies.map((company) =>
+        company.id === companyId
+          ? { ...company, is_validated: isChecked }
+          : company
+      )
+    );
+  };
+
+  const handleSubmit = () => {
+    arrayCompanies.forEach((company) => {
+      instance
+        .patch(`/company/validate/${company.id}`, {
+          is_validated: company.is_validated,
+        })
+        .then(() => {
+          Notify.success("La page entreprise a bien été validée");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  };
+
+  useEffect(() => {
+    instance
+      .get("/company")
+      .then((result) => {
+        setArrayCompanies(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <SpecialUsersLayout>
       <section className="companies-validation">
         <h1>Validation des Pages Entreprises</h1>
-        <button type="button">Valider la page entreprise</button>
+        <button type="button" onClick={handleSubmit}>
+          Valider la page entreprise
+        </button>
         <table width="100%">
           <tbody>
             <tr>
@@ -70,12 +65,21 @@ export default function CompanyValidation() {
               <tr key={company.id}>
                 <td>{company.name}</td>
                 <td>
-                  <a href={company.link}>Voir la page</a>
+                  <Link to={`/companies/${company.id}`} target="_blank">
+                    Voir la page
+                  </Link>
                 </td>
                 <td>
-                  <input type="checkbox" name="" id="" />
+                  <input
+                    type="checkbox"
+                    name="validate"
+                    checked={company.is_validated}
+                    onChange={(e) => handleCheck(company.id, e.target.checked)}
+                  />
                 </td>
-                <td>{company.consultant}</td>
+                <td>
+                  <ConsultantName id={company.user_id} />
+                </td>
               </tr>
             ))}
           </tbody>

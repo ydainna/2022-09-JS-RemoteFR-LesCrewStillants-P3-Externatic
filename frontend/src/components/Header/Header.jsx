@@ -1,12 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Header.scss";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/Logo-Externatic.svg";
+
+import "./Header.scss";
 
 function Header() {
   const [showLinks, setShowLinks] = useState(false);
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
+  };
+
+  const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const reloadInfo = () => {
+    if (token !== null) {
+      return navigate("/profile");
+    }
+
+    return navigate("/login");
   };
 
   return (
@@ -22,16 +34,14 @@ function Header() {
             }`}
           />
         </button>
-        <Link to="/login">
-          <button type="button" className="button">
-            <h1>ESPACE CANDIDAT</h1>
-          </button>
-        </Link>
+        <button type="button" className="button" onClick={reloadInfo}>
+          <h1>ESPACE CANDIDAT</h1>
+        </button>
       </div>
       <nav>
         <ul className={`${showLinks ? "show-nav " : "hide-nav"}`}>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
-            <Link to="/offerlist">OFFRES D'EMPLOI</Link>
+            <Link to="/offers">OFFRES D'EMPLOI</Link>
           </li>
           <li className={`${showLinks ? "list liShown" : "list"}`}>
             <a

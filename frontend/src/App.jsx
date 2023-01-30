@@ -1,6 +1,5 @@
-import Router from "@components/Router/Router";
-
 import "./App.scss";
+import Router from "@components/Router/Router";
 
 function App() {
   return (

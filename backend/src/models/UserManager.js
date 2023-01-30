@@ -9,9 +9,9 @@ class UserManager extends AbstractManager {
     return this.connection.query(`select * from  ${this.table}`);
   }
 
-  insert(user) {
+  insert(user, information, address) {
     return this.connection.query(
-      `insert into ${this.table} (email, password) values (?, ?)`,
+      `insert into ${this.table} (email, password, information_id, address_id) values (?, ?, ${information}, ${address})`,
       [user.email, user.hashedPassword]
     );
   }
@@ -32,8 +32,9 @@ class UserManager extends AbstractManager {
 
   update(user) {
     return this.connection.query(
-      `update ${this.table} set email = ?, civility = ?, phone_number = ?, lastname = ?, firstname = ? where id = ?`,
+      `update ${this.table} set avatar = ?, email = ?, civility = ?, phone_number = ?, lastname = ?, firstname = ? where id = ?`,
       [
+        user.avatar,
         user.email,
         user.civility,
         user.phone_number,
@@ -42,6 +43,19 @@ class UserManager extends AbstractManager {
         user.id,
       ]
     );
+  }
+
+  updatePassword(user) {
+    return this.connection.query(
+      `update ${this.table} set password = ? where id = ?`,
+      [user.hashedPassword, user.id]
+    );
+  }
+
+  deleteMulipleUser(userId) {
+    return this.connection.query(`delete from ${this.table} where id IN (?)`, [
+      userId,
+    ]);
   }
 }
 

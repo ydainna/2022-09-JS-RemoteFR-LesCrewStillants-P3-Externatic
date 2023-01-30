@@ -1,7 +1,6 @@
 @import "../../assets/_variables.scss";
 
 .footer {
-  position: absolute;
   height: auto;
   width: 100%;
   background-color: $brand-color;
@@ -14,55 +13,52 @@
   h4 {
     font-weight: 500;
   }
-}
 
-.reseaux {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .reseaux {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.mention {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .mention {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-@media screen and (max-width: 480px) {
-  .footer {
-    position: absolute;
+  @media screen and (max-width: 480px) {
     height: auto;
     width: 100%;
     background-color: $brand-color;
     font-size: $font-size;
     color: $secondary-color-three;
     flex-direction: column;
-  }
 
-  .reseaux {
-    flex-direction: row;
-    order: 1;
-  }
+    .reseaux {
+      flex-direction: row;
+      order: 1;
+    }
 
-  .text {
-    margin-top: 0px;
-  }
+    .text {
+      margin-top: 0px;
+    }
 
-  .mention {
-    order: 2;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
+    .mention {
+      order: 2;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
 
-  .text,
-  .mention,
-  .reseaux {
-    align-items: center;
+    .text,
+    .mention,
+    .reseaux {
+      align-items: center;
+    }
   }
 }

@@ -17,12 +17,13 @@ import Offer from "@pages/Offers/Offer";
 import OfferRegister from "@pages/Offers/OfferRegister";
 
 import Company from "@pages/Companies/Company";
+import CompanyManagement from "@pages/Companies/CompanyManagement";
 
 import Error from "@pages/Error/Error";
 
 import UsersManagement from "@pages/Admin/UsersManagement";
 import CompanyValidation from "@pages/Admin/CompanyValidation";
-
+import CanditateManagement from "@pages/Companies/CandidateManagement";
 import Footer from "@components/Footer/Footer";
 
 export default function Router() {
@@ -35,7 +36,6 @@ export default function Router() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/offerlist" element={<OfferList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/:id" element={<ProfileCandidat />} />
         <Route path="/favorite-offers" element={<FavoriteOffers />} />
@@ -43,12 +43,14 @@ export default function Router() {
 
         <Route path="/offers" element={<OfferList />} />
         <Route path="/offers/:id" element={<Offer />} />
-        <Route path="/offerRegister" element={<OfferRegister />} />
+        <Route path="/offerRegister/:id" element={<OfferRegister />} />
         <Route path="/companies/:id" element={<Company />} />
 
         <Route path="*" element={<Error />} />
         <Route path="/users-management" element={<UsersManagement />} />
         <Route path="/companies-validation" element={<CompanyValidation />} />
+        <Route path="/candidate-management" element={<CanditateManagement />} />
+        <Route path="/company-management" element={<CompanyManagement />} />
       </Routes>
       <Footer />
     </BrowserRouter>

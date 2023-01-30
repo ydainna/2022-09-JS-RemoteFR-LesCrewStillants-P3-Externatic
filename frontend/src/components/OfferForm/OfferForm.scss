@@ -3,14 +3,13 @@
 .container {
   background-repeat: no-repeat;
   background-size: 100%;
-  // height: fit-content;
+  margin-top: 0.5rem;
 
   .titre {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $secondary-color-four;
-    margin-top: 0.5rem;
     h1 {
       font-family: $font-stack;
       font-size: $title-size;
@@ -65,7 +64,6 @@
     h2 {
       font-size: $title-size;
       font-family: $font-stack;
-
       padding-bottom: 0.5rem;
     }
     h3 {
@@ -101,21 +99,20 @@
       font-size: $font-size;
       font-family: $font-stack;
       padding-bottom: 0.5rem;
+      padding-top: $basic-space * 2;
+    }
+    .first-h2 {
+      padding-top: 0;
     }
 
     p {
-      padding-bottom: 2rem;
       font-family: $font-stack;
-    }
-    textarea {
-      font-family: $font-stack;
-      margin-bottom: 0.5rem;
-      width: 100%;
     }
   }
   .button {
     background-color: transparent;
     border: none;
+    margin-top: $basic-space * 2;
   }
 }
 

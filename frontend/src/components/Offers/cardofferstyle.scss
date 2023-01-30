@@ -1,0 +1,111 @@
+@import "../../assets/variables";
+
+.card {
+  background-color: $secondary-color-four;
+  display: flex;
+}
+
+.card-personalize {
+  display: flex;
+  margin: $basic-space;
+  align-items: center;
+}
+
+.card-header {
+  width: 40%;
+}
+
+.card-header img {
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  margin: $basic-space;
+  display: flex;
+  flex-direction: column;
+  gap: $basic-space;
+}
+
+.offerbuttons {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.card-button {
+  padding: 0.5rem 3rem;
+  border: none;
+  background-color: $brand-color;
+  color: $secondary-color-four;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.heart-offer {
+  border: none;
+  background-color: transparent;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.greyHeart-offer {
+  filter: grayscale(100%);
+}
+
+.heart-offer:hover,
+.card-button:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
+  .card {
+    display: block;
+
+    .card-personalize {
+      display: flex;
+      margin: 0;
+
+      .card-header {
+        height: 100%;
+      }
+
+      .card-body {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .card-title {
+          font-size: $title-size;
+        }
+
+        .card-description {
+          font-size: $font-size;
+          text-align: center;
+        }
+
+        .card-contract {
+          font-size: $font-size;
+        }
+      }
+    }
+  }
+
+  .offerbuttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    margin-left: 40%;
+
+    .card-button {
+      padding: 0.2rem 1.5rem;
+    }
+
+    .heart-offer img {
+      width: 70%;
+    }
+  }
+}

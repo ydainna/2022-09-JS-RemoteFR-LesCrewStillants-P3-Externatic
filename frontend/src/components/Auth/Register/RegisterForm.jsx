@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Notify from "@utils/notification";
+import instance from "@utils/instance";
 
 import "./RegisterForm.scss";
 
@@ -10,6 +12,7 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +30,13 @@ export default function RegisterForm() {
       Notify.error("Veuillez remplir tous les champs");
       return;
     }
-    Notify.success("Inscription réussie");
+    instance
+      .post("/register", registerUser)
+      .then(() => Notify.success("Inscription réussie"))
+      .then(() => navigate("/login"))
+      .catch((err) =>
+        console.error(err, Notify.error("Une erreur est survenue ❌"))
+      );
   };
 
   const togglePassword = () => {
