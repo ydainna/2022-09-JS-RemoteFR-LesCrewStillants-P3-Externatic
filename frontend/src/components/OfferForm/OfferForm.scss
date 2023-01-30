@@ -1,147 +1,148 @@
 @import "../../assets/_variables.scss";
 
-.container {
-  background-repeat: no-repeat;
-  background-size: 100%;
-  margin-top: 0.5rem;
-
-  .titre {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $secondary-color-four;
-    h1 {
-      font-family: $font-stack;
-      font-size: $title-size;
-      color: $secondary-color;
-      padding: 0.5rem;
-    }
-  }
-}
-
-.banner_top {
-  display: flex;
-  justify-content: flex-end;
-  .button {
-    background-color: transparent;
-    border: none;
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-  }
-  .modal_form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: $secondary-color-four;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
-    padding: 0.5rem;
-    font-family: $font-stack;
-    border-radius: 3px;
-    box-shadow: 0 8px 10px -8px #777;
-    p {
-      width: 100%;
-    }
-    input {
-      width: 100%;
-    }
-  }
-}
-
-.banner_job {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  margin: $basic-space * 1 $basic-space * 6;
-  background-color: $secondary-color-four;
-  width: 20rem;
-  padding: 1rem;
-
-  .title_job {
-    color: $secondary-color;
-
-    h2 {
-      font-size: $title-size;
-      font-family: $font-stack;
-      padding-bottom: 0.5rem;
-    }
-    h3 {
-      font-size: $font-size;
-      padding-bottom: 0.5rem;
-    }
-    p {
-      padding-bottom: 0.5rem;
-      font-family: $font-stack;
-    }
-    input {
-      font-family: $font-stack;
-      margin-bottom: 0.5rem;
-      width: 100%;
-    }
-  }
-  .button {
-    background-color: transparent;
-    border: none;
-    margin-top: 10rem;
-  }
-}
-
-.banner_description {
-  background-color: $secondary-color-four;
-  margin: $basic-space * 2 $basic-space * 6;
-  padding: 1rem;
-  width: auto;
-  .description_job {
-    color: $secondary-color;
-
-    h2 {
-      font-size: $font-size;
-      font-family: $font-stack;
-      padding-bottom: 0.5rem;
-      padding-top: $basic-space * 2;
-    }
-    .first-h2 {
-      padding-top: 0;
-    }
-
-    p {
-      font-family: $font-stack;
-    }
-  }
-  .button {
-    background-color: transparent;
-    border: none;
-    margin-top: $basic-space * 2;
-  }
-}
-
-.align {
+.titre {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.button_valid {
+  background-color: $secondary-color-four;
+  font-family: $font-stack;
   font-size: $title-size;
-  background-color: $brand-color;
-  border-radius: 3px;
-  box-shadow: 0 10px 6px -6px #777;
-  border: none;
-  color: $primary-color;
-  width: 15rem;
-  height: 3rem;
-  margin-bottom: 1rem;
+  color: $secondary-color;
+  padding: 0.5rem;
+  margin-top: $basic-space;
 }
+.container {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $basic-space;
 
-.button_valid:active {
-  transform: translateY(2px);
-}
+  .banner_top {
+    display: flex;
+    justify-content: flex-end;
+    .button {
+      background-color: transparent;
+      border: none;
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+    }
+    .modal_form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: $secondary-color-four;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      padding: 0.5rem;
+      font-family: $font-stack;
+      border-radius: 3px;
+      box-shadow: 0 8px 10px -8px #777;
+      p {
+        width: 100%;
+      }
+      input {
+        width: 100%;
+      }
+    }
+  }
 
-.button_valid:hover {
-  cursor: pointer;
-}
+  .banner_job {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin: $basic-space * 1 $basic-space * 6;
+    background-color: $secondary-color-four;
+    width: 20rem;
+    padding: 1rem;
 
-.button:hover {
-  cursor: pointer;
+    .title_job {
+      color: $secondary-color;
+
+      h2 {
+        font-size: $title-size;
+        font-family: $font-stack;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: $font-size;
+        padding-bottom: 0.5rem;
+      }
+      p {
+        padding-bottom: 0.5rem;
+        font-family: $font-stack;
+      }
+      input {
+        font-family: $font-stack;
+        margin-bottom: 0.5rem;
+        width: 100%;
+      }
+    }
+    .button {
+      background-color: transparent;
+      border: none;
+      margin-top: 10rem;
+    }
+  }
+
+  .banner_description {
+    background-color: $secondary-color-four;
+    margin: $basic-space * 2 $basic-space * 6;
+    padding: 1rem;
+    width: auto;
+    .description_job {
+      color: $secondary-color;
+
+      h2 {
+        font-size: $font-size;
+        font-family: $font-stack;
+        padding-bottom: 0.5rem;
+        padding-top: $basic-space * 2;
+      }
+      .first-h2 {
+        padding-top: 0;
+      }
+
+      p {
+        font-family: $font-stack;
+      }
+    }
+    .button {
+      background-color: transparent;
+      border: none;
+      margin-top: $basic-space * 2;
+    }
+  }
+
+  .align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button_valid {
+    font-size: $title-size;
+    background-color: $brand-color;
+    border-radius: 3px;
+    box-shadow: 0 10px 6px -6px #777;
+    border: none;
+    color: $primary-color;
+    width: 15rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .button_valid:active {
+    transform: translateY(2px);
+  }
+
+  .button_valid:hover {
+    cursor: pointer;
+  }
+
+  .button:hover {
+    cursor: pointer;
+  }
 }
