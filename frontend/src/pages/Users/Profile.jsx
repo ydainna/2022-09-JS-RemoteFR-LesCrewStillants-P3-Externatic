@@ -49,17 +49,16 @@ export default function Profile() {
     if (filesToUpload) {
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
-        .catch((err) => console.error(err));
+        .then(() => {
+          Notify.success("Vos informations ont été mises à jour!");
+        })
+        .catch(() =>
+          Notify.error("Erreur lors de la mise à jour des informations ❌")
+        );
     }
     // sinon tu me met le nom que j'ai get en BDD
 
-    instance
-      .put(`/users/${info.id}`, { filesToUpload, info })
-      .catch((err) =>
-        console.error(err, Notify.error("Mauvaises Informations! ❌"))
-      );
-
-    Notify.success("Vos informations ont été mises à jour!");
+    instance.put(`/users/${info.id}`, { filesToUpload, info });
   };
 
   const reloadInfo = () => {
