@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import instance from "@utils/instance";
+import Notify from "@utils/notification";
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import ConsultantName from "@components/ManagementsPages/Admin/ConsultantName";
 
@@ -8,6 +9,31 @@ import "@components/ManagementsPages/Admin/CompanyValidation.scss";
 
 export default function CompanyValidation() {
   const [arrayCompanies, setArrayCompanies] = useState([]);
+
+  const handleCheck = (companyId, isChecked) => {
+    setArrayCompanies(
+      arrayCompanies.map((company) =>
+        company.id === companyId
+          ? { ...company, is_validated: isChecked }
+          : company
+      )
+    );
+  };
+
+  const handleSubmit = () => {
+    arrayCompanies.forEach((company) => {
+      instance
+        .patch(`/company/validate/${company.id}`, {
+          is_validated: company.is_validated,
+        })
+        .then(() => {
+          Notify.success("La page entreprise a bien été validée");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  };
 
   useEffect(() => {
     instance
@@ -24,7 +50,9 @@ export default function CompanyValidation() {
     <SpecialUsersLayout>
       <section className="companies-validation">
         <h1>Validation des Pages Entreprises</h1>
-        <button type="button">Valider la page entreprise</button>
+        <button type="button" onClick={handleSubmit}>
+          Valider la page entreprise
+        </button>
         <table width="100%">
           <tbody>
             <tr>
@@ -42,7 +70,12 @@ export default function CompanyValidation() {
                   </Link>
                 </td>
                 <td>
-                  <input type="checkbox" name="validate" />
+                  <input
+                    type="checkbox"
+                    name="validate"
+                    checked={company.is_validated}
+                    onChange={(e) => handleCheck(company.id, e.target.checked)}
+                  />
                 </td>
                 <td>
                   <ConsultantName id={company.user_id} />
