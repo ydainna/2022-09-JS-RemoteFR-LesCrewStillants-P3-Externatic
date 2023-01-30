@@ -94,7 +94,9 @@ isApplied BOOLEAN NOT NULL DEFAULT FALSE,
 user_id INT NOT NULL,
 CONSTRAINT fk_user_user_offer FOREIGN KEY (user_id) REFERENCES user(id), 
 offer_id INT NOT NULL,
-CONSTRAINT fk_offer_user_offer FOREIGN KEY (offer_id) REFERENCES offer(id));
+CONSTRAINT fk_offer_user_offer FOREIGN KEY (offer_id) REFERENCES offer(id),
+consultant_id INT NOT NULL,
+CONSTRAINT fk_consultant FOREIGN KEY (consultant_id) REFERENCES user(id));
 
 INSERT into role (role)
 VALUES ("admin"),
@@ -127,27 +129,27 @@ VALUES ("https://img.freepik.com/photos-gratuite/beau-jeune-homme-t-shirt-blanc-
 ("https://play-lh.googleusercontent.com/SkNOjuAwZsCpzCUqYLOpyw4ksoy2Q8AqXsbaNAf5HO5YWAuYfwVCxMURfymwSWNZHYQ", "rayman@ubisoft.com", "lapincretin", "M.", "Rayman", "Ubisoft", "0612587896", "2023-01-18", 3, 6, 7);
 
 INSERT into company (name, sector, siret, logo, description, banner, link, contact_name, user_id, address_id, is_validated)
-VALUES ("Apple", "technologie", "12345678900012", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png", "Une magnifique entreprise","https://www.sudradio.fr/wp-content/uploads/2017/02/610529-ez-apple.jpg", "https://www.apple.com/fr/", "Siri", 2, 6, 1 ),
-("Wild Code School", "organisme de formation", "79492606300023", "https://www.wildcodeschool.com/static/imgs/logo.png", "La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.", "https://pr1.nicelocal.fr/9TBEIi6XCLJdmCYSCxaMhg/640x360,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2akU4C3-pXS2_BxHMKL2p8rnvj_GigA50mjUqCc5ENexYb5MdSD6EcwutG4YfjqzdQ", "https://www.wildcodeschool.com/fr-FR", "Nicolas", 3, 7, 1 ),
+VALUES ("Apple", "technologie", "12345678900012", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png", "Une magnifique entreprise","https://www.sudradio.fr/wp-content/uploads/2017/02/610529-ez-apple.jpg", "https://www.apple.com/fr/", "Siri", 4, 6, 1 ),
+("Wild Code School", "organisme de formation", "79492606300023", "https://www.wildcodeschool.com/static/imgs/logo.png", "La Wild Code School propose des formations intensives aux métiers tech - Développement web, Data analyse, Cybersécurité, Product management - sur campus, à distance ou en entreprise.", "https://pr1.nicelocal.fr/9TBEIi6XCLJdmCYSCxaMhg/640x360,q85/4px-BW84_n0QJGVPszge3NRBsKw-2VcOifrJIjPYFYkOtaCZxxXQ2akU4C3-pXS2_BxHMKL2p8rnvj_GigA50mjUqCc5ENexYb5MdSD6EcwutG4YfjqzdQ", "https://www.wildcodeschool.com/fr-FR", "Nicolas", 5, 7, 1 ),
 ("Ubisoft", "développement et édition de jeux vidéos", "50143053200033", "https://www.1min30.com/wp-content/uploads/2018/04/logo-Ubisoft.jpg", "Ubisoft est une entreprise française de développement, d'édition et de distribution de jeux vidéo","https://www.numerama.com/wp-content/uploads/2020/07/ubisoft.jpeg", "https://www.ubisoft.com/fr-fr/", "Rayman", 6, 7, 1 );
 
 INSERT into offer (title, job_description, type_of_contract, compensation, schedule, localisation, mission, seeked_profile, isRemote, complementary_info, user_id, company_id)
 VALUES ("Developer FullStack", "Un job super dans une entreprise trop bien", "CDI", "50K", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", 0, "Tickets restaurant", 4, 1),
 ("Developer FrontEnd", "Un job super dans une entreprise trop bien", "CDD", "50K", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+5 dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant", 4, 1),
-("Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "28K", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+4 dans le domaine de la tech, venez chez nous !", 0, "Tickets restaurant", 4, 3),
-("Data Analyst", "Un job super dans une entreprise trop bien", "CDI", "31K", "horaires classiques", "Lille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
-("Data Engineer", "Un job super dans une entreprise trop bien", "CDI", "28 à 32K selon expérience", "horaires classiques","Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 3),
+("Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "28K", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez un bac+4 dans le domaine de la tech, venez chez nous !", 0, "Tickets restaurant", 6, 3),
+("Data Analyst", "Un job super dans une entreprise trop bien", "CDI", "31K", "horaires classiques", "Lille", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 6, 3),
+("Data Engineer", "Un job super dans une entreprise trop bien", "CDI", "28 à 32K selon expérience", "horaires classiques","Paris", "Participer au développement de l'entreprise sur la partie tech", "Si vous avez une expérience dans le domaine de la tech, venez chez nous !", 1, "Tickets restaurant, Formations adaptés, babyfoot", 6, 3),
 ("Teaching Assistant - Web Developper", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Toulouse", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 1, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
 ("Teaching Assistant - UX/UI Designer", "Un job super dans une entreprise trop bien", "CDI", "1600€/mois", "horaires classiques", "Marseille", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 0, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2),
 ("Teaching Assistant - Data Analyst", "Un job super dans une entreprise trop bien", "CDD", "1600€/mois", "horaires classiques", "Paris", "Participer au développement de l'entreprise sur la partie tech", "Vous avez déjà réalisé une de nos formations pour débutant ou un équivalent? Vous avez dans l'idée de vouloir évoluer tout en apprenant aux autres? Alors pourquoi ne pas devenir Teaching Assistant?", 0, "Tickets restaurant, Formations adaptés, babyfoot", 5, 2);
 
-INSERT into user_offer (isFavorite, isApplied, user_id, offer_id)
+INSERT into user_offer (isFavorite, isApplied, user_id, offer_id, consultant_id)
 VALUES 
-(false, true, 1, 1),
-(true, false, 1, 2),
-(false, true, 3, 3),
-(false, true, 3, 4),
-(true, false, 3, 5),
-(true, false, 3, 8),
-(false, true, 1, 6),
-(true, false, 1, 7);
+(false, true, 1, 1, 4),
+(true, false, 1, 2, 4),
+(false, true, 3, 3, 6),
+(false, true, 3, 4, 6),
+(true, false, 3, 5, 6),
+(true, false, 3, 8, 5),
+(false, true, 1, 6, 5),
+(true, false, 1, 7, 5);

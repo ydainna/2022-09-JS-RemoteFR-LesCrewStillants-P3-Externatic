@@ -14,6 +14,7 @@ const offerControllers = require("./controllers/offerControllers");
 const companyControllers = require("./controllers/companyControllers");
 const infoControllers = require("./controllers/infoControllers");
 const addressControllers = require("./controllers/addressControllers");
+const uofferControllers = require("./controllers/uofferControllers");
 
 // const decodeToken = require("./services/jwt");
 
@@ -54,6 +55,10 @@ router.get("/users", userControllers.browse);
 router.get("/users/:id", userControllers.read);
 router.put("/users/:id", userControllers.edit);
 router.delete("/users/:id", userControllers.destroy);
+
+// routes user_offer
+router.post("/uoffer", uofferControllers.add);
+router.delete("/uoffer/:id/:offer", uofferControllers.destroyWhatever);
 
 // route POST pour recevoir un fichier
 router.post("/uploads/avatar", upload.single("avatar"), (req, res) => {
