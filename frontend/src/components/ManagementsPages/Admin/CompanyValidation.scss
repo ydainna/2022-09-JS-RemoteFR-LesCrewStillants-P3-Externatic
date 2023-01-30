@@ -23,6 +23,11 @@
     cursor: pointer;
   }
 
+  .link {
+    text-decoration: none;
+    color: $brand-color;
+  }
+
   table {
     // border-spacing: 2px 0;
     tbody {

@@ -64,7 +64,11 @@ export default function CompanyValidation() {
               <tr key={company.id}>
                 <td>{company.name}</td>
                 <td>
-                  <Link to={`/companies/${company.id}`} target="_blank">
+                  <Link
+                    className="link"
+                    to={`/companies/${company.id}`}
+                    target="_blank"
+                  >
                     Voir la page
                   </Link>
                 </td>
