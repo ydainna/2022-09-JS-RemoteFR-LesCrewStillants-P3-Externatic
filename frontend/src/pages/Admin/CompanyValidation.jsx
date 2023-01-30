@@ -26,13 +26,12 @@ export default function CompanyValidation() {
         .patch(`/company/validate/${company.id}`, {
           is_validated: company.is_validated,
         })
-        .then(() => {
-          Notify.success("La page entreprise a bien été validée");
-        })
+        .then(() => {})
         .catch((err) => {
           console.error(err);
         });
     });
+    Notify.success("Les pages entreprises ont bien été validées");
   };
 
   useEffect(() => {
