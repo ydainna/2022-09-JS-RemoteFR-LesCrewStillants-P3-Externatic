@@ -5,7 +5,7 @@ import Notify from "@utils/notification";
 import "./CurrentSituation.scss";
 
 export default function CurrentSituation({ id }) {
-  const [info, setInfo] = useState([""]);
+  const [info, setInfo] = useState([]);
 
   useEffect(() => {
     instance
@@ -32,7 +32,6 @@ export default function CurrentSituation({ id }) {
     e.preventDefault();
     instance
       .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info)
-      .then(console.warn(info))
       .then((res) => {
         console.warn(res);
       })
@@ -48,7 +47,6 @@ export default function CurrentSituation({ id }) {
         <div
           name="type_of_contract"
           id="contrat-select"
-          // value={info.isActiveSearch}
           onChange={handleActiveSearchChange}
         >
           <label>
