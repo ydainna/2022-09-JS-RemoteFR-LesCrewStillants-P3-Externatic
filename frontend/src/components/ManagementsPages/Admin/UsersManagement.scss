@@ -48,23 +48,23 @@
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       cursor: pointer;
     }
+  }
 
-    input,
-    select {
-      background-color: $secondary-color-three;
-      border: none;
-      height: $title-bigger-size;
-      outline: none;
-    }
+  input,
+  select {
+    background-color: $secondary-color-three;
+    border: none;
+    height: $title-bigger-size;
+    outline: none;
+  }
 
-    input {
-      padding: $basic-space;
-    }
+  input {
+    padding: $basic-space;
+  }
 
-    select {
-      box-sizing: content-box;
-      padding: $half-space $basic-space;
-    }
+  select {
+    box-sizing: content-box;
+    padding: $half-space $basic-space;
   }
 
   table {
