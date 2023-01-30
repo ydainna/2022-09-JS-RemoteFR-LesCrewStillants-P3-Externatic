@@ -89,9 +89,9 @@ function OfferComponent() {
       </section>
       <section className="description_job-offer">
         <h2>Description du poste</h2>
-        <p>{parse(descJob)}</p>
+        {parse(descJob)}
         <h2>Description de l'entreprise</h2>
-        <p>{parse(descEntreprise)}</p>
+        {parse(descEntreprise)}
         <div className="align-offer">
           <Link to={`/companies/${company.id}`}>
             <button className="button-offer" type="button">
@@ -100,11 +100,11 @@ function OfferComponent() {
           </Link>
         </div>
         <h2>Votre mission</h2>
-        <p>{parse(mission)}</p>
+        {parse(mission)}
         <h2>Profil et expérience souhaités</h2>
-        <p>{parse(profil)}</p>
+        {parse(profil)}
         <h2>Avantages</h2>
-        <p>{parse(advantages)}</p>
+        {parse(advantages)}
         <div className="align-offer">
           <button className="button-offer" type="button">
             Postuler
