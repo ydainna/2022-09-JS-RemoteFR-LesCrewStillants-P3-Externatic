@@ -45,6 +45,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  updateRole(user) {
+    return this.connection.query(
+      `update ${this.table} set role_id = ? where id IN (?)`,
+      [user.roleId, user.arr]
+    );
+  }
+
   updatePassword(user) {
     return this.connection.query(
       `update ${this.table} set password = ? where id = ?`,

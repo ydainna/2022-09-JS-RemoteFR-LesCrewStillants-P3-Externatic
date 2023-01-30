@@ -20,6 +20,24 @@ const destroyMultiple = (req, res) => {
     });
 };
 
+const updateRole = (req, res) => {
+  const { data } = req.body;
+
+  models.user
+    .updateRole(data)
+    .then(([rows]) => {
+      if (rows.affectedRows === 1) {
+        return res.status(201).json({ success: "User password updated" });
+      }
+      return res.status(403).json({ error: "une erreur s'est produite" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   destroyMultiple,
+  updateRole,
 };
