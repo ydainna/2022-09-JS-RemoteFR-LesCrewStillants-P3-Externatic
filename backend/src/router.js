@@ -105,7 +105,6 @@ router.get("/user-offers/:id", uofferControllers.browser);
 router.delete("/users-deletion", adminControllers.destroyMultiple);
 router.put("/edit-role", adminControllers.updateRole);
 
-
 // route POST pour recevoir un fichier
 router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
   const { originalname } = req.file;
