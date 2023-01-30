@@ -73,6 +73,11 @@
       align-items: center;
       width: 20rem;
       padding-top: 0;
+      padding-bottom: 0;
+
+    }
+    a {
+      padding-bottom: 0;
     }
     h3 {
       align-self: center;
@@ -82,8 +87,11 @@
 
   .offres_entreprise {
     width: 90%;
+    margin-top: 0;
     .Liste_offres {
-      margin: $basic-space auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: $basic-space;
       width: 16rem;
     }
     p {

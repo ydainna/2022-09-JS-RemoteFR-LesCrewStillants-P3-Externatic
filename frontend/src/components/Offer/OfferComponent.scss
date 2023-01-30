@@ -67,7 +67,7 @@
       }
     }
   }
-
+}
   .description_job-offer {
     background-color: $secondary-color-four;
     margin: $basic-space * 2 $basic-space * 6;
@@ -102,6 +102,7 @@
       color: $primary-color;
       width: 15rem;
       height: 3rem;
+      margin-top: $basic-space;
     }
   }
 
@@ -114,6 +115,9 @@
   }
 
   @media (max-width: 768px) {
+    .container-offer {
+      margin: 0;
+      width: 100%;
     .banner_job-offer {
       display: flex;
       flex-direction: column;
