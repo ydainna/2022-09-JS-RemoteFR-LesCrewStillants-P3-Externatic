@@ -16,6 +16,7 @@ const companyControllers = require("./controllers/companyControllers");
 const infoControllers = require("./controllers/infoControllers");
 const addressControllers = require("./controllers/addressControllers");
 const adminControllers = require("./controllers/adminControllers");
+const uofferControllers = require("./controllers/uofferControllers");
 
 // const decodeToken = require("./services/jwt");
 
@@ -62,6 +63,9 @@ router.put("/users/:id", userControllers.edit);
 router.put("/users/edit-password/:id", userControllers.editPassword);
 router.delete("/users/:id", userControllers.destroy);
 
+// routes user_offer
+router.get("/user-offers/:id", uofferControllers.browser);
+
 // route admin for deleting multiple users and all associated entries
 router.delete("/users-deletion", adminControllers.destroyMultiple);
 
@@ -88,7 +92,6 @@ router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
 });
 
 router.post("/uploads/cv", uploadCV.single("cv"), (req, res) => {
-  console.warn(req.file);
   const { originalname } = req.file;
   const { filename } = req.file;
 

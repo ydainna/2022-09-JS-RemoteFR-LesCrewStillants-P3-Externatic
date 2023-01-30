@@ -10,7 +10,6 @@ export default function Presentation({
   handleChange,
   filesToUpload,
 }) {
-  console.warn(updateUser.avatar);
   return (
     <section id="presentation">
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
