@@ -125,7 +125,6 @@ function OfferForm() {
     event.preventDefault();
     setIsEditingForm1(false);
     setIsEditingForm2(false);
-    console.warn("infos envoyées");
     // Envoyer les données vers le backend ici
     instance
       .put(`/offers/${id}`, {
