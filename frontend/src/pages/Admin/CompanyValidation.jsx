@@ -26,13 +26,12 @@ export default function CompanyValidation() {
         .patch(`/company/validate/${company.id}`, {
           is_validated: company.is_validated,
         })
-        .then(() => {
-          Notify.success("La page entreprise a bien été validée");
-        })
+        .then(() => {})
         .catch((err) => {
           console.error(err);
         });
     });
+    Notify.success("Les pages entreprises ont bien été validées");
   };
 
   useEffect(() => {
@@ -65,17 +64,27 @@ export default function CompanyValidation() {
               <tr key={company.id}>
                 <td>{company.name}</td>
                 <td>
-                  <Link to={`/companies/${company.id}`} target="_blank">
+                  <Link
+                    className="link"
+                    to={`/companies/${company.id}`}
+                    target="_blank"
+                  >
                     Voir la page
                   </Link>
                 </td>
                 <td>
-                  <input
-                    type="checkbox"
-                    name="validate"
-                    checked={company.is_validated}
-                    onChange={(e) => handleCheck(company.id, e.target.checked)}
-                  />
+                  <label className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      className="checkbox-box"
+                      checked={company.is_validated}
+                      onChange={(e) =>
+                        handleCheck(company.id, e.target.checked)
+                      }
+                      name="is_validated"
+                    />
+                    <span className="checkbox-cursor" />
+                  </label>
                 </td>
                 <td>
                   <ConsultantName id={company.user_id} />
