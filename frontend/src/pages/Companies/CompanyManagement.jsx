@@ -146,13 +146,13 @@ function CompanyManagement() {
                 <textarea
                   type="textarea"
                   value={nameCompany}
-                  rows="4"
+                  rows={5}
                   onChange={(event) => setNameCompany(event.target.value)}
                 />
                 <textarea
                   type="textarea"
                   value={nameSector}
-                  rows={4}
+                  rows={5}
                   onChange={(event) => setNameSector(event.target.value)}
                 />
                 <textarea
