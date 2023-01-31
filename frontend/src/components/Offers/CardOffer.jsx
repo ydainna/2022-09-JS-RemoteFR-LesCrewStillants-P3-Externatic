@@ -45,7 +45,6 @@ function CardOffer({ offer }) {
   }, []);
 
   const handleLike = () => {
-    console.warn(isFavorite);
     if (isFavorite) {
       instance
         .delete(`/uoffer/${user}/${offer.id}`)
@@ -75,37 +74,45 @@ function CardOffer({ offer }) {
 
   return (
     <div className="card">
-      <div className="card-personalize">
-        <img
-          className="card-header"
-          src={company.banner}
-          alt="company offer description"
-        />
-        <div className="card-body">
-          <h2 className="card-title">{offer.title}</h2>
-          <div className="card-description">{parse(offer.job_description)}</div>
-          <p className="card-contract">{offer.type_of_contract}</p>
-        </div>
-      </div>
-      <div className="offerbuttons">
-        <Link to={`/offers/${offer.id}`} key={offer.id}>
-          <button className="card-button" type="button">
-            Voir
-          </button>
-        </Link>
+      {company.is_validated ? (
+        <>
+          <div className="card-personalize">
+            <img
+              className="card-header"
+              src={company.banner}
+              alt="company offer description"
+            />
+            <div className="card-body">
+              <h2 className="card-title">{offer.title}</h2>
+              <div className="card-description">
+                {parse(offer.job_description)}
+              </div>
+              <p className="card-contract">{offer.type_of_contract}</p>
+            </div>
+          </div>
+          <div className="offerbuttons">
+            <Link to={`/offers/${offer.id}`} key={offer.id}>
+              <button className="card-button" type="button">
+                Voir
+              </button>
+            </Link>
 
-        <button
-          className="heart-offer"
-          type="button"
-          onClick={() => handleLike(offer.id)}
-        >
-          <img
-            src={Heart}
-            className={isFavorite ? "" : "greyHeart-offer"}
-            alt="Logo Heart"
-          />
-        </button>
-      </div>
+            <button
+              className="heart-offer"
+              type="button"
+              onClick={() => handleLike(offer.id)}
+            >
+              <img
+                src={Heart}
+                className={isFavorite ? "" : "greyHeart-offer"}
+                alt="Logo Heart"
+              />
+            </button>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
