@@ -102,7 +102,7 @@ function CardOffer({ offer }) {
         }
       });
     }
-  }, [offer]);
+  }, [company]);
 
   return (
     <div className="card">
