@@ -68,11 +68,14 @@
   }
 
   @media screen and (max-width: 480px) {
+    width: 100%;
+    margin: $basic-space*2 0;
+  
     .rectangle {
       height: 25em;
-      width: 20rem;
-      background-color: $secondary-color-four;
+      width: 100%;
     }
+  
 
     input {
       height: 1, 5rem;
