@@ -143,34 +143,39 @@ function CompanyManagement() {
             return (
               <form key={company.id} className="infos" onSubmit={handleSubmit}>
                 <img className="image" alt="#" src={company.banner} />
-                <input
-                  type="text"
+                <textarea
+                  type="textarea"
                   value={nameCompany}
+                  rows="4"
                   onChange={(event) => setNameCompany(event.target.value)}
                 />
-                <input
-                  type="text"
+                <textarea
+                  type="textarea"
                   value={nameSector}
+                  rows={4}
                   onChange={(event) => setNameSector(event.target.value)}
                 />
-                <input
-                  type="text"
+                <textarea
+                  type="textarea"
                   value={nameDescription}
+                  rows={5}
                   onChange={(event) => setNameDescription(event.target.value)}
                 />
-                <input
-                  type="text"
+                <textarea
+                  type="textarea"
                   value={nameLink}
+                  rows={5}
                   onChange={(event) => setNameLink(event.target.value)}
                 />
                 <button
                   type="submit"
+                  className="valid"
                   onClick={() => {
                     handleEdit();
                     handleSubmit();
                   }}
                 >
-                  <img alt="modif" className="valid" src={images[modif]} />
+                  <img alt="Modif" src={images[modif]} />
                 </button>
               </form>
             );
@@ -184,7 +189,7 @@ function CompanyManagement() {
                 <a href={`${nameLink}`}>{nameLink}</a>
               </div>
               <h3 className="sector">{nameSector}</h3>
-              <button className="valid" type="submit" onClick={handleEdit}>
+              <button className="valid" type="button" onClick={handleEdit}>
                 <img src={images[modif]} alt="Modif" />
               </button>
             </form>
