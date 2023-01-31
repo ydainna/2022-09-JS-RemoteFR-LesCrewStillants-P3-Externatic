@@ -90,6 +90,22 @@ function CompanyManagement() {
       })
       .then((res) => {
         console.warn(res);
+        setCompanies(
+          companies.map((company) =>
+            company.id === filterCompanies[0].id
+              ? {
+                  ...filterCompanies[0],
+                  name: nameCompany,
+                  sector: nameSector,
+                  description: nameDescription,
+                  link: nameLink,
+                }
+              : company
+          )
+        );
+
+        // window.location.reload();
+        // handleSelect(filterCompanies[0].id);
       })
       .catch((err) => {
         console.error(err);
