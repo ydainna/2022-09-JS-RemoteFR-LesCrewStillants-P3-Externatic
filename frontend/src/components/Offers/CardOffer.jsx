@@ -12,6 +12,7 @@ function CardOffer({ offer }) {
   const [company, setCompany] = useState([]);
   const token = sessionStorage.getItem("token");
   const [user, setUser] = useState(0);
+  const [userOffer, setUserOffer] = useState([]);
 
   useEffect(() => {
     instance
@@ -71,6 +72,37 @@ function CardOffer({ offer }) {
         });
     }
   };
+
+  const getData = (decodedHeader) => {
+    instance
+      .get(`/user-offers/${decodedHeader.id}`)
+      .then((result) => {
+        setUserOffer(result.data);
+      })
+      .then(() => console.warn(userOffer))
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return getData(decodedHeader);
+    }
+    return "";
+  }, []);
+
+  useEffect(() => {
+    if (userOffer.length !== 0) {
+      userOffer.forEach((currentoffer) => {
+        if (currentoffer.offer_id === offer.id) {
+          setIsFavorite(true);
+        }
+      });
+    }
+  }, [offer]);
 
   return (
     <div className="card">

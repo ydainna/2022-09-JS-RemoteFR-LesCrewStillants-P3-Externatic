@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import instance from "@utils/instance";
 import parse from "html-react-parser";
 import Heart from "@assets/icons/Heart.svg";
+import jwtDecode from "jwt-decode";
 import "./OfferComponent.scss";
 
 function OfferComponent() {
@@ -15,6 +16,9 @@ function OfferComponent() {
   const [profil, setProfil] = useState("");
   const [advantages, setAdvantages] = useState("");
   const { id } = useParams();
+  const token = sessionStorage.getItem("token");
+  const [user, setUser] = useState(0);
+  const [userOffer, setUserOffer] = useState([]);
 
   useEffect(() => {
     if (offers.length !== 0) {
@@ -52,6 +56,84 @@ function OfferComponent() {
       });
   }, []);
 
+  const reloadInfo = () => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return instance
+        .get(`/users/${decodedHeader.id}`)
+        .then((response) => {
+          setUser(response.data.id);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+    return "";
+  };
+
+  useEffect(() => {
+    reloadInfo();
+  }, []);
+
+  const handleLike = () => {
+    if (isFavorite) {
+      instance
+        .delete(`/uoffer/${user}/${offers.id}`)
+        .then(() => {
+          setIsFavorite(false);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      instance
+        .post(`/uoffer`, {
+          isFavorite: true,
+          isApplied: false,
+          user_id: user,
+          offer_id: offers.id,
+          consultant_id: company.user_id,
+        })
+        .then(() => {
+          setIsFavorite(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
+
+  const getData = (decodedHeader) => {
+    instance
+      .get(`/user-offers/${decodedHeader.id}`)
+      .then((result) => {
+        setUserOffer(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return getData(decodedHeader);
+    }
+    return "";
+  }, []);
+
+  useEffect(() => {
+    if (userOffer.length !== 0) {
+      userOffer.forEach((currentoffer) => {
+        if (currentoffer.offer_id === offers.id) {
+          setIsFavorite(true);
+        }
+      });
+    }
+  }, [offers]);
+
   return (
     <section
       className="container-offer"
@@ -74,11 +156,7 @@ function OfferComponent() {
           <button className="button-offer" type="button">
             Postuler
           </button>
-          <button
-            className="heart-offer"
-            type="button"
-            onClick={() => setIsFavorite(!isFavorite)}
-          >
+          <button className="heart-offer" type="button" onClick={handleLike}>
             <img
               src={Heart}
               className={isFavorite ? "" : "greyHeart-offer"}
