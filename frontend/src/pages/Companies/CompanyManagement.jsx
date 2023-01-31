@@ -56,14 +56,13 @@ function CompanyManagement() {
   };
 
   useEffect(() => {
-    console.warn(companies);
-    if (companies.length !== 0) {
-      setNameCompany(companies[1].name);
-      setNameSector(companies[1].sector);
-      setNameDescription(companies[1].description);
-      setNameLink(companies[1].link);
+    if (filterCompanies.length !== 0) {
+      setNameCompany(filterCompanies[0].name);
+      setNameSector(filterCompanies[0].sector);
+      setNameDescription(filterCompanies[0].description);
+      setNameLink(filterCompanies[0].link);
     }
-  }, [companies]);
+  }, [filterCompanies]);
 
   function handleEdit() {
     setIsEditing(!isEditing);
@@ -77,17 +76,17 @@ function CompanyManagement() {
   function handleSubmit() {
     setIsEditing(false);
     instance
-      .put(`/company/${companies[1].id}`, {
+      .put(`/company/${filterCompanies[0].id}`, {
         name: nameCompany,
         sector: nameSector,
         description: nameDescription,
         link: nameLink,
-        siret: companies[1].siret,
-        logo: companies[1].logo,
-        banner: companies[1].banner,
-        contact_name: companies[1].contact_name,
-        user_id: companies[1].user_id,
-        address_id: companies[1].address_id,
+        siret: filterCompanies[0].siret,
+        logo: filterCompanies[0].logo,
+        banner: filterCompanies[0].banner,
+        contact_name: filterCompanies[0].contact_name,
+        user_id: filterCompanies[0].user_id,
+        address_id: filterCompanies[0].address_id,
       })
       .then((res) => {
         console.warn(res);
