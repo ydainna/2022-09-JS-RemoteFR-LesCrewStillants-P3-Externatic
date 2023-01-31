@@ -58,4 +58,24 @@
     height: 5rem;
     background-color: $secondary-color-three;
   }
+
+  .tab {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  h5 {
+    background-color: $secondary-color-two;
+    font-size: $title-bigger-size;
+  }
+
+  .affichage {
+    width: 100%;
+    background-color: $secondary-color-three;
+  }
+
+  button {
+    background-color: $secondary-color-three;
+  }
 }
