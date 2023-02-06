@@ -87,8 +87,7 @@ function CompanyManagement() {
         user_id: filterCompanies[0].user_id,
         address_id: filterCompanies[0].address_id,
       })
-      .then((res) => {
-        console.warn(res);
+      .then(() => {
         setCompanies(
           companies.map((company) =>
             company.id === filterCompanies[0].id
@@ -102,9 +101,31 @@ function CompanyManagement() {
               : company
           )
         );
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
-        // window.location.reload();
-        // handleSelect(filterCompanies[0].id);
+  function handleNewOffer(event) {
+    event.preventDefault();
+    instance
+      .post(`/offers`, {
+        title: "Nom du poste",
+        localisation: "Localisation du poste",
+        type_of_contract: "Type de contrat",
+        compensation: "Salaire",
+        schedule: "Horaires",
+        job_description: "Description du poste",
+        mission: "Description des missions",
+        seeked_profile: "Profil recherché",
+        complementary_info: "Autres précisions ou avantages",
+        company_id: filterCompanies[0].id,
+        user_id: filterCompanies[0].user_id,
+      })
+      .then(() => {
+        console.warn(filterOffers);
+        setFilterOffers(offers);
       })
       .catch((err) => {
         console.error(err);
@@ -215,16 +236,22 @@ function CompanyManagement() {
         </table>
       ))}
 
-      <div className="end">
-        {filterCompanies.length === 0 ? (
-          ""
-        ) : (
-          <button type="submit" className="add_offer">
-            Ajoutez une offre
-          </button>
-        )}
-      </div>
-    </section>
+
+        <div className="end">
+          {filterCompanies.length === 0 ? (
+            ""
+          ) : (
+            <button
+              type="submit"
+              className="add_offer"
+              onClick={handleNewOffer}
+            >
+              Ajoutez une offre
+            </button>
+          )}
+        </div>
+      </section>
+    </SpecialUsersLayout>
   );
 }
 export default CompanyManagement;

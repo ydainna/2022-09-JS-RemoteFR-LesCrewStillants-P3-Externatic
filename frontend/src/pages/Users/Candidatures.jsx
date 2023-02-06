@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import instance from "@utils/instance";
-
 import "@components/UserProfile/Candidatures.scss";
 
 export default function Candidatures() {
