@@ -1,10 +1,13 @@
+import { Outlet } from "react-router-dom";
 import SubNavUsers from "@components/UserProfile/SubNavUsers/SubNavUsers";
 
-export default function LoggedUsersLayout({ children }) {
+export default function LoggedUsersLayout() {
   return (
     <>
       <SubNavUsers />
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

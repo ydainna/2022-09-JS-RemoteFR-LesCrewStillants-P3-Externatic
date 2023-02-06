@@ -26,6 +26,8 @@ import CompanyValidation from "@pages/Admin/CompanyValidation";
 import CanditateManagement from "@pages/Companies/CandidateManagement";
 import Footer from "@components/Footer/Footer";
 
+import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -36,10 +38,13 @@ export default function Router() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<LoggedUsersLayout />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/favorite-offers" element={<FavoriteOffers />} />
+          <Route path="/candidatures" element={<Candidatures />} />
+        </Route>
+
         <Route path="/profile/:id" element={<ProfileCandidat />} />
-        <Route path="/favorite-offers" element={<FavoriteOffers />} />
-        <Route path="/candidatures" element={<Candidatures />} />
 
         <Route path="/offers" element={<OfferList />} />
         <Route path="/offers/:id" element={<Offer />} />
