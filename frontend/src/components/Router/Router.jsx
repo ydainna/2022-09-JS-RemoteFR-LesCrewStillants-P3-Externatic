@@ -27,6 +27,7 @@ import CanditateManagement from "@pages/Companies/CandidateManagement";
 import Footer from "@components/Footer/Footer";
 
 import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
+import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 
 export default function Router() {
   return (
@@ -52,10 +53,16 @@ export default function Router() {
         <Route path="/companies/:id" element={<Company />} />
 
         <Route path="*" element={<Error />} />
-        <Route path="/users-management" element={<UsersManagement />} />
-        <Route path="/companies-validation" element={<CompanyValidation />} />
-        <Route path="/candidate-management" element={<CanditateManagement />} />
-        <Route path="/company-management" element={<CompanyManagement />} />
+
+        <Route element={<SpecialUsersLayout />}>
+          <Route path="/users-management" element={<UsersManagement />} />
+          <Route path="/companies-validation" element={<CompanyValidation />} />
+          <Route
+            path="/candidate-management"
+            element={<CanditateManagement />}
+          />
+          <Route path="/company-management" element={<CompanyManagement />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
