@@ -1,10 +1,8 @@
 import "./CandidateManagement.scss";
 
-import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import React, { useState, useEffect } from "react";
 import instance from "@utils/instance";
 import { Link } from "react-router-dom";
-
 
 function CanditateManagement() {
   const [candidats, setCandidats] = useState([]);
@@ -49,70 +47,70 @@ function CanditateManagement() {
         </div>
       </div>
 
-        <div className="buttons">
-          <select
-            onChange={handleSelect}
-            className="select"
-            name="candidats"
-            id="candidats"
-          >
-            <option>Candidat</option>
-            {candidats
-              .filter((cand) => cand.role_id === 2)
-              .map((candidat) => (
-                <option value={candidat.id}>
-                  {candidat.firstname} {candidat.lastname}
-                </option>
-              ))}
-          </select>
+      <div className="buttons">
+        <select
+          onChange={handleSelect}
+          className="select"
+          name="candidats"
+          id="candidats"
+        >
+          <option>Candidat</option>
+          {candidats
+            .filter((cand) => cand.role_id === 2)
+            .map((candidat) => (
+              <option value={candidat.id}>
+                {candidat.firstname} {candidat.lastname}
+              </option>
+            ))}
+        </select>
 
-          <select className="select" name="filtre" id="filtre">
-            <option value="">Filtrer par</option>
-            <option value="favori">Favoris</option>
-            <option value="candidatures">Candidatures</option>
-            <option value="autres">Autres</option>
-            <option value="tout">Voir tout</option>
-          </select>
-        </div>
+        <select className="select" name="filtre" id="filtre">
+          <option value="">Filtrer par</option>
+          <option value="favori">Favoris</option>
+          <option value="candidatures">Candidatures</option>
+          <option value="autres">Autres</option>
+          <option value="tout">Voir tout</option>
+        </select>
+      </div>
 
-        {filter.map((fil) => (
-          <h5>
-            {fil.firstname} {fil.lastname}
-          </h5>
-        ))}
+      {filter.map((fil) => (
+        <h5>
+          {fil.firstname} {fil.lastname}
+        </h5>
+      ))}
 
-        {array.map((fil) => (
-          <div className="tab">
-            <div className="affichage">
-              {fil.isFavorite ? "A ajouter en favoris" : "A candidaté"}
-            </div>
-            <div className="affichage">
-              <Link to={`/offers/${fil.offer_id}`} target="_blank">
-                Voir l'offre
-              </Link>
-            </div>
+      {array.map((fil) => (
+        <div className="tab">
+          <div className="affichage">
+            {fil.isFavorite ? "A ajouter en favoris" : "A candidaté"}
           </div>
-        ))}
-
-        <div className="fin">
-          <select className="select" name="filtre" id="filtre">
-            <option value="">Consultants</option>
-            {candidats
-              .filter((candid) => candid.role_id === 3)
-              .map((candidates) => (
-                <option value={candidates.id}>
-                  {candidates.firstname} {candidates.lastname}
-                </option>
-              ))}
-          </select>
-          <button type="submit" className="bu">
-            Transférez le Candidat
-          </button>
-          <button type="submit" className="bu">
-            Envoyer un message
-          </button>
+          <div className="affichage">
+            <Link to={`/offers/${fil.offer_id}`} target="_blank">
+              Voir l'offre
+            </Link>
+          </div>
         </div>
-      </section>
+      ))}
+
+      <div className="fin">
+        <select className="select" name="filtre" id="filtre">
+          <option value="">Consultants</option>
+          {candidats
+            .filter((candid) => candid.role_id === 3)
+            .map((candidates) => (
+              <option value={candidates.id}>
+                {candidates.firstname} {candidates.lastname}
+              </option>
+            ))}
+        </select>
+        <button type="submit" className="bu">
+          Transférez le Candidat
+        </button>
+        <button type="submit" className="bu">
+          Envoyer un message
+        </button>
+      </div>
+    </section>
   );
 }
 
