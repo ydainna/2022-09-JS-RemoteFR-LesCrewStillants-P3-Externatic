@@ -28,19 +28,30 @@ export default function UsersManagement() {
     }
   };
 
+  const getData = () => {
+    instance
+      .get("/users")
+      .then((result) => {
+        setArrayCandidature(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const handleDeleteClick = () => {
     if (usersToDelete.length === 0) {
       return Notify.error("Veuillez selectionner au moins un utilisateur.");
     }
 
-    return (
-      instance
-        .delete("/users-deletion", { data: { arr: usersToDelete } })
-        // .then(() => setUsersToDelete([]))
-        .catch((err) => {
-          console.error(err);
-        })
-    );
+    return instance
+      .delete("/users-deletion", { data: { arr: usersToDelete } })
+      .then(() => {
+        getData();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleRoleClick = () => {
@@ -51,31 +62,24 @@ export default function UsersManagement() {
       return Notify.error("Veuillez choisir un rôle à attribuer.");
     }
 
-    return (
-      instance
-        .put("/edit-role", {
-          data: { arr: usersToDelete, roleId: newRole },
-        })
-        // .then(() => setUsersToDelete([]))
-        .catch((err) => {
-          console.error(err);
-        })
-    );
-  };
-
-  // axios to get data, it should refresh each time we delete some users if everything goes well
-  useEffect(() => {
-    instance
-      .get("/users")
-      .then((result) => {
-        setArrayCandidature(result.data);
+    return instance
+      .put("/edit-role", {
+        data: { arr: usersToDelete, roleId: newRole },
+      })
+      .then(() => {
+        getData();
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  // axios to get data, it should refresh each time we delete some users if everything goes well
+
+  useEffect(() => {
+    getData();
   }, []);
 
-  console.warn(newRole);
   return (
     <section className="users-management">
       <h1>Gestion des Utilisateurs</h1>

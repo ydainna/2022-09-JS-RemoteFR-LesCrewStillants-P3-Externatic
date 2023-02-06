@@ -32,6 +32,7 @@ export default function Profile() {
     setInfo({ ...info, [name]: value });
   };
 
+  // fonction to load info
   const reloadInfo = () => {
     if (token !== null) {
       const decodedHeader = jwtDecode(token);
