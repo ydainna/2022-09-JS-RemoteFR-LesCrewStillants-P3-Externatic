@@ -236,21 +236,16 @@ function CompanyManagement() {
         </table>
       ))}
 
-
-        <div className="end">
-          {filterCompanies.length === 0 ? (
-            ""
-          ) : (
-            <button
-              type="submit"
-              className="add_offer"
-              onClick={handleNewOffer}
-            >
-              Ajoutez une offre
-            </button>
-          )}
-        </div>
-      </section>
+      <div className="end">
+        {filterCompanies.length === 0 ? (
+          ""
+        ) : (
+          <button type="submit" className="add_offer" onClick={handleNewOffer}>
+            Ajoutez une offre
+          </button>
+        )}
+      </div>
+    </section>
   );
 }
 export default CompanyManagement;
