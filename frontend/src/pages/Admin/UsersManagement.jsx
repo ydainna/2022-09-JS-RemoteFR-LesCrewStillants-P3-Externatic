@@ -46,9 +46,6 @@ export default function UsersManagement() {
 
     return instance
       .delete("/users-deletion", { data: { arr: usersToDelete } })
-      .then(() => {
-        getData();
-      })
       .catch((err) => {
         console.error(err);
       });
@@ -78,7 +75,7 @@ export default function UsersManagement() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [handleDeleteClick]);
 
   return (
     <section className="users-management">
