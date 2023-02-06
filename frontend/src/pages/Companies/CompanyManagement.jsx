@@ -251,7 +251,6 @@ function CompanyManagement() {
           )}
         </div>
       </section>
-    </SpecialUsersLayout>
   );
 }
 export default CompanyManagement;
