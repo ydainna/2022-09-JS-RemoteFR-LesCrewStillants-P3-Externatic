@@ -113,7 +113,6 @@ function CanditateManagement() {
           </button>
         </div>
       </section>
-    </SpecialUsersLayout>
   );
 }
 
