@@ -32,34 +32,6 @@ export default function Profile() {
     setInfo({ ...info, [name]: value });
   };
 
-  // function to send the form value to backend
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (info.email === "") {
-      Notify.error("Veuillez renseigner une addresse mail.");
-      setError(true);
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("avatar", inputRef.current.files[0]);
-
-    // si j'upload une image alors, post moi le
-    if (filesToUpload !== info.avatar && filesToUpload) {
-      instance
-        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
-        .then(() => {
-          Notify.success("Vos informations ont été mises à jour !");
-        })
-        .catch(() =>
-          Notify.error("Erreur lors de la mise à jour des informations ❌")
-        );
-    }
-    // sinon tu me met le nom que j'ai get en BDD
-
-    instance.put(`/users/${info.id}`, { filesToUpload, info });
-  };
-
   const reloadInfo = () => {
     if (token !== null) {
       const decodedHeader = jwtDecode(token);
@@ -81,6 +53,35 @@ export default function Profile() {
   useEffect(() => {
     reloadInfo();
   }, []);
+
+  // function to send the form value to backend
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (info.email === "") {
+      Notify.error("Veuillez renseigner une addresse mail.");
+      setError(true);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("avatar", inputRef.current.files[0]);
+
+    // si j'upload une image alors, post moi le
+    if (filesToUpload !== info.avatar && filesToUpload) {
+      instance
+        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
+        .then(() => {
+          Notify.success("Vos informations ont été mises à jour !");
+          reloadInfo();
+        })
+        .catch(() =>
+          Notify.error("Erreur lors de la mise à jour des informations ❌")
+        );
+    }
+    // sinon tu me met le nom que j'ai get en BDD
+
+    instance.put(`/users/${info.id}`, { filesToUpload, info });
+  };
 
   useEffect(() => {
     setFilesToUpload(info.avatar);
