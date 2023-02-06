@@ -13,6 +13,7 @@ const destroyMultiple = (req, res) => {
     })
     .then(() => {
       models.user.deleteMulipleUser(arr);
+      res.status(200).json({ message: "users deleted" });
     })
     .catch((err) => {
       console.error(err);

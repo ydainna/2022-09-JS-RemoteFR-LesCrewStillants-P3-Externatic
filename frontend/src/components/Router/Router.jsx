@@ -26,6 +26,9 @@ import CompanyValidation from "@pages/Admin/CompanyValidation";
 import CanditateManagement from "@pages/Companies/CandidateManagement";
 import Footer from "@components/Footer/Footer";
 
+import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
+import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -36,10 +39,13 @@ export default function Router() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<LoggedUsersLayout />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/favorite-offers" element={<FavoriteOffers />} />
+          <Route path="/candidatures" element={<Candidatures />} />
+        </Route>
+
         <Route path="/profile/:id" element={<ProfileCandidat />} />
-        <Route path="/favorite-offers" element={<FavoriteOffers />} />
-        <Route path="/candidatures" element={<Candidatures />} />
 
         <Route path="/offers" element={<OfferList />} />
         <Route path="/offers/:id" element={<Offer />} />
@@ -47,10 +53,16 @@ export default function Router() {
         <Route path="/companies/:id" element={<Company />} />
 
         <Route path="*" element={<Error />} />
-        <Route path="/users-management" element={<UsersManagement />} />
-        <Route path="/companies-validation" element={<CompanyValidation />} />
-        <Route path="/candidate-management" element={<CanditateManagement />} />
-        <Route path="/company-management" element={<CompanyManagement />} />
+
+        <Route element={<SpecialUsersLayout />}>
+          <Route path="/users-management" element={<UsersManagement />} />
+          <Route path="/companies-validation" element={<CompanyValidation />} />
+          <Route
+            path="/candidate-management"
+            element={<CanditateManagement />}
+          />
+          <Route path="/company-management" element={<CompanyManagement />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>

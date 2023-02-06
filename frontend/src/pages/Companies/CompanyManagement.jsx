@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import instance from "@utils/instance";
 import Pencil from "@assets/icons/Pencil.svg";
 import Check from "@assets/icons/Check.svg";
@@ -134,109 +133,109 @@ function CompanyManagement() {
   }
 
   return (
-    <SpecialUsersLayout>
-      <section id="company-management">
-        <div className="companyManag">
-          <div className="rectangle">
-            <h4>Gestion des pages Entreprises</h4>
-          </div>
+    <section id="company-management">
+      <div className="companyManag">
+        <div className="rectangle">
+          <h4>Gestion des pages Entreprises</h4>
         </div>
+      </div>
 
-        <div className="button">
-          <select
-            onChange={handleSelect}
-            className="select"
-            name="filtre"
-            id="filtre"
-          >
-            <option value="all">Choisir une entreprise</option>
-            {companies.map((company) => (
-              <option value={company.user_id}>{company.name}</option>
-            ))}
-          </select>
-          <button type="submit" className="bu">
-            Créer une nouvelle page entreprise
-          </button>
-        </div>
+      <div className="button">
+        <select
+          onChange={handleSelect}
+          className="select"
+          name="filtre"
+          id="filtre"
+        >
+          <option value="all">Choisir une entreprise</option>
+          {companies.map((company) => (
+            <option value={company.user_id}>{company.name}</option>
+          ))}
+        </select>
+        <button type="submit" className="bu">
+          Créer une nouvelle page entreprise
+        </button>
+      </div>
 
-        {filterCompanies.map((company) => {
-          if (isEditing) {
-            return (
-              <form key={company.id} className="infos" onSubmit={handleSubmit}>
-                <img className="image" alt="#" src={company.banner} />
-                <textarea
-                  type="textarea"
-                  value={nameCompany}
-                  rows={5}
-                  onChange={(event) => setNameCompany(event.target.value)}
-                />
-                <textarea
-                  type="textarea"
-                  value={nameSector}
-                  rows={5}
-                  onChange={(event) => setNameSector(event.target.value)}
-                />
-                <textarea
-                  type="textarea"
-                  value={nameDescription}
-                  rows={5}
-                  onChange={(event) => setNameDescription(event.target.value)}
-                />
-                <textarea
-                  type="textarea"
-                  value={nameLink}
-                  rows={5}
-                  onChange={(event) => setNameLink(event.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="valid"
-                  onClick={() => {
-                    handleEdit();
-                    handleSubmit();
-                  }}
-                >
-                  <img alt="Modif" src={images[modif]} />
-                </button>
-              </form>
-            );
-          }
+      {filterCompanies.map((company) => {
+        if (isEditing) {
           return (
-            <form className="infos">
-              <img alt="#" src={company.banner} />
-              <div className="column">
-                <h3>{nameCompany}</h3>
-                <p>{nameDescription}</p>
-                <a href={`${nameLink}`}>{nameLink}</a>
-              </div>
-              <h3 className="sector">{nameSector}</h3>
-              <button className="valid" type="button" onClick={handleEdit}>
-                <img src={images[modif]} alt="Modif" />
+            <form key={company.id} className="infos" onSubmit={handleSubmit}>
+              <img className="image" alt="#" src={company.banner} />
+              <textarea
+                type="textarea"
+                value={nameCompany}
+                rows={5}
+                onChange={(event) => setNameCompany(event.target.value)}
+              />
+              <textarea
+                type="textarea"
+                value={nameSector}
+                rows={5}
+                onChange={(event) => setNameSector(event.target.value)}
+              />
+              <textarea
+                type="textarea"
+                value={nameDescription}
+                rows={5}
+                onChange={(event) => setNameDescription(event.target.value)}
+              />
+              <textarea
+                type="textarea"
+                value={nameLink}
+                rows={5}
+                onChange={(event) => setNameLink(event.target.value)}
+              />
+              <button
+                type="submit"
+                className="valid"
+                onClick={() => {
+                  handleEdit();
+                  handleSubmit();
+                }}
+              >
+                <img alt="Modif" src={images[modif]} />
               </button>
             </form>
           );
-        })}
+        }
+        return (
+          <form className="infos">
+            <img alt="#" src={company.banner} />
+            <div className="column">
+              <h3>{nameCompany}</h3>
+              <p>{nameDescription}</p>
+              <a href={`${nameLink}`}>{nameLink}</a>
+            </div>
+            <h3 className="sector">{nameSector}</h3>
+            <button className="valid" type="button" onClick={handleEdit}>
+              <img src={images[modif]} alt="Modif" />
+            </button>
+          </form>
+        );
+      })}
 
-        {filterOffers.map((offer) => (
-          <table key={offers.user_id}>
-            <tr>
-              <th>{offer.title}</th>
-              <th>{offer.localisation}</th>
-              <div>
-                <th>
-                  <Link to={`/offers/${offer.id}`} target="_blank">
-                    <img alt="#" className="icn" src={oeil} />
-                  </Link>
-                </th>
-                <th>
-                  <Link to={`/offerRegister/${offer.id}`} target="_blank">
-                    <img alt="#" className="icn" src={Pencil} />
-                  </Link>
-                </th>
-              </div>
-            </tr>
-          </table>
-        ))}
+      {filterOffers.map((offer) => (
+        <table key={offers.user_id}>
+          <tr>
+            <th>{offer.title}</th>
+            <th>{offer.localisation}</th>
+            <div>
+              <th>
+                <Link to={`/offers/${offer.id}`} target="_blank">
+                  <img alt="#" className="icn" src={oeil} />
+                </Link>
+              </th>
+              <th>
+                <Link to={`/offerRegister/${offer.id}`} target="_blank">
+                  <img alt="#" className="icn" src={Pencil} />
+                </Link>
+              </th>
+            </div>
+          </tr>
+        </table>
+      ))}
+
 
         <div className="end">
           {filterCompanies.length === 0 ? (
@@ -252,7 +251,6 @@ function CompanyManagement() {
           )}
         </div>
       </section>
-    </SpecialUsersLayout>
   );
 }
 export default CompanyManagement;

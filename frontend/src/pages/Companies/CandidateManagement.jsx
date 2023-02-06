@@ -1,8 +1,10 @@
 import "./CandidateManagement.scss";
+
 import SpecialUsersLayout from "@components/Layouts/SpecialUsersLayout";
 import React, { useState, useEffect } from "react";
 import instance from "@utils/instance";
 import { Link } from "react-router-dom";
+
 
 function CanditateManagement() {
   const [candidats, setCandidats] = useState([]);
@@ -40,13 +42,12 @@ function CanditateManagement() {
   };
 
   return (
-    <SpecialUsersLayout>
-      <section id="candidate-management">
-        <div className="candidatManag">
-          <div className="rectangle">
-            <h4>Gestion des pages candidats</h4>
-          </div>
+    <section id="candidate-management">
+      <div className="candidatManag">
+        <div className="rectangle">
+          <h4>Gestion des pages candidats</h4>
         </div>
+      </div>
 
         <div className="buttons">
           <select
@@ -112,7 +113,6 @@ function CanditateManagement() {
           </button>
         </div>
       </section>
-    </SpecialUsersLayout>
   );
 }
 

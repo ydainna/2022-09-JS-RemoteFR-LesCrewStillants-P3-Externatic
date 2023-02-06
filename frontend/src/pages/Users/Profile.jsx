@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
 import Presentation from "@components/UserProfile/presentation/Presentation";
 import Address from "@components/UserProfile/address/Address";
 import Cv from "@components/UserProfile/cv/Cv";
@@ -33,34 +32,7 @@ export default function Profile() {
     setInfo({ ...info, [name]: value });
   };
 
-  // function to send the form value to backend
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (info.email === "") {
-      Notify.error("Veuillez renseigner une addresse mail.");
-      setError(true);
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("avatar", inputRef.current.files[0]);
-
-    // si j'upload une image alors, post moi le
-    if (filesToUpload !== info.avatar && filesToUpload) {
-      instance
-        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
-        .then(() => {
-          Notify.success("Vos informations ont été mises à jour !");
-        })
-        .catch(() =>
-          Notify.error("Erreur lors de la mise à jour des informations ❌")
-        );
-    }
-    // sinon tu me met le nom que j'ai get en BDD
-
-    instance.put(`/users/${info.id}`, { filesToUpload, info });
-  };
-
+  // fonction to load info
   const reloadInfo = () => {
     if (token !== null) {
       const decodedHeader = jwtDecode(token);
@@ -83,12 +55,41 @@ export default function Profile() {
     reloadInfo();
   }, []);
 
+  // function to send the form value to backend
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (info.email === "") {
+      Notify.error("Veuillez renseigner une addresse mail.");
+      setError(true);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("avatar", inputRef.current.files[0]);
+
+    // si j'upload une image alors, post moi le
+    if (filesToUpload !== info.avatar && filesToUpload) {
+      instance
+        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/avatar`, formData)
+        .then(() => {
+          Notify.success("Vos informations ont été mises à jour !");
+          reloadInfo();
+        })
+        .catch(() =>
+          Notify.error("Erreur lors de la mise à jour des informations ❌")
+        );
+    }
+    // sinon tu me met le nom que j'ai get en BDD
+
+    instance.put(`/users/${info.id}`, { filesToUpload, info });
+  };
+
   useEffect(() => {
     setFilesToUpload(info.avatar);
   }, [isLoading]);
 
   return (
-    <LoggedUsersLayout>
+    <>
       {info.role_id === 1 || info.role_id === 3 ? (
         <Link to="/company-management" className="link-consultant">
           Accéder aux pages consultants
@@ -116,6 +117,6 @@ export default function Profile() {
           <Parameters id={info.id} />
         </>
       )}
-    </LoggedUsersLayout>
+    </>
   );
 }

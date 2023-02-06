@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
 import heart from "@assets/icons/Heart.svg";
 import instance from "@utils/instance";
 
@@ -83,19 +82,17 @@ export default function FavoriteOffers() {
   }, []);
 
   return (
-    <LoggedUsersLayout>
-      <section className="favorite-offers">
-        {arrayFavorite
-          .filter((fav) => fav.isFavorite === 1)
-          .map((favorite) => (
-            <p key={favorite.id}>
-              <span>
-                {favorite.title} - {favorite.localisation}
-              </span>
-              <img src={heart} alt="favorite icon" />
-            </p>
-          ))}
-      </section>
-    </LoggedUsersLayout>
+    <section className="favorite-offers">
+      {arrayFavorite
+        .filter((fav) => fav.isFavorite === 1)
+        .map((favorite) => (
+          <p key={favorite.id}>
+            <span>
+              {favorite.title} - {favorite.localisation}
+            </span>
+            <img src={heart} alt="favorite icon" />
+          </p>
+        ))}
+    </section>
   );
 }
