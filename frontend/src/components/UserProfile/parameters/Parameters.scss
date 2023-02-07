@@ -52,6 +52,12 @@
     margin: 0.5rem 0;
     cursor: pointer;
   }
+
+  .disconnect-button {
+    background-color: $brand-color-two;
+    margin-top: $basic-space;
+  }
+
   .delete-button {
     background-color: #c10f0f;
     margin-top: $basic-space;

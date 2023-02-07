@@ -72,7 +72,7 @@ export default function Parameters({ id }) {
       </form>
       <button
         type="button"
-        className="delete-button"
+        className="disconnect-button"
         onClick={handleDisconnected}
       >
         Deconnecter
