@@ -6,7 +6,9 @@ class UserManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(`select * from  ${this.table}`);
+    return this.connection.query(
+      `select id, avatar, email, civility, firstname, lastname, phone_number, created_at, role_id, information_id, address_id from  ${this.table}`
+    );
   }
 
   insert(user, information, address) {
@@ -42,6 +44,13 @@ class UserManager extends AbstractManager {
         user.firstname,
         user.id,
       ]
+    );
+  }
+
+  updateRole(user) {
+    return this.connection.query(
+      `update ${this.table} set role_id = ? where id IN (?)`,
+      [user.roleId, user.arr]
     );
   }
 

@@ -37,3 +37,16 @@ $border-radius: 10px;
 $basic-space: 1rem;
 
 $half-space: calc($basic-space / 2);
+
+// Clickable button effect
+button:active {
+  transform: translateY(2px);
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  min-height: 70vh;
+}

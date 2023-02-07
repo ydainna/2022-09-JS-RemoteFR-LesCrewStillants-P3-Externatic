@@ -125,7 +125,6 @@ function OfferForm() {
     event.preventDefault();
     setIsEditingForm1(false);
     setIsEditingForm2(false);
-    console.warn("infos envoyées");
     // Envoyer les données vers le backend ici
     instance
       .put(`/offers/${id}`, {
@@ -149,159 +148,163 @@ function OfferForm() {
   }
 
   return (
-    <section
-      className="container"
-      style={{ backgroundImage: `url(${company.banner})` }}
-      onChange={(event) => setImg(event.target.value)}
-    >
-      <div className="titre">
-        <h1>Enregistrer une nouvelle offre d'emploi</h1>
-      </div>
-      <div className="banner_top">
-        <button className="button" type="submit" onClick={() => toggleModal()}>
-          <img src={images[modif]} alt="Modif" />
-        </button>
-        {showModal && (
-          <form className="modal_form" onSubmit={handleSubmit}>
-            <p>Changer l'image :</p>
-            <input
-              type="text"
-              value={img}
-              onChange={(event) => setImg(event.target.value)}
-            />
-          </form>
-        )}
-      </div>
-      <section className="banner_job">
-        {isEditingForm1 ? (
-          <>
-            <form className="title_job" onSubmit={handleSubmit}>
+    <>
+      <h1 className="titre">Enregistrer une nouvelle offre d'emploi</h1>
+      <section
+        className="container"
+        style={{ backgroundImage: `url(${company.banner})` }}
+        onChange={(event) => setImg(event.target.value)}
+      >
+        <div className="banner_top">
+          <button
+            className="button"
+            type="submit"
+            onClick={() => toggleModal()}
+          >
+            <img src={images[modif]} alt="Modif" />
+          </button>
+          {showModal && (
+            <form className="modal_form" onSubmit={handleSubmit}>
+              <p>Changer l'image :</p>
               <input
                 type="text"
-                value={nameJob}
-                onChange={(event) => setNameJob(event.target.value)}
-              />
-              <input
-                type="text"
-                value={nameEntreprise}
-                onChange={(event) => setNameEntreprise(event.target.value)}
-              />
-              <input
-                type="text"
-                value={adressEntreprise}
-                onChange={(event) => setAdressEntreprise(event.target.value)}
-              />
-              <input
-                type="text"
-                value={contrat}
-                onChange={(event) => setContrat(event.target.value)}
-              />
-              <input
-                type="text"
-                value={compensation}
-                onChange={(event) => setCompensation(event.target.value)}
-              />
-              <input
-                type="text"
-                value={schedule}
-                onChange={(event) => setSchedule(event.target.value)}
+                value={img}
+                onChange={(event) => setImg(event.target.value)}
               />
             </form>
-            <button className="button" type="submit" onClick={handleEdit1}>
-              <img src={images[modif]} alt="Modif" />
-            </button>
-          </>
-        ) : (
-          <>
-            <form className="title_job">
-              <h2>{nameJob}</h2>
-              <h3>{nameEntreprise}</h3>
-              <h3>{adressEntreprise}</h3>
-              <p>{contrat}</p>
-              <p>{compensation}</p>
-              <p>{schedule}</p>
-            </form>
-            <button className="button" type="submit" onClick={handleEdit1}>
-              <img src={images[modif]} alt="Modif" />
-            </button>
-          </>
-        )}
-      </section>
-      <section className="banner_description">
-        {isEditingForm2 ? (
-          <>
-            <form className="description_job" onSubmit={handleSubmit}>
-              <h2 className="first-h2">Description du poste</h2>
-              <ReactQuill
-                theme="snow"
-                value={descJob}
-                rows={4}
-                onChange={(value) => setDescJob(value)}
-              />
-              <h2>Description de l'entreprise</h2>
-              <ReactQuill
-                theme="snow"
-                rows={4}
-                value={descEntreprise}
-                onChange={(value) => setDescEntreprise(value)}
-              />
-              <h2>Votre mission</h2>
-              <ReactQuill
-                theme="snow"
-                rows={4}
-                value={mission}
-                onChange={(value) => setMission(value)}
-              />
-              <h2>Profil et expérience souhaités</h2>
-              <ReactQuill
-                theme="snow"
-                rows={4}
-                value={profil}
-                onChange={(value) => setProfil(value)}
-              />
-              <h2>Avantages</h2>
-              <ReactQuill
-                theme="snow"
-                rows={4}
-                value={advantages}
-                onChange={(value) => setAdvantages(value)}
-              />
-            </form>
-            <div className="align">
-              <button className="button" type="submit" onClick={handleEdit2}>
+          )}
+        </div>
+        <section className="banner_job">
+          {isEditingForm1 ? (
+            <>
+              <form className="title_job" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  value={nameJob}
+                  onChange={(event) => setNameJob(event.target.value)}
+                />
+                <input
+                  type="text"
+                  value={nameEntreprise}
+                  onChange={(event) => setNameEntreprise(event.target.value)}
+                />
+                <input
+                  type="text"
+                  value={adressEntreprise}
+                  onChange={(event) => setAdressEntreprise(event.target.value)}
+                />
+                <input
+                  type="text"
+                  value={contrat}
+                  onChange={(event) => setContrat(event.target.value)}
+                />
+                <input
+                  type="text"
+                  value={compensation}
+                  onChange={(event) => setCompensation(event.target.value)}
+                />
+                <input
+                  type="text"
+                  value={schedule}
+                  onChange={(event) => setSchedule(event.target.value)}
+                />
+              </form>
+              <button className="button" type="submit" onClick={handleEdit1}>
                 <img src={images[modif]} alt="Modif" />
               </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <form className="description_job">
-              <h2 className="first-h2">Description du poste</h2>
-              {parse(descJob)}
-              <h2>Description de l'entreprise</h2>
-              {parse(descEntreprise)}
-              <h2>Votre mission</h2>
-              {parse(mission)}
-              <h2>Profil et expérience souhaités</h2>
-              {parse(profil)}
-              <h2>Avantages</h2>
-              {parse(advantages)}
-            </form>
-            <div className="align">
-              <button className="button" type="submit" onClick={handleEdit2}>
+            </>
+          ) : (
+            <>
+              <form className="title_job">
+                <h2>{nameJob}</h2>
+                <h3>{nameEntreprise}</h3>
+                <h3>{adressEntreprise}</h3>
+                <p>{contrat}</p>
+                <p>{compensation}</p>
+                <p>{schedule}</p>
+              </form>
+              <button className="button" type="submit" onClick={handleEdit1}>
                 <img src={images[modif]} alt="Modif" />
               </button>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </section>
+        <section className="banner_description">
+          {isEditingForm2 ? (
+            <>
+              <form className="description_job" onSubmit={handleSubmit}>
+                <h2 className="first-h2">Description du poste</h2>
+                <ReactQuill
+                  theme="snow"
+                  value={descJob}
+                  rows={4}
+                  onChange={(value) => setDescJob(value)}
+                />
+                <h2>Description de l'entreprise</h2>
+                <ReactQuill
+                  theme="snow"
+                  rows={4}
+                  value={descEntreprise}
+                  onChange={(value) => setDescEntreprise(value)}
+                />
+                <h2>Votre mission</h2>
+                <ReactQuill
+                  theme="snow"
+                  rows={4}
+                  value={mission}
+                  onChange={(value) => setMission(value)}
+                />
+                <h2>Profil et expérience souhaités</h2>
+                <ReactQuill
+                  theme="snow"
+                  rows={4}
+                  value={profil}
+                  onChange={(value) => setProfil(value)}
+                />
+                <h2>Avantages</h2>
+                <ReactQuill
+                  theme="snow"
+                  rows={4}
+                  value={advantages}
+                  onChange={(value) => setAdvantages(value)}
+                />
+              </form>
+              <div className="align">
+                <button className="button" type="submit" onClick={handleEdit2}>
+                  <img src={images[modif]} alt="Modif" />
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <form className="description_job">
+                <h2 className="first-h2">Description du poste</h2>
+                {parse(descJob)}
+                <h2>Description de l'entreprise</h2>
+                {parse(descEntreprise)}
+                <h2>Votre mission</h2>
+                {parse(mission)}
+                <h2>Profil et expérience souhaités</h2>
+                {parse(profil)}
+                <h2>Avantages</h2>
+                {parse(advantages)}
+              </form>
+              <div className="align">
+                <button className="button" type="submit" onClick={handleEdit2}>
+                  <img src={images[modif]} alt="Modif" />
+                </button>
+              </div>
+            </>
+          )}
+        </section>
+        <div className="align">
+          <button className="button_valid" type="submit" onClick={handleSubmit}>
+            Envoyer les modifications
+          </button>
+        </div>
+        <ToastContainer />
       </section>
-      <div className="align">
-        <button className="button_valid" type="submit" onClick={handleSubmit}>
-          Envoyer les modifications
-        </button>
-      </div>
-      <ToastContainer />
-    </section>
+    </>
   );
 }
 

@@ -24,22 +24,35 @@
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
       gap: $basic-space;
 
       .search-input {
         border: none;
+        height: max-content;
         width: 14rem;
+        padding: 0.5rem 0.2rem;
+      }
+
+      .select-localisation {
+        width: 14rem;
+        height: max-content;
+        padding: 0.5rem 0.2rem;
+        border: none;
+      }
+
+      .select-contract {
+        width: 6rem;
+        height: max-content;
+        align-content: center;
+        padding: 0.5rem 0.2rem;
+        border: none;
+      }
+
+      div {
+        height: max-content;
       }
     }
-  }
-
-  .select-localisation {
-    width: 14rem;
-  }
-
-  .select-contract {
-    width: 6rem;
-    align-content: center;
   }
 
   .offers-cards {

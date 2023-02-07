@@ -32,10 +32,6 @@ export default function CurrentSituation({ id }) {
     e.preventDefault();
     instance
       .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info)
-      .then(console.warn(info))
-      .then((res) => {
-        console.warn(res);
-      })
       .catch((err) =>
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );
@@ -48,7 +44,6 @@ export default function CurrentSituation({ id }) {
         <div
           name="type_of_contract"
           id="contrat-select"
-          // value={info.isActiveSearch}
           onChange={handleActiveSearchChange}
         >
           <label>

@@ -1,10 +1,13 @@
+import { Outlet } from "react-router-dom";
 import SubNavSpecialUsers from "@components/ManagementsPages/subNavUsers/SubNavSpecialUsers";
 
-export default function SpecialUsersLayout({ children }) {
+export default function SpecialUsersLayout() {
   return (
     <>
       <SubNavSpecialUsers />
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

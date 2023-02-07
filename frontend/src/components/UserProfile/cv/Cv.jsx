@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import instance from "@utils/instance";
 import Notify from "@utils/notification";
-// import cvImg from "@assets/icons/CV.svg";
+import cvImg from "@assets/icons/CV.svg";
 
 import "./Cv.scss";
 
 export default function Cv({ id }) {
   const [info, setInfo] = useState([]);
-  const [filesToUpload, setFilesToUpload] = useState("");
+  const [filesToUpload, setFilesToUpload] = useState(info);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -33,24 +33,19 @@ export default function Cv({ id }) {
       console.warn("uploaded");
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/cv`, formData)
-        .catch((err) => console.error(err));
+        .then(() => {
+          Notify.success("Vos informations ont été mises à jour !");
+        })
+        .catch(() => Notify.error("Erreur lors de l'upload ❌"));
     }
-    instance
-      .put(`/information/cv/${id}`, { filesToUpload })
-      .catch((err) =>
-        console.error(err, Notify.error("Mauvaises Informations! ❌"))
-      );
-    Notify.success("Vos informations ont été mises à jour!");
+    instance.put(`/information/cv/${id}`, { filesToUpload });
   };
 
   return (
     <section id="cv">
       <h1>CV</h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
-        <img
-          src={`${import.meta.env.VITE_BACKEND_URL}/uploads/cv/${info.cv}`}
-          alt="CV"
-        />
+        <img src={cvImg} alt="CV" />
         <input
           type="file"
           style={{ display: "none" }}

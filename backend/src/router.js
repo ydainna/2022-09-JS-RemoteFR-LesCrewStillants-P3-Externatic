@@ -4,8 +4,38 @@ const path = require("path");
 const multer = require("multer");
 
 // Destination de stockage des fichiers
-const uploadAvatar = multer({ dest: "public/uploads/avatar/" });
-const uploadCV = multer({ dest: "public/uploads/cv/" });
+const uploadAvatar = multer({
+  dest: "public/uploads/avatar/",
+  limits: { fileSize: "10485760" },
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
+const uploadCV = multer({
+  dest: "public/uploads/cv/",
+  limits: { fileSize: "10485760" },
+  fileFilter: (_req, file, cb) => {
+    const fileTypes = /pdf/;
+    const mimetype = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(
+      `Error: File upload only supports the following filetypes - ${fileTypes}`
+    );
+    return "";
+  },
+});
 
 const router = express.Router();
 
@@ -15,7 +45,10 @@ const offerControllers = require("./controllers/offerControllers");
 const companyControllers = require("./controllers/companyControllers");
 const infoControllers = require("./controllers/infoControllers");
 const addressControllers = require("./controllers/addressControllers");
+
 const adminControllers = require("./controllers/adminControllers");
+
+const uofferControllers = require("./controllers/uofferControllers");
 
 // const decodeToken = require("./services/jwt");
 
@@ -62,20 +95,21 @@ router.put("/users/:id", userControllers.edit);
 router.put("/users/edit-password/:id", userControllers.editPassword);
 router.delete("/users/:id", userControllers.destroy);
 
+// routes user_offer
+
+router.post("/uoffer", uofferControllers.add);
+router.delete("/uoffer/:id/:offer", uofferControllers.destroyWhatever);
+router.get("/user-offers/:id", uofferControllers.browser);
+
 // route admin for deleting multiple users and all associated entries
 router.delete("/users-deletion", adminControllers.destroyMultiple);
+router.put("/edit-role", adminControllers.updateRole);
 
 // route POST pour recevoir un fichier
 router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
   const { originalname } = req.file;
 
   const { filename } = req.file;
-
-  // check file is jpg or png
-  if (req.file.mimetype !== "image/jpeg" && req.file.mimetype !== "image/png") {
-    const error = new Error("Only .png and .jpg format allowed!");
-    error.httpStatusCode = 400;
-  }
 
   fs.rename(
     `${path.join(__dirname, "../public")}/uploads/avatar/${filename}`,
@@ -88,14 +122,8 @@ router.post("/uploads/avatar", uploadAvatar.single("avatar"), (req, res) => {
 });
 
 router.post("/uploads/cv", uploadCV.single("cv"), (req, res) => {
-  console.warn(req.file);
   const { originalname } = req.file;
   const { filename } = req.file;
-
-  if (req.file.mimetype !== "application/pdf") {
-    const error = new Error("Only .pdf format allowed!");
-    error.httpStatusCode = 400;
-  }
 
   fs.rename(
     `${path.join(__dirname, "../public")}/uploads/cv/${filename}`,

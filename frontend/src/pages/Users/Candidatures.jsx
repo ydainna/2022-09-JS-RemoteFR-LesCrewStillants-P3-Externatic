@@ -1,88 +1,121 @@
-import LoggedUsersLayout from "@components/Layouts/LoggedUsersLayout";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import instance from "@utils/instance";
 import "@components/UserProfile/Candidatures.scss";
 
 export default function Candidatures() {
-  const arrayCandidature = [
+  const token = sessionStorage.getItem("token");
+  const [arrayCandidature, setArrayCandidature] = useState([
     {
       id: 1,
-      name: "Développeur Web Front-End",
-      city: "Paris",
+      title: "Développeur Web Front-End",
+      localisation: "Paris",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 2,
-      name: "Développeur Web Front-End",
-      city: "Lille",
+      title: "Développeur Web Front-End",
+      localisation: "Lille",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 3,
-      name: "Développeur Web Front-End",
-      city: "Marseille",
+      title: "Développeur Web Front-End",
+      localisation: "Marseille",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 4,
-      name: "Développeur Web Front-End",
-      city: "Lyon",
+      title: "Développeur Web Front-End",
+      localisation: "Lyon",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 5,
-      name: "Développeur Web Front-End",
-      city: "Londres",
+      title: "Développeur Web Front-End",
+      localisation: "Londres",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 6,
-      name: "Développeur Web Front-End",
-      city: "Bordeaux",
+      title: "Développeur Web Front-End",
+      localisation: "Bordeaux",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 7,
-      name: "Développeur Web Back-End Symfony",
-      city: "Paris",
+      title: "Développeur Web Back-End Symfony",
+      localisation: "Paris",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
     {
       id: 8,
-      name: "Développeur Web Front-End",
-      city: "Paris",
+      title: "Développeur Web Front-End",
+      localisation: "Paris",
       feedback: "Retour Entreprise",
       meeting: "Entretien",
+      isApplied: 1,
     },
-  ];
+  ]);
+
+  const navigate = useNavigate();
+
+  const getData = (decodedHeader) => {
+    instance
+      .get(`/user-offers/${decodedHeader.id}`)
+      .then((result) => {
+        setArrayCandidature(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return getData(decodedHeader);
+    }
+    return navigate("/login");
+  }, []);
   return (
-    <LoggedUsersLayout>
-      <section className="candidatures">
-        <table width="100%">
-          <tbody>
-            <tr>
-              <th>Offre</th>
-              <th>Retour Entreprise</th>
-              <th>Entretien</th>
-            </tr>
-            {arrayCandidature.map((favorite) => (
-              <tr key={favorite.id}>
+    <section className="candidatures">
+      <table width="100%">
+        <tbody>
+          <tr>
+            <th>Offre</th>
+            <th>Retour Entreprise</th>
+            <th>Entretien</th>
+          </tr>
+          {arrayCandidature
+            .filter((cand) => cand.isApplied === 1)
+            .map((apply) => (
+              <tr key={apply.id}>
                 <td>
-                  {favorite.name} - {favorite.city}
+                  {apply.title} - {apply.localisation}
                 </td>
-                <td>{favorite.feedback}</td>
-                <td>{favorite.meeting}</td>
+                <td>{apply.feedback}</td>
+                <td>{apply.meeting}</td>
               </tr>
             ))}
-          </tbody>
-        </table>
-      </section>
-    </LoggedUsersLayout>
+        </tbody>
+      </table>
+    </section>
   );
 }

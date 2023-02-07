@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   max-width: 25rem;
-  margin: $basic-space * 2 auto;
-  background-color: $secondary-color-three;
+  margin: $basic-space * 3 auto;
+  background-color: $secondary-color-four;
   padding: $basic-space;
   h1 {
     align-self: flex-start;
@@ -50,5 +50,6 @@
   }
   @media screen and (min-width: 720px) {
     max-width: 40rem;
+    margin: $basic-space * 8 auto;
   }
 }
