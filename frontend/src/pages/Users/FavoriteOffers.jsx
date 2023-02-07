@@ -8,56 +8,7 @@ import "@components/UserProfile/FavoritesOffers.scss";
 
 export default function FavoriteOffers() {
   const token = sessionStorage.getItem("token");
-  const [arrayFavorite, setArrayFavorite] = useState([
-    {
-      id: 1,
-      title: "Développeur Web Front-End",
-      localisation: "Paris",
-      isFavorite: 1,
-    },
-    {
-      id: 2,
-      title: "Développeur Web Front-End",
-      localisation: "Lille",
-      isFavorite: 1,
-    },
-    {
-      id: 3,
-      title: "Développeur Web Front-End",
-      localisation: "Marseille",
-      isFavorite: 1,
-    },
-    {
-      id: 4,
-      title: "Développeur Web Front-End",
-      localisation: "Lyon",
-      isFavorite: 1,
-    },
-    {
-      id: 5,
-      title: "Développeur Web Front-End",
-      localisation: "Londres",
-      isFavorite: 1,
-    },
-    {
-      id: 6,
-      title: "Développeur Web Front-End",
-      localisation: "Bordeaux",
-      isFavorite: 1,
-    },
-    {
-      id: 7,
-      title: "Développeur Web Back-End Symfony",
-      localisation: "Paris",
-      isFavorite: 1,
-    },
-    {
-      id: 8,
-      title: "Développeur Web Front-End",
-      localisation: "Paris",
-      isFavorite: 1,
-    },
-  ]);
+  const [arrayFavorite, setArrayFavorite] = useState([]);
 
   const navigate = useNavigate();
 

@@ -105,6 +105,8 @@ export default function Profile() {
               fontSize: "1.2rem",
               boxShadow: "0 10px 6px -6px #777",
               cursor: "pointer",
+              translateY: "2px",
+              marginBottom: "1rem",
             }}
           >
             Accéder aux pages consultants
