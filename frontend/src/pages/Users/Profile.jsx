@@ -92,7 +92,23 @@ export default function Profile() {
     <>
       {info.role_id === 1 || info.role_id === 3 ? (
         <Link to="/company-management" className="link-consultant">
-          Accéder aux pages consultants
+          <button
+            type="button"
+            style={{
+              backgroundColor: "#c91961",
+              border: "none",
+              borderRadius: "3px",
+              padding: "10px 20px",
+              color: "#f0f0f0",
+              width: "20rem",
+              height: "4rem",
+              fontSize: "1.2rem",
+              boxShadow: "0 10px 6px -6px #777",
+              cursor: "pointer",
+            }}
+          >
+            Accéder aux pages consultants
+          </button>
         </Link>
       ) : (
         ""
