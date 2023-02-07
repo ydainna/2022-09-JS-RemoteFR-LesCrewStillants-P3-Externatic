@@ -31,7 +31,13 @@ export default function CurrentSituation({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     instance
-      .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info)
+      .put(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/information/currentSituation/${id}`,
+        info
+      )
+      .then(console.warn(info))
       .catch((err) =>
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );
@@ -67,7 +73,7 @@ export default function CurrentSituation({ id }) {
         </div>
 
         <label className="actual_situation">
-          Emploi actuel{" "}
+          Emploi ou situation actuel{" "}
           <input
             type="text"
             name="actual_situation"

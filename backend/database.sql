@@ -45,10 +45,13 @@ role_id INT NULL DEFAULT 2,
 CONSTRAINT fk_user_role
 FOREIGN KEY (role_id)
 REFERENCES role(id),
+
 information_id INT,
 CONSTRAINT fk_user_information
 FOREIGN KEY (information_id)
 REFERENCES information(id),
+
+
 address_id INT,
 CONSTRAINT fk_user_address
 FOREIGN KEY (address_id)

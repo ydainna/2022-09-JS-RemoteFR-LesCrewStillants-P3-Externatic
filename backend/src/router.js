@@ -82,6 +82,10 @@ router.get("/information", infoControllers.browse);
 router.get("/information/:id", infoControllers.read);
 router.put("/information/:id", infoControllers.edit);
 router.put("/information/cv/:id", infoControllers.editCV);
+router.put(
+  "/information/currentSituation/:id",
+  infoControllers.editCurrentSituation
+);
 
 // routes address
 router.get("/address", addressControllers.browse);
