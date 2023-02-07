@@ -40,6 +40,12 @@ export default function Parameters({ id }) {
         console.error(err, Notify.error("Une erreur est survenue ❌"))
       );
   };
+
+  const handleDisconnected = () => {
+    sessionStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <section id="parameters">
       <h1>Paramètres</h1>
@@ -64,6 +70,13 @@ export default function Parameters({ id }) {
         </label>
         <button type="submit">Changer de mot de passe</button>
       </form>
+      <button
+        type="button"
+        className="delete-button"
+        onClick={handleDisconnected}
+      >
+        Deconnecter
+      </button>
       <button type="button" className="delete-button" onClick={handleDelete}>
         Supression du compte
       </button>
