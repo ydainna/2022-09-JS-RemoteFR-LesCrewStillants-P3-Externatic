@@ -114,13 +114,13 @@ export default function UsersManagement() {
       <h1>Gestion des Utilisateurs</h1>
       <div className="users-management-div">
         <button type="button" onClick={handleDeleteClick}>
-          Supprimer les profil
+          Supprimer les profils
         </button>
         <select onChange={(e) => setNewRole(parseInt(e.target.value, 10))}>
-          <option value="0">Rôles</option>
-          <option value="2">Candidats</option>
-          <option value="3">Consultants</option>
-          <option value="1">Admins</option>
+          <option value="0">Rôle à attribuer</option>
+          <option value="2">Candidat</option>
+          <option value="3">Consultant</option>
+          <option value="1">Admin</option>
         </select>
         <button type="button" onClick={handleRoleClick}>
           Attributer un rôle
@@ -137,10 +137,10 @@ export default function UsersManagement() {
           id=""
           onChange={(e) => setRoleFilter(parseInt(e.target.value, 10))}
         >
-          <option value="0">Rôles</option>
-          <option value="2">Candidats</option>
-          <option value="3">Consultants</option>
-          <option value="1">Admins</option>
+          <option value="0">Rôle</option>
+          <option value="2">Candidat</option>
+          <option value="3">Consultant</option>
+          <option value="1">Admin</option>
         </select>
         <button type="button">Réinitialiser ma sélection</button>
       </div>
