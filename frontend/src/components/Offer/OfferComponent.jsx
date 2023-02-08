@@ -128,24 +128,23 @@ function OfferComponent() {
     );
   };
 
-  const getData = (decodedHeader) => {
-    instance
-      .get(`/user-offers/${decodedHeader.id}`)
-      .then((result) => {
-        setUserOffer(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const getData = () => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+      instance
+        .get(`/user-offers/${decodedHeader.id}`)
+        .then((result) => {
+          setUserOffer(result.data);
+        })
+        .then(() => console.warn(userOffer))
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   useEffect(() => {
-    if (token !== null) {
-      const decodedHeader = jwtDecode(token);
-
-      return getData(decodedHeader);
-    }
-    return "";
+    getData();
   }, []);
 
   useEffect(() => {
