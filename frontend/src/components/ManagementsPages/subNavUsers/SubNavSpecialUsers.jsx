@@ -8,7 +8,7 @@ export default function SubNavSpecialUsers({ role }) {
   const [isAdminView, setIsAdminView] = useState(false);
 
   const handleAdminView = () => {
-    setCurrentCandidatePage(0);
+    setCurrentCandidatePage(2);
     setIsAdminView(!isAdminView);
   };
 
