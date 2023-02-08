@@ -79,7 +79,6 @@ function CardOffer({ offer }) {
       .then((result) => {
         setUserOffer(result.data);
       })
-      .then(() => console.warn(userOffer))
       .catch((err) => {
         console.error(err);
       });

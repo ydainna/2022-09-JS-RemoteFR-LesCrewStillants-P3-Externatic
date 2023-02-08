@@ -37,7 +37,6 @@ export default function CurrentSituation({ id }) {
         }/information/currentSituation/${id}`,
         info
       )
-      .then(console.warn(info))
       .catch((err) =>
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );
