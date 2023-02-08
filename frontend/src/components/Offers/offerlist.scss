@@ -112,7 +112,13 @@
       width: 98%;
     }
   }
-    /* Checkbox btn */
+  /* Checkbox btn */
+
+  .div-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $half-space;
     .checkbox-label {
       position: relative;
       display: inline-block;
@@ -121,23 +127,23 @@
       height: 35px;
       border-radius: 35px;
       cursor: pointer;
-  
+
       .checkbox {
         &-box {
           position: absolute;
           bottom: 100%;
           left: 0px;
           visibility: hidden;
-  
+
           &:checked ~ .checkbox-cursor:before {
             left: 55%;
           }
-  
+
           &:checked ~ .checkbox-cursor {
             background-color: $brand-color;
           }
         }
-  
+
         &-cursor {
           position: relative;
           display: block;
@@ -145,7 +151,7 @@
           height: 100%;
           background-color: grey;
           transition: background-color 0.5s ease-out;
-  
+
           &:before {
             content: "";
             position: absolute;
@@ -161,4 +167,5 @@
         }
       }
     }
+  }
 }
