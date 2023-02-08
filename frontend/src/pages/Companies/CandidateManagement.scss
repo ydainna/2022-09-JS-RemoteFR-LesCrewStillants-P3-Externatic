@@ -1,6 +1,9 @@
 @import "../../assets/_variables.scss";
 
 #candidate-management {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   .candidatManag {
     display: flex;
     justify-content: center;
@@ -44,6 +47,10 @@
   .bu {
     height: 5rem;
     width: 20rem;
+    border: none;
+    font-size: $font-size;
+    font-family: $font-stack;
+    box-shadow: 0 10px 6px -6px #777;
   }
 
   .fin {
@@ -57,6 +64,16 @@
   .select {
     height: 5rem;
     background-color: $secondary-color-three;
+    border: none;
+    font-size: $font-size;
+    font-family: $font-stack;
+    text-align: center;
+    box-shadow: 0 10px 6px -6px #777;
+    outline: 0px;
+    appearance: none;
+    background-image: url("../../assets/icons/Triangle.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
   }
 
   .tab {
@@ -64,15 +81,16 @@
     display: flex;
     justify-content: center;
     padding-top: 1rem;
+
+    .affichage {
+      width: 100%;
+      background-color: $secondary-color-three;
+      padding: $basic-space;
+    }
   }
 
   h5 {
     font-size: $title-bigger-size;
-  }
-
-  .affichage {
-    width: 100%;
-    background-color: $secondary-color-three;
   }
 
   button {

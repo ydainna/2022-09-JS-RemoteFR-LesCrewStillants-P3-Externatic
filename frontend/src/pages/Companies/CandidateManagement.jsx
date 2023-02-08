@@ -2,6 +2,7 @@ import "./CandidateManagement.scss";
 
 import React, { useState, useEffect } from "react";
 import instance from "@utils/instance";
+import oeil from "@assets/icons/Eye.svg";
 import { Link } from "react-router-dom";
 
 function CanditateManagement() {
@@ -86,7 +87,7 @@ function CanditateManagement() {
           </div>
           <div className="affichage">
             <Link to={`/offers/${fil.offer_id}`} target="_blank">
-              Voir l'offre
+              <img alt="#" className="icn" src={oeil} />
             </Link>
           </div>
         </div>
@@ -106,9 +107,17 @@ function CanditateManagement() {
         <button type="submit" className="bu">
           Transférez le Candidat
         </button>
-        <button type="submit" className="bu">
-          Envoyer un message
-        </button>
+        {filter[0] ? (
+          <a href={`mailto:${filter[0].email}`}>
+            <button type="submit" className="bu">
+              Envoyer un message
+            </button>
+          </a>
+        ) : (
+          <button type="submit" className="bu">
+            Envoyer un message
+          </button>
+        )}
       </div>
     </section>
   );
