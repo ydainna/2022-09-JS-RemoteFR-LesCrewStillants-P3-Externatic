@@ -43,7 +43,7 @@ function OfferList() {
           <input
             type="text"
             className="search-input"
-            placeholder="🔎 Type to search"
+            placeholder="🔎 Écrivez votre recherche"
             onChange={(e) => setSearch(e.target.value)}
           />
 
@@ -73,7 +73,7 @@ function OfferList() {
             ))}
           </select>
           <div>
-            <label htmlFor="remote">Show only Remote </label>
+            <label htmlFor="remote">Télétravail uniquement </label>
             <input
               type="checkbox"
               className="available-checkbox"
