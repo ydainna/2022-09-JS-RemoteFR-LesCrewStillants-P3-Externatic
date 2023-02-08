@@ -124,7 +124,6 @@ function CompanyManagement() {
         user_id: filterCompanies[0].user_id,
       })
       .then(() => {
-        console.warn(filterOffers);
         setFilterOffers(offers);
       })
       .catch((err) => {

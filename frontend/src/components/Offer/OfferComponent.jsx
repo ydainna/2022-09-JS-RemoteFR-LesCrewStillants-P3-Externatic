@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Notify from "@utils/notification";
 import instance from "@utils/instance";
 import parse from "html-react-parser";
 import Heart from "@assets/icons/Heart.svg";
@@ -122,6 +123,9 @@ function OfferComponent() {
           console.error(err);
         });
     }
+    Notify.success(
+      "Merci d'avoir postulé, l'un de nos consultant vous contactera très bientôt"
+    );
   };
 
   const getData = () => {

@@ -39,6 +39,13 @@ class InformationManager extends AbstractManager {
       [information.filesToUpload, information.id]
     );
   }
+
+  updateCurrentSituation(information) {
+    return this.connection.query(
+      `update ${this.table} set actual_situation = ?, isActiveSearch = ? where id = ?`,
+      [information.actual_situation, information.isActiveSearch]
+    );
+  }
 }
 
 module.exports = InformationManager;
