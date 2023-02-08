@@ -107,7 +107,7 @@ function OfferComponent() {
   };
 
   const handleCandidate = () => {
-    if (!candidate) {
+    if (!candidate && token !== null) {
       instance
         .post(`/uoffer`, {
           isFavorite: false,
@@ -122,10 +122,11 @@ function OfferComponent() {
         .catch((err) => {
           console.error(err);
         });
+
+      Notify.success(
+        "Merci d'avoir postulé, l'un de nos consultant vous contactera très bientôt"
+      );
     }
-    Notify.success(
-      "Merci d'avoir postulé, l'un de nos consultant vous contactera très bientôt"
-    );
   };
 
   const getData = () => {
