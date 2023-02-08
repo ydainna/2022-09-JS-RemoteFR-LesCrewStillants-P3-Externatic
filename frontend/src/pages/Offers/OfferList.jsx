@@ -72,7 +72,7 @@ function OfferList() {
               </option>
             ))}
           </select>
-          <div>
+          <div className="div-checkbox">
             <label htmlFor="remote">Télétravail uniquement </label>
             <label className="checkbox-label">
               <input

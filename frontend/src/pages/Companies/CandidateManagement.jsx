@@ -44,7 +44,7 @@ function CanditateManagement() {
     <section id="candidate-management">
       <div className="candidatManag">
         <div className="rectangle">
-          <h4>Gestion des pages candidats</h4>
+          <h1>Gestion des pages candidats</h1>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ function CanditateManagement() {
           name="candidats"
           id="candidats"
         >
-          <option>Candidat</option>
+          <option>Candidats</option>
           {candidats
             .filter((cand) => cand.role_id === 2)
             .map((candidat) => (
@@ -83,7 +83,7 @@ function CanditateManagement() {
       {array.map((fil) => (
         <div className="tab">
           <div className="affichage">
-            {fil.isFavorite ? "A ajouter en favoris" : "A candidaté"}
+            {fil.isFavorite ? "A ajouté en favoris" : "A candidaté"}
           </div>
           <div className="affichage">
             <Link to={`/offers/${fil.offer_id}`} target="_blank">
@@ -105,7 +105,7 @@ function CanditateManagement() {
             ))}
         </select>
         <button type="submit" className="bu">
-          Transférez le Candidat
+          Transférer le candidat
         </button>
         {filter[0] ? (
           <a href={`mailto:${filter[0].email}`}>
