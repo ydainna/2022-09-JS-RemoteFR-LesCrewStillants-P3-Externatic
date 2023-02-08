@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import instance from "@utils/instance";
+import jwtDecode from "jwt-decode";
 import Notify from "@utils/notification";
 
 import "@components/ManagementsPages/Admin/UsersManagement.scss";
@@ -76,6 +78,36 @@ export default function UsersManagement() {
   useEffect(() => {
     getData();
   }, [handleDeleteClick]);
+
+  // Check if you're admin or consultant + get role for subNav component
+  const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const reloadInfo = () => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return instance
+        .get(`/users/${decodedHeader.id}`)
+        .then((response) => {
+          if (response.data.role_id === 3) {
+            Notify.error("Vous n'avez pas accès aux pages admin.");
+            return navigate("/company-management");
+          }
+
+          return "";
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    return navigate("/company-management");
+  };
+
+  useEffect(() => {
+    reloadInfo();
+  }, []);
 
   return (
     <section className="users-management">

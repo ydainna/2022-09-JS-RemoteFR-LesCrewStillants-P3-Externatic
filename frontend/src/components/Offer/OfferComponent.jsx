@@ -149,19 +149,23 @@ function OfferComponent() {
 
   useEffect(() => {
     if (userOffer.length !== 0) {
-      userOffer.forEach((currentoffer) => {
-        if (currentoffer.offer_id === offers.id) {
-          setIsFavorite(true);
-        }
-      });
+      userOffer
+        .filter((off) => off.isFavorite)
+        .forEach((currentoffer) => {
+          if (currentoffer.offer_id === offers.id) {
+            setIsFavorite(true);
+          }
+        });
     }
 
     if (userOffer.length !== 0) {
-      userOffer.forEach((currentoffer) => {
-        if (currentoffer.offer_id === offers.id) {
-          setCandidate(true);
-        }
-      });
+      userOffer
+        .filter((off) => off.isApplied)
+        .forEach((currentoffer) => {
+          if (currentoffer.offer_id === offers.id) {
+            setCandidate(true);
+          }
+        });
     }
   }, [offers]);
 

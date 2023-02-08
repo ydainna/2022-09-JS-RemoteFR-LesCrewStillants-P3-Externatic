@@ -48,7 +48,8 @@ export default function Profile() {
         });
     }
 
-    return navigate("/login");
+    Notify.error("Veuillez vous connectez.");
+    return navigate("/login").then();
   };
 
   useEffect(() => {
