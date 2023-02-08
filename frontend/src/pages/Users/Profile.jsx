@@ -49,7 +49,7 @@ export default function Profile() {
     }
 
     Notify.error("Veuillez vous connectez.");
-    return navigate("/login");
+    return navigate("/login").then();
   };
 
   useEffect(() => {

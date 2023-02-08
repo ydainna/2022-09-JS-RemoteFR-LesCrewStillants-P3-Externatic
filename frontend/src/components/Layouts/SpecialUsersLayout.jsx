@@ -6,6 +6,7 @@ import Notify from "@utils/notification";
 import SubNavSpecialUsers from "@components/ManagementsPages/subNavUsers/SubNavSpecialUsers";
 
 export default function SpecialUsersLayout() {
+  // Check if you're admin or consultant + get role for subNav component
   const [role, setRole] = useState(0);
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export default function SpecialUsersLayout() {
           console.error(err);
         });
     }
+
     Notify.error("Vous n'êtes pas connecté.");
     return navigate("/login");
   };
