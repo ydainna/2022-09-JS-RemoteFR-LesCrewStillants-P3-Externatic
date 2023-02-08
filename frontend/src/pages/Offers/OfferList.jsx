@@ -74,13 +74,15 @@ function OfferList() {
           </select>
           <div>
             <label htmlFor="remote">Télétravail uniquement </label>
-            <input
-              type="checkbox"
-              className="available-checkbox"
-              name="checkbox"
-              id=""
-              onClick={() => setIsRemote(isRemote === 0 ? 1 : 0)}
-            />
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                className="checkbox-box"
+                onClick={() => setIsRemote(isRemote === 0 ? 1 : 0)}
+                name="checkbox"
+              />
+              <span className="checkbox-cursor" />
+            </label>
           </div>
         </div>
         <div className="offers-cards">
