@@ -94,11 +94,13 @@ function CardOffer({ offer }) {
 
   useEffect(() => {
     if (userOffer.length !== 0 && token) {
-      userOffer.forEach((currentoffer) => {
-        if (currentoffer.offer_id === offer.id) {
-          setIsFavorite(true);
-        }
-      });
+      userOffer
+        .filter((off) => off.isFavorite)
+        .forEach((currentoffer) => {
+          if (currentoffer.offer_id === offer.id) {
+            setIsFavorite(true);
+          }
+        });
     }
   }, [company]);
 
