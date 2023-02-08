@@ -19,7 +19,7 @@ export default function Candidatures() {
       .get(`/user-offers/${decodedHeader.id}`)
       .then((result) => {
         setArrayCandidature(result.data);
-        setIsFavorite(result.data.length === 0);
+        setIsFavorite(result.data.filter((off) => off.isApplied).length === 0);
       })
       .catch((err) => {
         console.error(err);

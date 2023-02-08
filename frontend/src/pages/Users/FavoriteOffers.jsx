@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
 import jwtDecode from "jwt-decode";
-import heart from "@assets/icons/Heart.svg";
+import Heart from "@assets/icons/Heart.svg";
 import instance from "@utils/instance";
 import empty from "../../assets/lottie/empty.json";
 
@@ -11,6 +11,7 @@ import "@components/UserProfile/FavoritesOffers.scss";
 export default function FavoriteOffers() {
   const token = sessionStorage.getItem("token");
   const [arrayFavorite, setArrayFavorite] = useState([]);
+  const [user, setUser] = useState(0);
   const [isFavorite, setIsFavorite] = useState(true);
 
   const navigate = useNavigate();
@@ -20,49 +21,31 @@ export default function FavoriteOffers() {
       .get(`/user-offers/${decodedHeader.id}`)
       .then((result) => {
         setArrayFavorite(result.data);
-        setIsFavorite(result.data.length === 0);
+        setIsFavorite(result.data.filter((off) => off.isFavorite).length === 0);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
+  const handleLike = (favorite) => {
+    instance
+      .delete(`/uoffer/${user}/${favorite}`)
+      .then(() => {
+        setIsFavorite(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   useEffect(() => {
     if (token !== null) {
       const decodedHeader = jwtDecode(token);
-
+      setUser(decodedHeader.id);
       return getData(decodedHeader);
     }
     return navigate("/login");
-  }, []);
-
-  // const handleLike = () => {
-  //   if (isFavorite) {
-  //     instance
-  //       .delete(`/uoffer/${user}/${offer.id}`)
-  //       .then(() => {
-  //         setIsFavorite(false);
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   } else {
-  //     instance
-  //       .post(`/uoffer`, {
-  //         isFavorite: true,
-  //         isApplied: false,
-  //         user_id: user,
-  //         offer_id: offer.id,
-  //         consultant_id: company.user_id,
-  //       })
-  //       .then(() => {
-  //         setIsFavorite(true);
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   }
-  // };
+  }, [handleLike]);
 
   return (
     <section className="favorite-offers">
@@ -83,7 +66,17 @@ export default function FavoriteOffers() {
                 <span>
                   {favorite.title} - {favorite.localisation}
                 </span>
-                <img src={heart} alt="favorite icon" />
+                <button
+                  className="heart-offer"
+                  type="button"
+                  onClick={() => handleLike(favorite.id)}
+                >
+                  <img
+                    src={Heart}
+                    className={isFavorite ? "" : "greyHeart-offer"}
+                    alt="Logo Heart"
+                  />
+                </button>
               </p>
             ))}
         </>
