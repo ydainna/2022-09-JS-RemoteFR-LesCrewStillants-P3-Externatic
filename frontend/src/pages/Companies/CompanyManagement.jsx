@@ -135,7 +135,7 @@ function CompanyManagement() {
     <section id="company-management">
       <div className="companyManag">
         <div className="rectangle">
-          <h4>Gestion des pages Entreprises</h4>
+          <h1>Gestion des pages Entreprises</h1>
         </div>
       </div>
 
