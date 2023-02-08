@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import instance from "@utils/instance";
+import jwtDecode from "jwt-decode";
 import Notify from "@utils/notification";
 
 import "@components/ManagementsPages/Admin/UsersManagement.scss";
@@ -77,18 +79,48 @@ export default function UsersManagement() {
     getData();
   }, [handleDeleteClick]);
 
+  // Check if you're admin or consultant + get role for subNav component
+  const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const reloadInfo = () => {
+    if (token !== null) {
+      const decodedHeader = jwtDecode(token);
+
+      return instance
+        .get(`/users/${decodedHeader.id}`)
+        .then((response) => {
+          if (response.data.role_id === 3) {
+            Notify.error("Vous n'avez pas accès aux pages admin.");
+            return navigate("/company-management");
+          }
+
+          return "";
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    return navigate("/company-management");
+  };
+
+  useEffect(() => {
+    reloadInfo();
+  }, []);
+
   return (
     <section className="users-management">
       <h1>Gestion des Utilisateurs</h1>
       <div className="users-management-div">
         <button type="button" onClick={handleDeleteClick}>
-          Supprimer les profil
+          Supprimer les profils
         </button>
         <select onChange={(e) => setNewRole(parseInt(e.target.value, 10))}>
-          <option value="0">Rôles</option>
-          <option value="2">Candidats</option>
-          <option value="3">Consultants</option>
-          <option value="1">Admins</option>
+          <option value="0">Rôle à attribuer</option>
+          <option value="2">Candidat</option>
+          <option value="3">Consultant</option>
+          <option value="1">Admin</option>
         </select>
         <button type="button" onClick={handleRoleClick}>
           Attributer un rôle
@@ -105,10 +137,10 @@ export default function UsersManagement() {
           id=""
           onChange={(e) => setRoleFilter(parseInt(e.target.value, 10))}
         >
-          <option value="0">Rôles</option>
-          <option value="2">Candidats</option>
-          <option value="3">Consultants</option>
-          <option value="1">Admins</option>
+          <option value="0">Rôle</option>
+          <option value="2">Candidat</option>
+          <option value="3">Consultant</option>
+          <option value="1">Admin</option>
         </select>
         <button type="button">Réinitialiser ma sélection</button>
       </div>

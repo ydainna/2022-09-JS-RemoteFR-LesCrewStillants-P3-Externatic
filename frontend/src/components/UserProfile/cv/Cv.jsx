@@ -30,7 +30,6 @@ export default function Cv({ id }) {
     const formData = new FormData();
     formData.append("cv", inputRef.current.files[0]);
     if (filesToUpload) {
-      console.warn("uploaded");
       instance
         .post(`${import.meta.env.VITE_BACKEND_URL}/uploads/cv`, formData)
         .then(() => {

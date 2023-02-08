@@ -1,6 +1,9 @@
 @import "../../assets/_variables.scss";
 
 #candidate-management {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
   .candidatManag {
     display: flex;
     justify-content: center;
@@ -14,6 +17,7 @@
     height: 7rem;
     width: 60rem;
     background-color: $secondary-color-four;
+    margin-bottom: $basic-space * 2;
   }
 
   .buttons {
@@ -33,7 +37,7 @@
   }
 
   select {
-    width: 20rem;
+    width: 15rem;
     height: 4rem;
   }
 
@@ -43,7 +47,11 @@
 
   .bu {
     height: 5rem;
-    width: 20rem;
+    width: 15rem;
+    border: none;
+    font-size: $font-size;
+    font-family: $font-stack;
+    box-shadow: 0 10px 6px -6px #777;
   }
 
   .fin {
@@ -57,25 +65,70 @@
   .select {
     height: 5rem;
     background-color: $secondary-color-three;
+    border: none;
+    font-size: $font-size;
+    font-family: $font-stack;
+    text-align: center;
+    box-shadow: 0 10px 6px -6px #777;
+    outline: 0px;
+    appearance: none;
+    background-image: url("../../assets/icons/Triangle.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
   }
 
   .tab {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
+
+    .affichage {
+      width: 100%;
+      background-color: $secondary-color-three;
+      padding: $basic-space;
+    }
   }
 
   h5 {
-    background-color: $secondary-color-two;
     font-size: $title-bigger-size;
-  }
-
-  .affichage {
-    width: 100%;
-    background-color: $secondary-color-three;
   }
 
   button {
     background-color: $secondary-color-three;
+  }
+
+  .rectangle {
+    width: 50rem;
+    height: 5rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    select {
+      background-color: $secondary-color-three;
+      height: 5rem;
+      width: 20rem;
+      font-size: $font-size;
+      font-family: $font-stack;
+      text-align: center;
+      border: none;
+      outline: 0px;
+      appearance: none;
+      background-image: url("../../assets/icons/Triangle.svg");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 8px) center;
+      box-shadow: 0 10px 6px -6px #777;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+    text-align: center;
+    background-color: $secondary-color-four;
+    padding: $basic-space * 2.5;
+    font-weight: 500;
+    text-align: center;
   }
 }

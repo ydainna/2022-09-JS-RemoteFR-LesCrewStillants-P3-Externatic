@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Notify from "@utils/notification";
 import instance from "@utils/instance";
 import parse from "html-react-parser";
 import Heart from "@assets/icons/Heart.svg";
@@ -106,7 +107,7 @@ function OfferComponent() {
   };
 
   const handleCandidate = () => {
-    if (!candidate) {
+    if (!candidate && token !== null) {
       instance
         .post(`/uoffer`, {
           isFavorite: false,
@@ -121,6 +122,10 @@ function OfferComponent() {
         .catch((err) => {
           console.error(err);
         });
+
+      Notify.success(
+        "Merci d'avoir postulé, l'un de nos consultant vous contactera très bientôt"
+      );
     }
   };
 
@@ -145,19 +150,23 @@ function OfferComponent() {
 
   useEffect(() => {
     if (userOffer.length !== 0) {
-      userOffer.forEach((currentoffer) => {
-        if (currentoffer.offer_id === offers.id) {
-          setIsFavorite(true);
-        }
-      });
+      userOffer
+        .filter((off) => off.isFavorite)
+        .forEach((currentoffer) => {
+          if (currentoffer.offer_id === offers.id) {
+            setIsFavorite(true);
+          }
+        });
     }
 
     if (userOffer.length !== 0) {
-      userOffer.forEach((currentoffer) => {
-        if (currentoffer.offer_id === offers.id) {
-          setCandidate(true);
-        }
-      });
+      userOffer
+        .filter((off) => off.isApplied)
+        .forEach((currentoffer) => {
+          if (currentoffer.offer_id === offers.id) {
+            setCandidate(true);
+          }
+        });
     }
   }, [offers]);
 

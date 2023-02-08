@@ -43,7 +43,7 @@ function OfferList() {
           <input
             type="text"
             className="search-input"
-            placeholder="🔎 Type to search"
+            placeholder="🔎 Écrivez votre recherche"
             onChange={(e) => setSearch(e.target.value)}
           />
 
@@ -72,15 +72,17 @@ function OfferList() {
               </option>
             ))}
           </select>
-          <div>
-            <label htmlFor="remote">Show only Remote </label>
-            <input
-              type="checkbox"
-              className="available-checkbox"
-              name="checkbox"
-              id=""
-              onClick={() => setIsRemote(isRemote === 0 ? 1 : 0)}
-            />
+          <div className="div-checkbox">
+            <label htmlFor="remote">Télétravail uniquement </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                className="checkbox-box"
+                onClick={() => setIsRemote(isRemote === 0 ? 1 : 0)}
+                name="checkbox"
+              />
+              <span className="checkbox-cursor" />
+            </label>
           </div>
         </div>
         <div className="offers-cards">

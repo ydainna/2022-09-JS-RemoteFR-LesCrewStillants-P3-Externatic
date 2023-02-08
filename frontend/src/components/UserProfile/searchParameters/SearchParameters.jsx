@@ -35,9 +35,6 @@ export default function SearchParameters({ id }) {
       .put(`${import.meta.env.VITE_BACKEND_URL}/information/${id}`, info, {
         withCredentials: true,
       })
-      .then((res) => {
-        console.warn(res);
-      })
       .catch((err) =>
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );

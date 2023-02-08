@@ -32,6 +32,8 @@
         height: max-content;
         width: 14rem;
         padding: 0.5rem 0.2rem;
+        font-size: $font-size;
+        font-family: $font-stack;
       }
 
       .select-localisation {
@@ -39,14 +41,27 @@
         height: max-content;
         padding: 0.5rem 0.2rem;
         border: none;
+        outline: 0px;
+        font-size: $font-size;
+        font-family: $font-stack;
+        appearance: none;
+        background-image: url("../../assets/icons/Triangle.svg");
+        background-repeat: no-repeat;
+        background-position: calc(100% - 8px) center;
       }
 
       .select-contract {
-        width: 6rem;
+        width: 7rem;
         height: max-content;
         align-content: center;
         padding: 0.5rem 0.2rem;
+        font-size: $font-size;
+        font-family: $font-stack;
         border: none;
+        appearance: none;
+        background-image: url("../../assets/icons/Triangle.svg");
+        background-repeat: no-repeat;
+        background-position: calc(100% - 8px) center;
       }
 
       div {
@@ -95,6 +110,62 @@
     }
     .offers-cards {
       width: 98%;
+    }
+  }
+  /* Checkbox btn */
+
+  .div-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $half-space;
+    .checkbox-label {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      width: 70px;
+      height: 35px;
+      border-radius: 35px;
+      cursor: pointer;
+
+      .checkbox {
+        &-box {
+          position: absolute;
+          bottom: 100%;
+          left: 0px;
+          visibility: hidden;
+
+          &:checked ~ .checkbox-cursor:before {
+            left: 55%;
+          }
+
+          &:checked ~ .checkbox-cursor {
+            background-color: $brand-color;
+          }
+        }
+
+        &-cursor {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-color: grey;
+          transition: background-color 0.5s ease-out;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: left 0.2s ease-out, right 0.2s ease-out;
+            transform: translateY(-50%);
+          }
+        }
+      }
     }
   }
 }

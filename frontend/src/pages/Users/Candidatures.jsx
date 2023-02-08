@@ -1,77 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Player } from "@lottiefiles/react-lottie-player";
 import jwtDecode from "jwt-decode";
 import instance from "@utils/instance";
+import empty from "../../assets/lottie/empty.json";
+
 import "@components/UserProfile/Candidatures.scss";
 
 export default function Candidatures() {
   const token = sessionStorage.getItem("token");
-  const [arrayCandidature, setArrayCandidature] = useState([
-    {
-      id: 1,
-      title: "Développeur Web Front-End",
-      localisation: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 2,
-      title: "Développeur Web Front-End",
-      localisation: "Lille",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 3,
-      title: "Développeur Web Front-End",
-      localisation: "Marseille",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 4,
-      title: "Développeur Web Front-End",
-      localisation: "Lyon",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 5,
-      title: "Développeur Web Front-End",
-      localisation: "Londres",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 6,
-      title: "Développeur Web Front-End",
-      localisation: "Bordeaux",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 7,
-      title: "Développeur Web Back-End Symfony",
-      localisation: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-    {
-      id: 8,
-      title: "Développeur Web Front-End",
-      localisation: "Paris",
-      feedback: "Retour Entreprise",
-      meeting: "Entretien",
-      isApplied: 1,
-    },
-  ]);
+  const [arrayCandidature, setArrayCandidature] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(true);
 
   const navigate = useNavigate();
 
@@ -80,6 +19,7 @@ export default function Candidatures() {
       .get(`/user-offers/${decodedHeader.id}`)
       .then((result) => {
         setArrayCandidature(result.data);
+        setIsFavorite(result.data.filter((off) => off.isApplied).length === 0);
       })
       .catch((err) => {
         console.error(err);
@@ -96,26 +36,36 @@ export default function Candidatures() {
   }, []);
   return (
     <section className="candidatures">
-      <table width="100%">
-        <tbody>
-          <tr>
-            <th>Offre</th>
-            <th>Retour Entreprise</th>
-            <th>Entretien</th>
-          </tr>
-          {arrayCandidature
-            .filter((cand) => cand.isApplied === 1)
-            .map((apply) => (
-              <tr key={apply.id}>
-                <td>
-                  {apply.title} - {apply.localisation}
-                </td>
-                <td>{apply.feedback}</td>
-                <td>{apply.meeting}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      {isFavorite ? (
+        <>
+          Vous n'avez pas encore postulé à une offre
+          <br />
+          <br />
+          <br />
+          <Player autoplay loop src={empty} className="notFoundLottie" />
+        </>
+      ) : (
+        <table width="100%">
+          <tbody>
+            <tr>
+              <th>Offre</th>
+              <th>Retour Entreprise</th>
+              <th>Entretien</th>
+            </tr>
+            {arrayCandidature
+              .filter((cand) => cand.isApplied === 1)
+              .map((apply) => (
+                <tr key={apply.id}>
+                  <td>
+                    {apply.title} - {apply.localisation}
+                  </td>
+                  <td>{apply.feedback}</td>
+                  <td>{apply.meeting}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      )}
     </section>
   );
 }

@@ -2,7 +2,7 @@
 
 .users-management {
   margin: $basic-space * 2 auto $basic-space * 5 auto;
-  width: 50%;
+  width: 60%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,6 +12,7 @@
     padding: $basic-space * 2.5;
     font-weight: 500;
     margin-bottom: $basic-space * 2;
+    text-align: center;
   }
 
   .users-management-div {
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     gap: $basic-space * 3;
+    margin-bottom: $basic-space * 2;
 
     button {
       padding: $half-space * 1.5 $basic-space;
@@ -27,7 +29,6 @@
       border-radius: 10px;
       font-size: $font-size;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      margin-bottom: $basic-space * 2;
       cursor: pointer;
     }
   }
@@ -55,7 +56,14 @@
     background-color: $secondary-color-three;
     border: none;
     height: $title-bigger-size;
-    outline: none;
+    width: 10rem;
+    outline: 0px;
+    font-size: $font-size;
+    font-family: $font-stack;
+  }
+
+  input[type="text"] {
+    width: 20rem;
   }
 
   input {
@@ -65,6 +73,11 @@
   select {
     box-sizing: content-box;
     padding: $half-space $basic-space;
+    outline: 0px;
+    appearance: none;
+    background-image: url("../../../assets/icons/Triangle.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
   }
 
   table {

@@ -30,9 +30,6 @@ export default function Address({ id }) {
       .put(`${import.meta.env.VITE_BACKEND_URL}/address/${id}`, info, {
         withCredentials: true,
       })
-      .then((res) => {
-        console.warn(res);
-      })
       .catch((err) =>
         console.error(err, Notify.error("Mauvaises Informations! ❌"))
       );

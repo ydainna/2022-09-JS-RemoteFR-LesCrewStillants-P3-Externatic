@@ -35,7 +35,6 @@ const edit = (req, res) => {
     ...information,
     start_date: information.start_date.split("T")[0],
   };
-  // TODO validations (length, format...)
 
   models.information
     .update(info)
@@ -54,12 +53,27 @@ const edit = (req, res) => {
 
 const editCV = (req, res) => {
   const cv = req.body;
-
-  // TODO validations (length, format...)
-
   cv.id = parseInt(req.params.id, 10);
   models.information
     .updateCV(cv)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const editCurrentSituation = (req, res) => {
+  const information = req.body;
+  information.id = parseInt(req.params.id, 10);
+  models.information
+    .update(information)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -78,4 +92,5 @@ module.exports = {
   read,
   edit,
   editCV,
+  editCurrentSituation,
 };
