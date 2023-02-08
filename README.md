@@ -14,14 +14,14 @@ To carry out this POC, the students at the Wild Code School had 10 weeks.
 
 ## Technos
 
-The site was developed using the following technologies:
+The site was developed using the following technologies :
 - React
 - Node
 - Express
 
 ## Team
 
-Notre équipe de développeurs était composée des personnes suivantes : 
+Our developer team was made up of the following individuals :
 - Christopher Raspail
 - Amélie Dupil
 - Yohan Rosano
