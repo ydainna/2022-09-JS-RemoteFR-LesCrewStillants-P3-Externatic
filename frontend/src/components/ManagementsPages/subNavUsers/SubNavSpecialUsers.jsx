@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 
 import "./SubNavSpecialUsers.scss";
 
-export default function SubNavSpecialUsers() {
+export default function SubNavSpecialUsers({ role }) {
   const [currentCandidatePage, setCurrentCandidatePage] = useState(0);
   const [isAdminView, setIsAdminView] = useState(false);
-  const isAdmin = true;
 
   const handleAdminView = () => {
     setCurrentCandidatePage(0);
@@ -42,7 +41,7 @@ export default function SubNavSpecialUsers() {
           </li>
         </Link>
 
-        {isAdmin ? (
+        {role === 1 ? (
           <li
             id={currentCandidatePage === 2 ? "currentCandidatePage" : ""}
             onClick={handleAdminView}

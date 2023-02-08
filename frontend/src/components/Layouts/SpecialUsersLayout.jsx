@@ -32,7 +32,7 @@ export default function SpecialUsersLayout() {
 
   return (
     <>
-      <SubNavSpecialUsers />
+      <SubNavSpecialUsers role={role} />
       <main>
         <Outlet />
       </main>
