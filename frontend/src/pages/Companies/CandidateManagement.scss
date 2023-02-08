@@ -63,10 +63,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
   }
 
   h5 {
-    background-color: $secondary-color-two;
     font-size: $title-bigger-size;
   }
 
@@ -77,5 +77,34 @@
 
   button {
     background-color: $secondary-color-three;
+  }
+
+  .rectangle {
+    width: 50rem;
+    height: 5rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    select {
+      background-color: $secondary-color-three;
+      height: 5rem;
+      width: 20rem;
+      font-size: $font-size;
+      font-family: $font-stack;
+      text-align: center;
+      border: none;
+      outline: 0px;
+      appearance: none;
+      background-image: url("../../assets/icons/Triangle.svg");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 8px) center;
+      box-shadow: 0 10px 6px -6px #777;
+    }
+  }
+
+  h4 {
+    padding-top: 1.75rem;
   }
 }
