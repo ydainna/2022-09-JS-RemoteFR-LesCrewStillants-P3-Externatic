@@ -77,6 +77,9 @@ function CanditateManagement() {
       {filter.map((fil) => (
         <h5>
           {fil.firstname} {fil.lastname}
+          <Link to={`/profile/${fil.id}`} target="_blank">
+            <img alt="#" className="icn" src={oeil} />
+          </Link>
         </h5>
       ))}
 
