@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "setup": "npm i && husky install && npm --prefix ./frontend i && npm --prefix ./backend i",
+    "setup-front": "npm --prefix ./frontend i",
+    "setup-back": "npm --prefix ./backend i",
+    "build-front": "npm --prefix ./frontend run build",
     "migrate": "cd backend/ && node migrate.js && cd ..",
     "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
     "dev-front": "npm --prefix ./frontend run dev",
-    "dev-buildfront": "npm --prefix ./frontend run build",
     "dev-back": "npm --prefix ./backend run dev",
     "lint": "npm --prefix ./frontend run lint && npm --prefix ./backend run lint",
     "fix": "npm --prefix ./frontend run fix && npm --prefix ./backend run fix"
